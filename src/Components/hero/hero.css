@@ -1,0 +1,51 @@
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: flex-start; 
+  
+    padding: 50px;
+    background-color: #F3F4F6;
+    height: 100vh;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    margin-right: 50px; 
+  }
+  
+  .hero-content h1 {
+    font-size: 3rem;
+    color: #1E3A8A; 
+    margin-bottom: 20px;
+  }
+  
+  .hero-content p {
+    font-size: 1.25rem;
+    color: #6B7280; 
+    margin-bottom: 30px;
+    max-width: 40rem;
+  }
+  
+  .explore-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #60A5FA;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .explore-btn:hover {
+    background-color: #2563EB; 
+  }
+  
+  .hero-image img {
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    flex-grow: 1; 
+  }

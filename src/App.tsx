@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import './App.css';
-import Header from './Components/Header';
-import Hero from './Components/Hero';
-import CountryCard from './Components/Card';
+import Header from './Components/header/Header';
+import Hero from './Components/hero/Hero';
+import CountryCard from './Components/card/Card';
+import Footer from './Components/footer/Footer';
 
 const countries = [
   { name: "Georgia", capital: "Tbilisi", population: "3.7 million" },
@@ -38,6 +39,9 @@ function App() {
           ))}
         </div>
       </main>
+      <footer>
+      <Footer/>
+      </footer>
     </>
   );
 }

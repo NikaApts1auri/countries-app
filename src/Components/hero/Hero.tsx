@@ -1,4 +1,4 @@
-
+import "./hero.css"
 
  const Hero: React.FC = () => {
   return (

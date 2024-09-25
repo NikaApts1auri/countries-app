@@ -1,5 +1,6 @@
 // Header.tsx
 import React from 'react';
+import './header.css';
 
 interface IHeaderProps {
   title: string;
