@@ -5,14 +5,21 @@ import Hero from './Components/hero/Hero';
 import CountryCard from './Components/card/Card';
 import Footer from './Components/footer/Footer';
 
-const countries = [
+interface ICountryCard {
+  name: string;
+  capital: string;
+  population: string;
+}
+
+const countries: ICountryCard[] = [
   { name: "Georgia", capital: "Tbilisi", population: "3.7 million" },
+  // Add more countries as needed
 ];
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredCountries = countries.filter(country =>
+  const filteredCountries = countries.filter((country) =>
     country.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -30,17 +37,17 @@ function App() {
         />
         <div className="country-cards-container">
           {filteredCountries.map((country, index) => (
-            <CountryCard 
-              key={index} 
-              name={country.name} 
-              capital={country.capital} 
-              population={country.population} 
+            <CountryCard
+              key={index}
+              name={country.name}
+              capital={country.capital}
+              population={country.population}
             />
           ))}
         </div>
       </main>
       <footer>
-      <Footer/>
+        <Footer />
       </footer>
     </>
   );

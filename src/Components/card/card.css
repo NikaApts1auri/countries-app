@@ -1,40 +1,4 @@
-.country-card {
-    background-color: #ffffff; 
-    border: 1px solid #e5e7eb; 
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 15px;
-    transition: transform 0.3s;
-  }
-  
-  .country-card:hover {
-    transform: scale(1.05); 
-  }
-  
-  .country-flag {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-  }
-  
-  .country-name {
-    font-size: 1.5rem;
-    color: #1E3A8A;
-    margin: 10px 0;
-  }
-  
-  .country-capital {
-    font-size: 1rem;
-    color: #6B7280; 
-  }
-  
-  .country-description {
-    font-size: 0.9rem;
-    color: #4B5563; 
-  }
-  
+
   .country-card {
     background-color: #ffffff; 
     border: 1px solid #e5e7eb;
@@ -51,26 +15,11 @@
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
   }
-  
   .country-image {
     width: 100%; 
     height: auto; 
     border-radius: 5px; 
   }
-  
-  .country-name {
-    font-size: 1.8rem; 
-    color: #1E3A8A; 
-    margin: 15px 0 5px; 
-  }
-  
-  .country-capital,
-  .country-population {
-    font-size: 1rem;
-    color: #6B7280; 
-    margin: 5px 0; 
-  }
-  
   .search-input {
     padding: 10px;
     border: 1px solid #e5e7eb; 
