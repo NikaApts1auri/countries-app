@@ -49,3 +49,12 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     flex-grow: 1; 
   }
+  main{
+    display: flex;
+  }
+  .card-section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }

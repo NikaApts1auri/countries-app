@@ -13,7 +13,6 @@ const CardContent: React.FC<CardContentProps> = ({ name, capital, population }) 
       <h2>{name}</h2>
       <p>Capital: {capital}</p>
       <p>Population: {population}</p>
-     
     </div>
   );
 };

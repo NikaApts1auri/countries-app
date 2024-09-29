@@ -19,8 +19,3 @@ html{
 .country-cards-container{
   max-width: 350px;
 }
-.country-image {
-  width: 100%; 
-  height: auto; 
-  border-radius: 5px; 
-}

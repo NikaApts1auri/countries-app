@@ -1,7 +1,21 @@
-import "./hero.css"
+import "#/hero/hero.css"
 
- const Hero: React.FC = () => {
+interface ICountryCard {
+  name: string;
+  capital: string;
+  population: string;
+}
+
+interface HeroProps {
+  searchTerm: string;
+  setSearchTerm: (term: string) => void;
+  filteredCountries: ICountryCard[];
+}
+
+const Hero: React.FC<HeroProps> = ({ searchTerm, setSearchTerm, filteredCountries }) => {
   return (
+
+    <main>
     <section className="hero-section">
       <div className="hero-content">
         <h1>Discover the World's Countries</h1>
@@ -16,6 +30,36 @@ The app also offers insights into each country’s culture, history, and geograp
         <img src="	https://www.mapsofworld.com/style_2019/images/world-map.png?v:1" alt="World Map" />
       </div>
     </section>
+
+
+
+    <section className="card-section">
+    <div className="search-card">
+        <input
+          type="text"
+          placeholder="Search for a country..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-input"
+        />
+        <div className="country-cards-container">
+          {filteredCountries.map((country, index) => (
+            <div key={index} className="card">
+              <h3>{country.name}</h3>
+              <p>Capital: {country.capital}</p>
+              <p>Population: {country.population}</p>
+              <img
+        src="https://cdn.britannica.com/23/4723-050-4F01AE9E/features-Georgia.jpg"
+        alt="Georgia"
+        className="country-image"
+      />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+    </main>
+
   );
 };
 
