@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, lazy, Suspense } from 'react';
 import Layout from '#/Layout/Layout'; // alias for Layout
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AboutView from './Components/about';
-import HomeView from './Components/home/view';
+
+const LazyHomeView = lazy(() => import('./Components/home/view'));
+const LazyAboutView = lazy(() => import('./Components/about'));
 
 interface ICountryCard {
   name: string;
@@ -25,8 +26,22 @@ function App() {
           path="/" 
           element={<Layout countries={countries} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
         >
-          <Route path='/' element={<HomeView/>}/>
-          <Route path="about" element={<AboutView />} />
+          <Route 
+            index //which routes have index its like a parrent element
+            element={
+              <Suspense fallback={<div>Loading Home...</div>}>
+                <LazyHomeView />
+              </Suspense>
+            }
+          />
+          <Route 
+            path="about" 
+            element={
+              <Suspense fallback={<div>Loading About...</div>}>
+                <LazyAboutView />
+              </Suspense>
+            } 
+          />
         </Route>
       </Routes>
     </BrowserRouter>

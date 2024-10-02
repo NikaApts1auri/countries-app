@@ -1,8 +1,8 @@
-import Hero from "@/Components/hero/Hero";
-import CountryCard from "@/Components/card/Card";
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 
-// Sample data for countries
+const LazyCountryCard = lazy(() => import("@/Components/card/Card"));
+const LazyHero = lazy(() => import("@/Components/hero/Hero"));
+
 const countries = [
   { name: "Georgia", capital: "Tbilisi", population: "3.7 million" },
   // Uncomment the lines below to test with more countries
@@ -13,32 +13,32 @@ const countries = [
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  // Filter the countries based on the search term
   const filteredCountries = countries.filter((country) =>
     country.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Log filtered countries to debug
   console.log("Filtered Countries:", filteredCountries);
 
   return (
     <>
       <div style={{ display: "flex" }}>
-        <Hero
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          filteredCountries={filteredCountries} 
-        />
-        <div >
-          {/* Render CountryCard for each filtered country */}
+        <Suspense fallback={<div>Loading Hero...</div>}>
+          <LazyHero
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            filteredCountries={filteredCountries}
+          />
+        </Suspense>
+        <div>
           {filteredCountries.length > 0 ? (
             filteredCountries.map((country, index) => (
-              <CountryCard
-                key={index}
-                name={country.name}
-                capital={country.capital}
-                population={country.population}
-              />
+              <Suspense key={index} fallback={<div>Loading Country Card...</div>}>
+                <LazyCountryCard
+                  name={country.name}
+                  capital={country.capital}
+                  population={country.population}
+                />
+              </Suspense>
             ))
           ) : (
             <p>No countries found</p>
