@@ -22,7 +22,10 @@ const Home = () => {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <Suspense fallback={<div>Loading Hero...</div>}>
+        <Suspense fallback={<div className="loading-container">
+      <div className="loader"></div>
+      <h2>Loading, please wait...</h2>
+    </div>}>
           <LazyHero
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
@@ -32,7 +35,10 @@ const Home = () => {
         <div>
           {filteredCountries.length > 0 ? (
             filteredCountries.map((country, index) => (
-              <Suspense key={index} fallback={<div>Loading Country Card...</div>}>
+              <Suspense key={index} fallback={<div className="loading-container">
+                <div className="loader"></div>
+                <h2>Loading, please wait...</h2>
+              </div>}>
                 <LazyCountryCard
                   name={country.name}
                   capital={country.capital}

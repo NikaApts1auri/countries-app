@@ -29,7 +29,10 @@ function App() {
           <Route 
             index //which routes have index its like a parrent element
             element={
-              <Suspense fallback={<div>Loading Home...</div>}>
+              <Suspense fallback={<div className="loading-container">
+                <div className="loader"></div>
+                <h2>Loading, please wait...</h2>
+              </div>}>
                 <LazyHomeView />
               </Suspense>
             }
@@ -37,7 +40,10 @@ function App() {
           <Route 
             path="about" 
             element={
-              <Suspense fallback={<div>Loading About...</div>}>
+              <Suspense fallback={<div className="loading-container">
+                <div className="loader"></div>
+                <h2>Loading, please wait...</h2>
+              </div>}>
                 <LazyAboutView />
               </Suspense>
             } 
