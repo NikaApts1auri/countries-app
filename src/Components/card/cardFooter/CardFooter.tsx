@@ -1,4 +1,4 @@
-import "@/cardFooter.css"
+import "./cardFooter.css"
 
 const CardFooter: React.FC = () => {
   return (

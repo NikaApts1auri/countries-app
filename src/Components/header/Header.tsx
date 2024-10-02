@@ -1,6 +1,7 @@
 // Header.tsx
 import React from 'react';
-import '#/header/header.css';
+import './header.css';
+import { Link } from 'react-router-dom';
 
 interface IHeaderProps {
   title: string;
@@ -13,7 +14,9 @@ const Header: React.FC<IHeaderProps> = ({ title }) => {
       <nav>
         <ul>
           <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
+          <Link to="/about" style={{ textDecoration: 'none', color:"white"}}>
+  About
+</Link>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>

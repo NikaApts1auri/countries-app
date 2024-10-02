@@ -1,4 +1,4 @@
-import "@/cardHeader.css"
+import "./cardHeader.css"
 
 export default function CardHeader() {
   return (

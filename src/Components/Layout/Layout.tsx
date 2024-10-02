@@ -1,7 +1,7 @@
 import Footer from "#/footer/Footer";
 import Header from "#/header/Header";
-import Hero from "#/hero/Hero";
 import "./layout.css";
+import { Outlet } from "react-router-dom";
 
 interface ICountryCard {
   name: string;
@@ -9,26 +9,18 @@ interface ICountryCard {
   population: string;
 }
 
-interface LaoutProps {
+interface LayoutProps {
   countries: ICountryCard[];
   searchTerm: string;
   setSearchTerm: (term: string) => void;
 }
 
-export default function Laout({ countries, searchTerm, setSearchTerm }: LaoutProps) {
-  const filteredCountries = countries.filter((country) =>
-    country.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
+// eslint-disable-next-line no-empty-pattern
+export default function Layout({  }: LayoutProps) {
   return (
     <div>
       <Header title="Discover" />
-
-      <Hero 
-        searchTerm={searchTerm} 
-        setSearchTerm={setSearchTerm} 
-        filteredCountries={filteredCountries}
-      />
+      <Outlet />
       <Footer />
     </div>
   );
