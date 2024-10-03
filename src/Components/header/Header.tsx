@@ -12,12 +12,12 @@ const Header: React.FC<IHeaderProps> = ({ title }) => {
     <header>
       <h1>{title}</h1>
       <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
+        <ul style={{display:"flex",alignItems:"center",gap:"1rem"}}>
+          <Link style={{color:"white" ,textDecoration:"none"}} to={"/"}><h3>Home</h3></Link >
           <Link to="/about" style={{ textDecoration: 'none', color:"white"}}>
-  About
+          <h3>About</h3>
 </Link>
-          <li><a href="#contact">Contact</a></li>
+        <Link style={{color:"white" ,textDecoration:"none"}} to={"/contact"}> <h3>contact</h3></Link>   
         </ul>
       </nav>
     </header>
