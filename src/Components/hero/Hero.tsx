@@ -1,6 +1,7 @@
 import "#/hero/hero.css";
 
 interface ICountryCard {
+  id:string
   name: string;
   capital: string;
   population: string;
@@ -41,12 +42,9 @@ const Hero: React.FC<HeroProps> = ({ searchTerm, setSearchTerm, filteredCountrie
           />
         </div>
         <div className="country-cards">
-          {/* Map over the filtered countries and render cards */}
-          {filteredCountries.map((country, index) => (
+          {filteredCountries.map((_country, index) => (
             <div key={index} className="country-card">
-              {/* <h2>{country.name}</h2>
-              <p>Capital: {country.capital}</p>
-              <p>Population: {country.population}</p> */}
+          
             </div>
           ))}
         </div>

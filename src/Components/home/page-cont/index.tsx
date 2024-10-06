@@ -4,10 +4,9 @@ const LazyCountryCard = lazy(() => import("@/Components/card/Card"));
 const LazyHero = lazy(() => import("@/Components/hero/Hero"));
 
 const countries = [
-  { name: "Georgia", capital: "Tbilisi", population: "3.7 million" },
-  // Uncomment the lines below to test with more countries
-  // { name: "Germany", capital: "Berlin", population: "83 million" },
-  // { name: "France", capital: "Paris", population: "67 million" },
+  { name: "Georgia", capital: "Tbilisi", population: "3.7 million", id:"1" },
+  { name: "Germany", capital: "Berlin", population: "83 million", id:"2" },
+  { name: "France", capital: "Paris", population: "67 million" , id:"3"},
 ];
 
 const Home = () => {
@@ -42,8 +41,7 @@ const Home = () => {
                 <LazyCountryCard
                   name={country.name}
                   capital={country.capital}
-                  population={country.population}
-                />
+                  population={country.population} id={""}                />
               </Suspense>
             ))
           ) : (

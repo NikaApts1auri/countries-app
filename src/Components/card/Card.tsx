@@ -1,19 +1,28 @@
 import CardContent from "./cardContent/CardContent";
 import CardFooter from "./cardFooter/CardFooter";
 import CardHeader from "./cardHeader/CardHeader";
+import { useNavigate } from "react-router-dom";
 
 interface CountryCardProps {
   name: string;
   capital: string;
   population: string;
+  id: string; 
 }
 
-const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population }) => {
+const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population, id }) => { 
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/CardPage/${id}`); 
+  };
+  
+
   return (
-    <div className="country-card">
+    <div style={{ cursor: "pointer" }} onClick={handleCardClick} className="country-card">
       <CardHeader />
       <main>
-        <CardContent name={name} capital={capital} population={population} />
+        <CardContent  name={name} capital={capital} population={population} />
       </main>
       <footer>
         <CardFooter />

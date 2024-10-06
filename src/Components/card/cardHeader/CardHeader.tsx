@@ -4,7 +4,7 @@ export default function CardHeader() {
   return (
     <div>
        <img
-        src="https://cdn.britannica.com/23/4723-050-4F01AE9E/features-Georgia.jpg"
+        src="	https://globetrottinkids.b-cdn.net/wp-content/uploads/2020/05/world-map.png"
         alt="Georgia"
         className="country-image"
       />
