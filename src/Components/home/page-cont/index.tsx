@@ -32,7 +32,7 @@ const Home = () => {
             filteredCountries={filteredCountries}
           />
         </Suspense>
-        <div>
+        <div style={{display:"flex" , flexWrap:"wrap", gap:"15px"}}>
           {filteredCountries.length > 0 ? (
             filteredCountries.map((country) => (
               <Suspense key={country.id} fallback={<div className="loading-container">

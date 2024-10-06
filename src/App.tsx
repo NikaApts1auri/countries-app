@@ -2,13 +2,15 @@
 import { useState, lazy, Suspense } from 'react';
 import Layout from '#/Layout/Layout'; // alias for Layout
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ContactView from './Components/contact/view';
 import LoadingFallback from './Components/LoadingFallBack';
+
+
 
 // Lazy loading CardPageView and other views
 const CardPageView = lazy(() => import('./Components/cardPage/view'));
 const LazyHomeView = lazy(() => import('./Components/home/view')); // Ensure LazyHomeView points to HomeView
 const LazyAboutView = lazy(() => import('./Components/about'));
+const LazyContactView=lazy(()=>import("./Components/contact/view"))
 
 interface ICountryCard {
   name: string;
@@ -53,7 +55,7 @@ function App() {
             path="contact" 
             element={
               <Suspense fallback={<LoadingFallback />}>
-                <ContactView />
+                <LazyContactView />
               </Suspense>
             } 
           />
