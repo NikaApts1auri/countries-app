@@ -1,14 +1,12 @@
 import { useParams } from "react-router-dom";
-import { AboutCard } from "../AboutCard"; // Import your data source
+import { AboutCard } from "../AboutCard"; 
 
 export default function CardPage() {
-  const { id } = useParams(); // Retrieve the `id` from the URL
-  console.log(id)
-
-  const cardInfo = AboutCard.find((card) => card.id === id); // Use strict equality
+  const { id } = useParams<{ id: string }>(); 
+  const cardInfo = AboutCard.find((card) => card.id === id); 
 
   if (!cardInfo) {
-    return <div>Card not found</div>; // Handle case where the card is not found
+    return <div>Card not found</div>; 
   }
 
   return (

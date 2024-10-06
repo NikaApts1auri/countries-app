@@ -1,24 +1,26 @@
+// App.tsx
 import { useState, lazy, Suspense } from 'react';
 import Layout from '#/Layout/Layout'; // alias for Layout
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ContactView from './Components/contact/view';
 import LoadingFallback from './Components/LoadingFallBack';
 
-// Lazy loading CardPageView
+// Lazy loading CardPageView and other views
 const CardPageView = lazy(() => import('./Components/cardPage/view'));
-const LazyHomeView = lazy(() => import('./Components/home/view'));
+const LazyHomeView = lazy(() => import('./Components/home/view')); // Ensure LazyHomeView points to HomeView
 const LazyAboutView = lazy(() => import('./Components/about'));
 
 interface ICountryCard {
   name: string;
   capital: string;
   population: string;
-  id:string;
+  id: string;
 }
- export const countries:ICountryCard[] = [
-  { name: "Georgia", capital: "Tbilisi", population: "3.7 million", id:"1" },
-  { name: "Germany", capital: "Berlin", population: "83 million", id:"2" },
-  { name: "France", capital: "Paris", population: "67 million" , id:"3"},
+
+export const countries: ICountryCard[] = [
+  { name: "Georgia", capital: "Tbilisi", population: "3.7 million", id: "1" },
+  { name: "Germany", capital: "Berlin", population: "83 million", id: "2" },
+  { name: "France", capital: "Paris", population: "67 million", id: "3" },
 ];
 
 function App() {
@@ -27,7 +29,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Layout is the parent route */}
         <Route 
           path="/" 
           element={<Layout countries={countries} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />}
@@ -36,7 +37,7 @@ function App() {
             index 
             element={
               <Suspense fallback={<LoadingFallback />}>
-                <LazyHomeView />
+                <LazyHomeView /> {/* This is where HomeView is rendered */}
               </Suspense>
             }
           />
@@ -48,7 +49,6 @@ function App() {
               </Suspense>
             } 
           />
-
           <Route 
             path="contact" 
             element={
@@ -57,16 +57,15 @@ function App() {
               </Suspense>
             } 
           />
-
-<Route 
-  path="/CardPage/:id" 
-  element={
-    <Suspense fallback={<LoadingFallback />}>
-      <CardPageView />
-    </Suspense>
-  }
-/>
-
+          <Route 
+            path="/CardPage/:id" 
+            element={
+              <Suspense fallback={<LoadingFallback />}>
+                <CardPageView />
+              </Suspense>
+            }
+            
+          />
         </Route>
       </Routes>
     </BrowserRouter>
