@@ -12,7 +12,9 @@ const CountryList = () => {
           capital={country.capital}
           population={country.population}
           id={country.id} // ID უნდა გადაეცეს აქ
-        />
+          voteCount={""} onVote={function (): void {
+            throw new Error("Function not implemented.");
+          } }        />
       ))}
     </div>
   );

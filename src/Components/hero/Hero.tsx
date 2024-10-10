@@ -32,7 +32,7 @@ const Hero: React.FC<HeroProps> = ({ searchTerm, setSearchTerm, filteredCountrie
       </section>
 
       <section className="card-section">
-        <div className="search-card">
+        <div style={{display:"flex", flexDirection:"column", gap:"1rem" }} className="search-card">
           <input
             type="text"
             placeholder="Search for a country..."
@@ -40,6 +40,8 @@ const Hero: React.FC<HeroProps> = ({ searchTerm, setSearchTerm, filteredCountrie
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
+
+          <button >SORT</button>
         </div>
         <div className="country-cards">
           {filteredCountries.map((_country, index) => (

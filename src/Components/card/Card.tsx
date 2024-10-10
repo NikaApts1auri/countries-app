@@ -1,3 +1,4 @@
+import React from 'react';
 import CardContent from './cardContent/CardContent';
 import CardFooter from './cardFooter/CardFooter';
 import CardHeader from './cardHeader/CardHeader';
@@ -7,22 +8,33 @@ interface CountryCardProps {
   name: string;
   capital: string;
   population: string;
-  id: string; // Make sure id is properly typed
+  id: string;
+  voteCount: string; // Ensure this is part of the props
+  onVote: (id: string) => void; // Add onVote prop
 }
 
-const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population, id }) => {
+const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population, id, voteCount, onVote }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    console.log(`Navigating to /CardPage/${id}`); // Log to verify the ID is correct
-    navigate(`/CardPage/${id}`); // Navigate to the correct URL with the id
+    console.log(`Navigating to /CardPage/${id}`); 
+    navigate(`/CardPage/${id}`); 
   };
 
   return (
-    <div style={{ cursor: 'pointer' }} onClick={handleCardClick} className="country-card">
-      <CardHeader />
+    <div style={{ cursor: 'pointer' }} className="country-card">
+      <nav onClick={handleCardClick}>
+        <CardHeader />
+      </nav>
+
       <main>
-        <CardContent name={name} capital={capital} population={population} />
+        <CardContent 
+          name={name} 
+          capital={capital} 
+          population={population} 
+          voteCount={voteCount} 
+          onVote={() => onVote(id)} 
+        />
       </main>
       <footer>
         <CardFooter />
