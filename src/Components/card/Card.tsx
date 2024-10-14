@@ -37,7 +37,10 @@ const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population, id
         />
       </main>
       <footer>
-        <CardFooter />
+        <CardFooter id={''} onDelete={function (id: string): void {
+          console.log(id)
+          throw new Error('Function not implemented.');
+        } } />
       </footer>
     </div>
   );

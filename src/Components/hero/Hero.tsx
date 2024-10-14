@@ -41,24 +41,7 @@ const Hero: React.FC<HeroProps> = ({ searchTerm, setSearchTerm, handleSort, filt
             onChange={(e) => setSearchTerm(e.target.value)}
             className="search-input"
           />
-<button
-  onClick={handleSort}
-  style={{
-    padding: "10px 20px", // Padding for spacing
-    backgroundColor: "#007BFF", // Button color
-    color: "#FFFFFF", // Text color
-    border: "none", // No border
-    borderRadius: "5px", // Rounded corners
-    cursor: "pointer", // Pointer cursor on hover
-    fontSize: "16px", // Font size
-    transition: "background-color 0.3s", // Transition for hover effect
-  }}
-  onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#0056b3")}
-  onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#007BFF")}
->
-  SORT
-</button>
-
+          <button onClick={handleSort}>SORT</button>
         </div>
         <div style={{background:"grey"}} className="country-cards">
           {filteredCountries.map((country, index) => (
