@@ -6,11 +6,13 @@ interface CardFooterProps {
 }
 
 const CardFooter: React.FC<CardFooterProps> = ({ id, onDelete }) => {
-  const handleArticleDelete = () => {
-    onDelete(id); // Call the delete function with the card's ID
-    console.log("clicking delete btn for ID:", id); // Console log for debugging
+  
+  const handleCardDelete = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation(); 
+    onDelete(id); 
+    console.log("clicking delete btn for ID:", id); 
   };
-
+  
   return (
     <div className="country-footer">
       <p>
@@ -24,9 +26,10 @@ const CardFooter: React.FC<CardFooterProps> = ({ id, onDelete }) => {
         </a>
       </p>
 
-      <span onClick={handleArticleDelete} style={{ color: "red", cursor: "pointer" }}>
-        DELETE
-      </span>
+      <button onClick={(e) => handleCardDelete(e, id)} style={{ color: "red", cursor: "pointer" }}>
+  DELETE
+</button>
+
     </div>
   );
 };

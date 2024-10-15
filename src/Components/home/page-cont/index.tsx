@@ -1,20 +1,21 @@
-import { useState, Suspense, lazy, useReducer } from "react";
-import "#/hero/hero.css"; // Make sure CSS is correctly included
+import { useState, Suspense, lazy, useReducer, FormEvent } from "react";
+import "#/hero/hero.css"; 
 import { AboutCard } from "@/Components/cardPage/AboutCard";
 import { cardsReducer } from "@/Components/reducer/reducer";
+import CardCreateForm from "@/Components/card/cardCreate/card-create";
 
 const LazyCountryCard = lazy(() => import("@/Components/card/Card"));
 const LazyHero = lazy(() => import("@/Components/hero/Hero"));
 
 const Home = () => {
-  const [searchTerm, setSearchTerm] = useState<string>(""); // Search term
-  const [sortedAsc, setSortedAsc] = useState<boolean>(true); // Sorting direction
+  const [searchTerm, setSearchTerm] = useState<string>(""); 
+  const [sortedAsc, setSortedAsc] = useState<boolean>(true);
   
   // Using reducer to manage country data
   const [state, dispatch] = useReducer(cardsReducer, AboutCard);
 
   // Filtering countries by name
-  const filteredCountries = state.filter((country: { name: string; }) =>
+  const filteredCountries = state.filter(country => 
     country.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -24,30 +25,35 @@ const Home = () => {
   };
 
   // Function to handle deletion
-  const handleDeleteCard = (id: string) => {
-    console.log("Deleting card with ID:", id);
+  const handleCardDelete = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
     dispatch({ type: "DELETE_CARD", id });
-    console.log("Current state after deletion:", state);
   };
-  
 
   // Sorting function
   const handleSort = () => {
     dispatch({ type: "SORT_CARDS", sortedAsc });
-    setSortedAsc(!sortedAsc); // Toggle sorting direction
+    setSortedAsc(!sortedAsc);
   };
+
+  const handleCreateCard = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
+    const cardObj: ICountryCard = {}; 
+    const formData = new FormData(e.currentTarget); 
+  
+    for (const [key, value] of formData) {
+      cardObj[key] = value as string; 
+    }
+  
+    // Make sure you include a unique ID and a default vote count
+    dispatch({ type: "ADD_CARD", payload: { ...cardObj, id: Date.now().toString(), vote: "0" } });
+  };
+  
 
   return (
     <div style={{ display: "flex" }}>
-      {/* Lazy load Hero component */}
-      <Suspense
-        fallback={
-          <div className="loading-container">
-            <div className="loader"></div>
-            <h2>Loading, please wait...</h2>
-          </div>
-        }
-      >
+      <Suspense fallback={<div className="loading-container"><div className="loader"></div><h2>Loading, please wait...</h2></div>}>
         <LazyHero
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
@@ -56,29 +62,22 @@ const Home = () => {
         />
       </Suspense>
 
-      {/* Display cards */}
+      <CardCreateForm onCardCreate={handleCreateCard} />
+
       <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
         {filteredCountries.length > 0 ? (
-          filteredCountries.map((country: { id: string; name: string; capital: string; population: string; vote: string; }) => (
-            <Suspense
-  key={country.id}
-  fallback={
-    <div className="loading-container">
-      <div className="loader"></div>
-      <h2>Loading, please wait...</h2>
-    </div>
-  }
->
-  <LazyCountryCard
-    name={country.name}
-    capital={country.capital}
-    population={country.population}
-    voteCount={country.vote}
-    id={country.id}
-    onVote={handleVoteCard} // Voting function
-    onDelete={handleDeleteCard} // Pass deletion function
-  />
-</Suspense>
+          filteredCountries.map((country) => (
+            <Suspense key={country.id} fallback={<div className="loading-container"><div className="loader"></div><h2>Loading, please wait...</h2></div>}>
+              <LazyCountryCard
+                name={country.name}
+                capital={country.capital}
+                population={country.population}
+                voteCount={country.vote}
+                id={country.id}
+                onVote={handleVoteCard}
+                onDelete={handleCardDelete}
+              />
+            </Suspense>
           ))
         ) : (
           <p>No countries found</p>

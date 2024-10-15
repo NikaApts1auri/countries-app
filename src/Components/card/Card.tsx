@@ -9,21 +9,36 @@ interface CountryCardProps {
   capital: string;
   population: string;
   id: string;
-  voteCount: string; // Ensure this is part of the props
-  onVote: (id: string) => void; // Add onVote prop
+  voteCount: string; 
+  onVote: (id: string) => void;
+  onDelete: (id: string) => void; // აქ დაამატე onDelete prop
 }
 
-const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population, id, voteCount, onVote }) => {
+const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population, id, voteCount, onVote, onDelete }) => {
   const navigate = useNavigate();
 
+  // Handle card deletion
+  const handleCardDelete = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    onDelete(id); // გამოძახება წაშლის ფუნქციის
+    console.log("clicking delete btn for ID:", id); 
+  };
+
+  // Navigation on card click
   const handleCardClick = () => {
     console.log(`Navigating to /CardPage/${id}`); 
     navigate(`/CardPage/${id}`); 
   };
 
+  // Handle vote click, stop event propagation
+  const handleVoteClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // ავცილდეთ card-ის წკაპის გავრცელებას
+    onVote(id);
+  };
+
   return (
-    <div style={{ cursor: 'pointer' }} className="country-card">
-      <nav onClick={handleCardClick}>
+    <div onClick={handleCardClick} style={{ cursor: 'pointer' }} className="country-card">
+      <nav>
         <CardHeader />
       </nav>
 
@@ -33,14 +48,12 @@ const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population, id
           capital={capital} 
           population={population} 
           voteCount={voteCount} 
-          onVote={() => onVote(id)} 
+          onVote={handleVoteClick} 
         />
       </main>
       <footer>
-        <CardFooter id={''} onDelete={function (id: string): void {
-          console.log(id)
-          throw new Error('Function not implemented.');
-        } } />
+        {/* წაშლის ფუნქციის გადაცემა */}
+        <CardFooter id={id} onDelete={handleCardDelete} />
       </footer>
     </div>
   );
