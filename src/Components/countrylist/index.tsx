@@ -1,36 +1,29 @@
-// CountryList.tsx
-import React from "react";
-import { countries } from "@/App";
-import CountryCard from "../card/Card"; 
+import React from 'react';
 
-const CountryList: React.FC = () => {
-  const handleVote = (id: string) => {
-  
-    console.log(`votee ID: ${id}`);
-  };
+interface CardContentProps {
+  name: string;
+  capital: string;
+  population: string;
+  voteCount: string;
+  onVote: () => void; 
+}
 
-  const handleDelete = (id: string) => {
-    console.log(`Deleted country with ID: ${id}`);
-  };
-
+const CardContent: React.FC<CardContentProps> = ({
+  name,
+  capital,
+  population,
+  voteCount,
+  onVote,
+}) => {
   return (
-    <div className="country-list">
-      {countries.map((country: Country) => (
-        <CountryCard
-          key={country.id}
-          name={country.name}
-          capital={country.capital}
-          population={country.population}
-          id={country.id}
-          voteCount={""}
-          onVote={handleVote}
-          onDelete={handleDelete}
-          onUndo={function (id: string): void {
-            throw new Error("Function not implemented.");
-          } } isDeleted={false}        />
-      ))}
+    <div className="card-content">
+      <h3>{name}</h3>
+      <p>Capital: {capital}</p>
+      <p>Population: {population}</p>
+      <p>Votes: {voteCount}</p>
+      <button onClick={onVote}>Vote</button> 
     </div>
   );
 };
 
-export default CountryList;
+export default CardContent;

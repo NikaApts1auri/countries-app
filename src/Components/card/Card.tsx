@@ -10,7 +10,7 @@ interface CountryCardProps {
   population: string;
   id: string;
   voteCount: string; 
-  onVote: (id: string) => void;
+  onVote: (id: string) => void; 
   onDelete: (id: string) => void; 
   onUndo: (id: string) => void; 
   isDeleted: boolean; 
@@ -30,30 +30,26 @@ const CountryCard: React.FC<CountryCardProps> = ({
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-
     if (!isDeleted) {
       console.log(`Navigating to /CardPage/${id}`); 
       navigate(`/CardPage/${id}`); 
     }
   };
 
-
   const handleCardDelete = () => {
     onDelete(id); 
     console.log("clicking delete btn for ID:", id); 
   };
-
 
   const handleUndo = () => {
     onUndo(id);
     console.log("undoing delete for ID:", id);
   };
 
-
-  const handleVoteClick = (e: React.MouseEvent) => {
-    e.stopPropagation(); 
+  const handleVoteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
     if (!isDeleted) {
-      onVote(id); // მხოლოდ მაშინ თუ ქარდი არ არის წაშლილი
+      onVote(id); 
     }
   };
 
