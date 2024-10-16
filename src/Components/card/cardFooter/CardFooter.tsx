@@ -35,7 +35,7 @@ const CardFooter: React.FC<CardFooterProps> = ({ id, onDelete, isDeleted, onUndo
       </p>
 
       {isDeleted ? ( // Conditionally render the button based on isDeleted
-        <button onClick={handleUndo} style={{ color: "green", cursor: "pointer" }}>
+        <button onClick={handleUndo} style={{ backgroundColor:"grey", color: "green-700", cursor: "pointer" }}>
           UNDO
         </button>
       ) : (

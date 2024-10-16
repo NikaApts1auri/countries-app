@@ -30,7 +30,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
   const navigate = useNavigate();
 
   const handleCardClick = () => {
-    //   თუ ქარდი არ არის წაშლილი..
+
     if (!isDeleted) {
       console.log(`Navigating to /CardPage/${id}`); 
       navigate(`/CardPage/${id}`); 
