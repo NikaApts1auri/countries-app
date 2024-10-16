@@ -50,3 +50,9 @@
 .like-icon:hover {
   transform: scale(1.1); 
 }
+.country-card.deleted {
+  background-color: #f8d7da; /* Light red */
+  color: #721c24; /* Dark red text */
+  border: 1px solid #f5c6cb; /* Red border */
+  opacity: 0.6; /* Reduced opacity */
+}

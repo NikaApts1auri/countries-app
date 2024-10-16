@@ -29,4 +29,9 @@
     max-width: 400px; 
     font-size: 1rem; 
   }
-  
+  .country-card.deleted {
+    background-color: red; 
+    color: #721c24; 
+    border: 1px solid #f5c6cb; 
+    opacity: 0.6;
+  }

@@ -1,14 +1,28 @@
-// cardsReducer.js
 export const cardsReducer = (state, action) => {
   switch (action.type) {
     case "ADD_CARD":
-      return [...state, { ...action.payload, id: Date.now().toString(), vote: "0" }]; // Assign a unique ID
+      return [
+        ...state, 
+        { ...action.payload, id: Date.now().toString(), vote: "0", isDeleted: false } 
+      ];
+
     case "DELETE_CARD":
-      return state.filter((card) => card.id !== action.id);
-    case "VOTE_CARD":
+      return state.map((card: { id: string; }) => 
+        card.id === action.payload.id
+          ? { ...card, isDeleted: true }
+          : card
+      );
+
+    case "UNDO_DELETE":
       return state.map((card) =>
+        card.id === action.payload.id ? { ...card, isDeleted: false } : card 
+      );
+
+    case "VOTE_CARD":
+      return state.map((card: { id: string; vote: string; }) =>
         card.id === action.id ? { ...card, vote: (parseInt(card.vote) + 1).toString() } : card
       );
+
     case "SORT_CARDS":
       return [...state].sort((a, b) => {
         if (action.sortedAsc) {
@@ -17,6 +31,7 @@ export const cardsReducer = (state, action) => {
           return b.name.localeCompare(a.name);
         }
       });
+
     default:
       return state;
   }

@@ -1,16 +1,24 @@
+import React from 'react';
 import "./cardFooter.css";
 
 interface CardFooterProps {
   id: string; // ID of the card to be deleted
   onDelete: (id: string) => void; // Function to handle deletion
+  isDeleted: boolean; // New prop to determine if the card is deleted
+  onUndo: (id: string) => void; // New prop for the undo function
 }
 
-const CardFooter: React.FC<CardFooterProps> = ({ id, onDelete }) => {
+const CardFooter: React.FC<CardFooterProps> = ({ id, onDelete, isDeleted, onUndo }) => {
   
   const handleCardDelete = (e: React.MouseEvent, id: string) => {
     e.stopPropagation(); 
     onDelete(id); 
     console.log("clicking delete btn for ID:", id); 
+  };
+  
+  const handleUndo = (e: React.MouseEvent) => {
+    e.stopPropagation(); 
+    onUndo(id); // Call the undo function
   };
   
   return (
@@ -26,10 +34,15 @@ const CardFooter: React.FC<CardFooterProps> = ({ id, onDelete }) => {
         </a>
       </p>
 
-      <button onClick={(e) => handleCardDelete(e, id)} style={{ color: "red", cursor: "pointer" }}>
-  DELETE
-</button>
-
+      {isDeleted ? ( // Conditionally render the button based on isDeleted
+        <button onClick={handleUndo} style={{ color: "green", cursor: "pointer" }}>
+          UNDO
+        </button>
+      ) : (
+        <button onClick={(e) => handleCardDelete(e, id)} style={{ color: "red", cursor: "pointer" }}>
+          DELETE
+        </button>
+      )}
     </div>
   );
 };

@@ -1,26 +1,33 @@
 .country-footer {
-    background-color: #f9f9f9; 
-    padding: 15px; 
-    border-top: 1px solid #e0e0e0; 
-    text-align: center; 
-    font-size: 16px; 
-    color: #333; 
-    border-radius: 0 0 8px 8px; 
-    transition: background-color 0.3s ease; 
-  }
-  
-  .country-footer p {
-    margin: 0; 
-  }
-  
-  .country-footer a {
-    color: #007bff;
-    text-decoration: none; 
-    font-weight: bold; 
-  }
-  
-  .country-footer a:hover {
-    text-decoration: underline; 
-    color: #0056b3; 
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.country-footer button {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none; 
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.country-footer button.delete {
+  color: white; 
+  background-color: red; 
+  border: 1px solid red; 
+}
+
+.country-footer button.delete:hover {
+  opacity: 0.8; 
+}
+
+.country-footer button.undo {
+  color: white;
+  background-color: green;
+  border: 1px solid green; 
+}
+
+.country-footer button.undo:hover {
+  opacity: 0.8; 
+}
