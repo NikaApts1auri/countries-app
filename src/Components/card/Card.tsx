@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CardContent from './cardContent/CardContent';
 import CardFooter from './cardFooter/CardFooter';
 import CardHeader from './cardHeader/CardHeader';
@@ -13,32 +13,48 @@ interface CountryCardProps {
   onVote: (id: string) => void;
   onDelete: (id: string) => void; 
   onUndo: (id: string) => void; 
+  isDeleted: boolean; 
 }
 
-const CountryCard: React.FC<CountryCardProps> = ({ name, capital, population, id, voteCount, onVote, onDelete, onUndo }) => {
+const CountryCard: React.FC<CountryCardProps> = ({ 
+  name, 
+  capital, 
+  population, 
+  id, 
+  voteCount, 
+  onVote, 
+  onDelete, 
+  onUndo, 
+  isDeleted 
+}) => {
   const navigate = useNavigate();
-  const [isDeleted, setIsDeleted] = useState(false); 
 
-  const handleCardDelete = (id: string) => {
+  const handleCardClick = () => {
+    //   თუ ქარდი არ არის წაშლილი..
+    if (!isDeleted) {
+      console.log(`Navigating to /CardPage/${id}`); 
+      navigate(`/CardPage/${id}`); 
+    }
+  };
+
+
+  const handleCardDelete = () => {
     onDelete(id); 
-    setIsDeleted(true);
     console.log("clicking delete btn for ID:", id); 
   };
 
+
   const handleUndo = () => {
     onUndo(id);
-    setIsDeleted(false); 
     console.log("undoing delete for ID:", id);
   };
 
-  const handleCardClick = () => {
-    console.log(`Navigating to /CardPage/${id}`); 
-    navigate(`/CardPage/${id}`); 
-  };
 
   const handleVoteClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onVote(id);
+    e.stopPropagation(); 
+    if (!isDeleted) {
+      onVote(id); // მხოლოდ მაშინ თუ ქარდი არ არის წაშლილი
+    }
   };
 
   return (
