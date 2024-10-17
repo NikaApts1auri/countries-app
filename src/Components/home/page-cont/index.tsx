@@ -8,6 +8,15 @@ import CardCreateForm from "@/Components/card/cardCreate/card-create";
 const LazyCountryCard = lazy(() => import("@/Components/card/Card"));
 const LazyHero = lazy(() => import("@/Components/hero/Hero"));
 
+interface FormElements extends HTMLFormControlsCollection {
+    name: HTMLInputElement; 
+    capital: HTMLInputElement;  
+    population: HTMLInputElement; 
+}
+
+interface UsernameFormElement extends HTMLFormElement {
+    readonly elements: FormElements;
+}
 
 interface Card {
     id: string;
@@ -24,23 +33,19 @@ const Home: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>(""); 
     const [sortedAsc, setSortedAsc] = useState<boolean>(true);
 
-
     const [state, dispatch] = useReducer(cardsReducer, AboutCard as State);
 
-   
     const filteredCountries = state.filter((country: Card) => 
         country.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Sortireba
+    // Sorting logic
     const sortedCountries = [...filteredCountries].sort((a, b) => {
         if (a.isDeleted === b.isDeleted) {
             return sortedAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
         }
-       
         return a.isDeleted ? 1 : -1; 
     });
-    
 
     const handleVoteCard = (id: string) => {
         dispatch({ type: "VOTE_CARD", id });
@@ -59,24 +64,25 @@ const Home: React.FC = () => {
         setSortedAsc(!sortedAsc);
     };
 
-    const handleCreateCard = (e: FormEvent<HTMLFormElement>) => {
+    const handleCreateCard = (e: FormEvent<UsernameFormElement>) => {
         e.preventDefault();
-  
+    
         const cardObj: Omit<Card, "id"> = {
             name: "",
             capital: "",
             population: "",
-            vote: "0" 
-        }; 
-        const formData = new FormData(e.currentTarget); 
-
+            vote: "0",
+        };
+    
+        const formData = new FormData(e.currentTarget);
+    
         for (const [key, value] of formData) {
-            cardObj[key as keyof Omit<Card, "id">] = value as string; 
+            cardObj[key as keyof Omit<Card, "id">] = value as string;
         }
-  
-        dispatch({ type: "ADD_CARD", payload: { ...cardObj, id: Date.now().toString() } }); 
+    
+        dispatch({ type: "ADD_CARD", payload: { ...cardObj, id: Date.now().toString() } });
     };
-
+    
     return (
         <div style={{ display: "flex" }}>
             <Suspense fallback={<div className="loading-container"><div className="loader"></div><h2>Loading, please wait...</h2></div>}>
