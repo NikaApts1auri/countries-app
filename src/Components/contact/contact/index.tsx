@@ -42,7 +42,7 @@ const Contact = () => {
       <div className="form-container">
         <h2 className="form-title">Contact Us</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* First Name */}
+
           <div className="form-group">
             <label className="label" htmlFor="first_name">
               First Name
