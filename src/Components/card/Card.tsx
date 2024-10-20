@@ -32,7 +32,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
   const handleCardClick = () => {
     if (!isDeleted) {
       console.log(`Navigating to /CardPage/${id}`); 
-      navigate(`/CardPage/${id}`); 
+      navigate(`cards/CardPage/${id}`); 
     }
   };
 

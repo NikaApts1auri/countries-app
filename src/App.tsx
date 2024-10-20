@@ -34,7 +34,7 @@ function App() {
           <Route index element={<Suspense fallback={<LoadingFallback />}><LazyHomeView /></Suspense>} />
           <Route path="about" element={<Suspense fallback={<LoadingFallback />}><LazyAboutView /></Suspense>} />
           <Route path="contact" element={<Suspense fallback={<LoadingFallback />}><LazyContactView /></Suspense>} />
-          <Route path="CardPage/:id" element={<Suspense fallback={<LoadingFallback />}><CardPageView /></Suspense>} />
+          <Route path="cards/CardPage/:id" element={<Suspense fallback={<LoadingFallback />}><CardPageView /></Suspense>} />
         </Route>
         <Route path="/" element={<Navigate to="/en" />} /> 
       </Routes>
