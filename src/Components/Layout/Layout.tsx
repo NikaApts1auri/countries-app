@@ -13,14 +13,14 @@ interface LayoutProps {
   countries: ICountryCard[];
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  setLanguage: (lang: string) => void; 
 }
 
-// eslint-disable-next-line no-empty-pattern
-export default function Layout({  }: LayoutProps) {
+export default function Layout({ countries, searchTerm, setSearchTerm, setLanguage }: LayoutProps) {
   return (
     <div>
-      <Header title="Discover" />
-      <Outlet />
+      <Header title="Discover" setLanguage={setLanguage} /> 
+      <Outlet context={{ countries, searchTerm, setSearchTerm }} /> 
       <Footer />
     </div>
   );
