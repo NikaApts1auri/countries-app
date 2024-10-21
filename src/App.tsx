@@ -26,6 +26,7 @@ export const countries: ICountryCard[] = [
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [language, setLanguage] = useState('en'); 
+  console.log(language)
 
   return (
     <BrowserRouter>

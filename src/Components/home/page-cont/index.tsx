@@ -68,19 +68,22 @@ const Home: React.FC = () => {
         e.preventDefault();
     
         const cardObj: Omit<Card, "id"> = {
-            name: "",
-            capital: "",
-            population: "",
+            name: e.currentTarget.elements.name.value,
+            capital: e.currentTarget.elements.capital.value,
+            population: e.currentTarget.elements.population.value,
             vote: "0",
         };
     
         const formData = new FormData(e.currentTarget);
     
         for (const [key, value] of formData) {
-            cardObj[key as keyof Omit<Card, "id">] = value as string;
+            if (key in cardObj) {
+                cardObj[key as keyof Omit<Card, "id">] = value as string;
+            }
         }
     
-        dispatch({ type: "ADD_CARD", payload: { ...cardObj, id: Date.now().toString() } });
+
+        dispatch({ type: "ADD_CARD", payload: { ...cardObj, id: Date.now().toString() } as Card });
     };
     
     return (
