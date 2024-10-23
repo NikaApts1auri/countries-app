@@ -37,3 +37,18 @@
     font-size: 14px;
     margin-top: 5px;
   }
+  .tab-buttons {
+    display: flex;
+    margin-bottom: 1rem;
+  }
+  
+  .tab-buttons button {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .tab-buttons .active {
+    background-color: #007bff;
+    color: white;
+  }
+  

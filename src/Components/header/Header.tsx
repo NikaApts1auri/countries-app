@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './header.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { texts } from '../text/text';
 
-
 interface IHeaderProps {
-  setLanguage: (lang: string) => void; 
+  setLanguage: (lang: string|undefined) => void; 
 }
 
 const Header: React.FC<IHeaderProps> = ({ setLanguage }) => {
   const navigate = useNavigate();
-  const { lang } = useParams<{ lang: string }>(); 
+  const { lang } = useParams<{ lang: string }>();
+
+  useEffect(() => {
+    return setLanguage(lang);
+  }, [lang, setLanguage]);
 
   const handleChangeLanguage = (newLang: string) => {
     setLanguage(newLang);
-    navigate(`/${newLang}`); 
+    const currentPath = window.location.pathname.split('/').slice(0, -1).join('/');
+    navigate(`/${newLang}${currentPath}`);
   };
 
   return (

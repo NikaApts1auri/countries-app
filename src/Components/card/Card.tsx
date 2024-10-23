@@ -5,47 +5,42 @@ import CardHeader from './cardHeader/CardHeader';
 import { useNavigate } from 'react-router-dom';
 
 interface CountryCardProps {
-  name: string;
-  capital: string;
-  population: string;
-  id: string;
-  voteCount: string;
-  onVote: (id: string) => void;
-  onDelete: (id: string) => void;
-  onUndo: (id: string) => void;
-  isDeleted: boolean;
+  nameEn: string; 
+  nameKa: string; 
+  capitalEn: string; 
+  capitalKa: string; 
+  population: string; 
+  id: string; 
+  voteCount: string; 
+  onVote: (id: string) => void; 
+  onDelete: (id: string) => void; 
+  onUndo: (id: string) => void; 
+  isDeleted: boolean; 
   image: string | null; 
+  lang: string; 
 }
 
 const CountryCard: React.FC<CountryCardProps> = ({ 
-  name, 
-  capital, 
+  nameEn, 
+  nameKa, 
+  capitalEn, 
+  capitalKa, 
   population, 
   id, 
   voteCount, 
   onVote, 
   onDelete, 
   onUndo, 
-  isDeleted, 
-  image // დაამატეთ ეს ველი
+  isDeleted,
+  image,
+  lang 
 }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
     if (!isDeleted) {
-      console.log(`Navigating to /CardPage/${id}`); 
       navigate(`cards/CardPage/${id}`); 
     }
-  };
-
-  const handleCardDelete = () => {
-    onDelete(id); 
-    console.log("clicking delete btn for ID:", id); 
-  };
-
-  const handleUndo = () => {
-    onUndo(id);
-    console.log("undoing delete for ID:", id);
   };
 
   const handleVoteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -55,33 +50,27 @@ const CountryCard: React.FC<CountryCardProps> = ({
     }
   };
 
+  const displayName = lang === 'ka' ? nameKa : nameEn;
+  const displayCapital = lang === 'ka' ? capitalKa : capitalEn;
+
   return (
-    <div
-      onClick={handleCardClick}
-      className={`country-card ${isDeleted ? 'deleted' : ''}`} 
-    >
-      <nav>
-        <CardHeader image={image} /> {/* აქ გადავცემთ image */}
-      </nav>
-
-      <main>
-        <CardContent 
-          name={name} 
-          capital={capital} 
-          population={population} 
-          voteCount={voteCount} 
-          onVote={handleVoteClick} 
-        />
-      </main>
-
-      <footer>
-        <CardFooter 
-          id={id} 
-          onDelete={handleCardDelete} 
-          isDeleted={isDeleted} 
-          onUndo={handleUndo} 
-        />
-      </footer>
+    <div onClick={handleCardClick} className={`country-card ${isDeleted ? 'deleted' : ''}`}>
+      <CardHeader image={image} />
+      <CardContent 
+        name={displayName} 
+        capital={displayCapital} 
+        population={population} 
+        voteCount={voteCount} 
+        onVote={handleVoteClick} 
+        id={id} 
+        onDeleteClick={() => onDelete(id)} 
+        onUndoClick={() => onUndo(id)} 
+        isDeleted={isDeleted}
+      />
+      <CardFooter 
+        onDelete={() => onDelete(id)}
+        onUndo={() => onUndo(id)}
+        isDeleted={isDeleted} id={id}      />
     </div>
   );
 };

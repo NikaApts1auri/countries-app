@@ -1,8 +1,11 @@
 interface Card {
+    name: string;
     image: string;
     id: string;
-    name: string;
-    capital: string;
+    nameEn: string; 
+    nameKa: string; 
+    capitalEn: string; 
+    capitalKa: string; 
     population: string;
     vote: string;
     isDeleted?: boolean;
@@ -20,7 +23,12 @@ interface Card {
         case "ADD_CARD":
             return [
                 ...state,
-                { ...action.payload, id: Date.now().toString(), vote: "0", isDeleted: false },
+                {
+                    ...action.payload,
+                    id: Date.now().toString(),
+                    vote: "0",
+                    isDeleted: false,
+                },
             ];
         
   

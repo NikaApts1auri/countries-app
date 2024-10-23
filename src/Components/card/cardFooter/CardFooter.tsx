@@ -2,10 +2,10 @@ import React from 'react';
 import "./cardFooter.css";
 
 interface CardFooterProps {
-  id: string; // ID of the card to be deleted
-  onDelete: (id: string) => void; // Function to handle deletion
-  isDeleted: boolean; // New prop to determine if the card is deleted
-  onUndo: (id: string) => void; // New prop for the undo function
+  id: string; 
+  onDelete: (id: string) => void; 
+  isDeleted: boolean;
+  onUndo: (id: string) => void; 
 }
 
 const CardFooter: React.FC<CardFooterProps> = ({ id, onDelete, isDeleted, onUndo }) => {
@@ -18,7 +18,7 @@ const CardFooter: React.FC<CardFooterProps> = ({ id, onDelete, isDeleted, onUndo
   
   const handleUndo = (e: React.MouseEvent) => {
     e.stopPropagation(); 
-    onUndo(id); // Call the undo function
+    onUndo(id);
   };
   
   return (
