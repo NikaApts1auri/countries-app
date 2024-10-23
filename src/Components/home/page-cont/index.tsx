@@ -24,15 +24,15 @@ interface Card {
     capital: string;
     population: string;
     vote: string;
-    isDeleted?: boolean; 
-}
+    isDeleted?: boolean;
+    image?: string | null; 
+  }
 
 type State = Card[];
 
 const Home: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>(""); 
     const [sortedAsc, setSortedAsc] = useState<boolean>(true);
-
     const [state, dispatch] = useReducer(cardsReducer, AboutCard as State);
 
     const filteredCountries = state.filter((country: Card) => 
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
         setSortedAsc(!sortedAsc);
     };
 
-    const handleCreateCard = (e: FormEvent<UsernameFormElement>) => {
+    const handleCreateCard = (e: FormEvent<UsernameFormElement>, image: string | null) => {
         e.preventDefault();
     
         const cardObj: Omit<Card, "id"> = {
@@ -72,20 +72,17 @@ const Home: React.FC = () => {
             capital: e.currentTarget.elements.capital.value,
             population: e.currentTarget.elements.population.value,
             vote: "0",
+            image,
         };
     
-        const formData = new FormData(e.currentTarget);
-    
-        for (const [key, value] of formData) {
-            if (key in cardObj) {
-                cardObj[key as keyof Omit<Card, "id">] = value as string;
-            }
-        }
-    
-
         dispatch({ type: "ADD_CARD", payload: { ...cardObj, id: Date.now().toString() } as Card });
     };
     
+    
+    function setImage(image: string | null): void {
+        throw new Error("Function not implemented.");
+    }
+
     return (
         <div style={{ display: "flex" }}>
             <Suspense fallback={<div className="loading-container"><div className="loader"></div><h2>Loading, please wait...</h2></div>}>
@@ -93,28 +90,31 @@ const Home: React.FC = () => {
                     searchTerm={searchTerm}
                     setSearchTerm={setSearchTerm}
                     handleSort={handleSort}
-                    filteredCountries={sortedCountries} 
+                    filteredCountries={sortedCountries}
+                    image={null}
                 />
             </Suspense>
 
-            <CardCreateForm onCardCreate={handleCreateCard} />
+            <CardCreateForm onCardCreate={handleCreateCard} setImage={setImage} />
+
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
                 {sortedCountries.length > 0 ? (
                     sortedCountries.map((country) => (
                         <Suspense key={country.id} fallback={<div className="loading-container"><div className="loader"></div><h2>Loading, please wait...</h2></div>}>
-                            <LazyCountryCard
-                                name={country.name}
-                                capital={country.capital}
-                                population={country.population}
-                                voteCount={country.vote}
-                                id={country.id}
-                                onVote={handleVoteCard}
-                                isDeleted={country.isDeleted || false} 
-                                onDelete={handleCardDelete}
-                                onUndo={handleUndoDelete}
-                            />
-                        </Suspense>
+                        <LazyCountryCard
+                          name={country.name}
+                          capital={country.capital}
+                          population={country.population}
+                          voteCount={country.vote}
+                          id={country.id}
+                          onVote={handleVoteCard}
+                          isDeleted={country.isDeleted || false} 
+                          onDelete={handleCardDelete}
+                          onUndo={handleUndoDelete}
+                          image={country.image} 
+                        />
+                      </Suspense>
                     ))
                 ) : (
                     <p>No countries found</p>

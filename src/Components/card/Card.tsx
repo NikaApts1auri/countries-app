@@ -9,11 +9,12 @@ interface CountryCardProps {
   capital: string;
   population: string;
   id: string;
-  voteCount: string; 
-  onVote: (id: string) => void; 
-  onDelete: (id: string) => void; 
-  onUndo: (id: string) => void; 
-  isDeleted: boolean; 
+  voteCount: string;
+  onVote: (id: string) => void;
+  onDelete: (id: string) => void;
+  onUndo: (id: string) => void;
+  isDeleted: boolean;
+  image: string | null; 
 }
 
 const CountryCard: React.FC<CountryCardProps> = ({ 
@@ -25,7 +26,8 @@ const CountryCard: React.FC<CountryCardProps> = ({
   onVote, 
   onDelete, 
   onUndo, 
-  isDeleted 
+  isDeleted, 
+  image // დაამატეთ ეს ველი
 }) => {
   const navigate = useNavigate();
 
@@ -59,7 +61,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
       className={`country-card ${isDeleted ? 'deleted' : ''}`} 
     >
       <nav>
-        <CardHeader />
+        <CardHeader image={image} /> {/* აქ გადავცემთ image */}
       </nav>
 
       <main>

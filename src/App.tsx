@@ -1,4 +1,3 @@
-// App.tsx
 import { useState, lazy, Suspense } from 'react';
 import Layout from '#/Layout/Layout';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
@@ -26,7 +25,8 @@ export const countries: ICountryCard[] = [
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [language, setLanguage] = useState('en'); 
-  console.log(language)
+
+  console.log(language);
 
   return (
     <BrowserRouter>
