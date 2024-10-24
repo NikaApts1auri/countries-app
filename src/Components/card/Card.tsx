@@ -50,22 +50,22 @@ const CountryCard: React.FC<CountryCardProps> = ({
 
   return (
     <div onClick={handleCardClick} className={`country-card ${isDeleted ? 'deleted' : ''}`}>
-      <CardHeader image={image} />
-      <CardContent
-        name={displayName}
-        capital={displayCapital}
-        population={population}
-        voteCount={voteCount}
-        onVote={handleVoteClick}
-        lang={lang}
-      />
-      <CardFooter
+    <CardHeader image={image} />
+    <CardContent 
+      nameEn={nameEn} 
+      nameKa={nameKa} 
+      capitalEn={capitalEn} 
+      capitalKa={capitalKa} 
+      population={population} 
+      voteCount={voteCount} 
+      onVote={handleVoteClick} 
+      lang={lang} 
+    />
+    <CardFooter
         onDelete={() => onDelete(id)}
         onUndo={() => onUndo(id)}
-        isDeleted={isDeleted}
-        id={id}
-      />
-    </div>
+        isDeleted={isDeleted} id={''}    />
+  </div>
   );
 };
 
