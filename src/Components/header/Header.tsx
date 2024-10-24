@@ -6,7 +6,6 @@ import { texts } from '../text/text';
 interface IHeaderProps {
   setLanguage: (lang: string|undefined) => void; 
 }
-
 const Header: React.FC<IHeaderProps> = ({ setLanguage }) => {
   const navigate = useNavigate();
   const { lang } = useParams<{ lang: string }>();

@@ -2,6 +2,7 @@ import React, { useState, Suspense, lazy, useReducer } from "react";
 import { cardsReducer } from "@/Components/reducer/reducer";
 import CardCreateForm from "@/Components/card/cardCreate/card-create";
 import { AboutCard } from "@/Components/cardPage/AboutCard";
+import { useParams } from "react-router-dom";
 
 // Lazy-loaded components
 const LazyCountryCard = lazy(() => import("@/Components/card/Card"));
@@ -23,8 +24,7 @@ const Home: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [sortedAsc, setSortedAsc] = useState<boolean>(true);
     const [state, dispatch] = useReducer(cardsReducer, AboutCard as Country[]);
-    const [lang, setLang] = useState<string>("en");
-
+    const {lang}=useParams<{lang:string}>()
     const filteredCountries = state.filter((country: Country) =>
         country.nameEn.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -77,7 +77,7 @@ const Home: React.FC = () => {
                     handleSort={handleSort}
                     filteredCountries={sortedCountries}
                     lang={lang}
-                    setLang={setLang}
+                
                 />
             </Suspense>
 
