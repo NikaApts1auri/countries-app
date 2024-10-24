@@ -1,66 +1,62 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
-import { addCountryCard } from '../../cardPage/AboutCard';
+
 import './card-create.css';
 
 type CardCreateFormProps = {
-  onCardCreate: (e: FormEvent<HTMLFormElement>, image: string | null, nameEn: string, nameKa: string, capitalEn: string, capitalKa: string, population: string) => void;
+  onCardCreate: (image: string | null, nameEn: string, nameKa: string, capitalEn: string, capitalKa: string, population: string) => void;
 };
 
 export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
-  
   const [nameEn, setNameEn] = useState("");
   const [nameKa, setNameKa] = useState("");
   const [capitalEn, setCapitalEn] = useState("");
   const [capitalKa, setCapitalKa] = useState("");
   const [population, setPopulation] = useState("");
   const [validationError, setValidationError] = useState("");
-  const [image, setImage] = useState<string | null>(null); 
+  const [image, setImage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<'en' | 'ka'>('en');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  
+    if (isSubmitting) return; 
+    setIsSubmitting(true); 
+  
 
     if (!nameEn || !capitalEn || !nameKa || !capitalKa) {
       setValidationError("ინგლისურ და ქართულ ენაზე სახელები და დედაქალაქები აუცილებელია.");
+      setIsSubmitting(false);
       return;
     }
-
+  
     if (!population || isNaN(Number(population)) || Number(population) < 0) {
       setValidationError("მოსახლეობა დადებითი უნდა იყოს.");
+      setIsSubmitting(false);
       return;
     }
-
-    setValidationError(""); 
-
-    const newCard = {
-      nameEn: nameEn, 
-      nameKa: nameKa,
-      capitalEn: capitalEn,
-      capitalKa: capitalKa, 
-      population: population, 
-      id: String(Date.now()), 
-      info: undefined,
-      vote: "0" 
+  
+    
+    onCardCreate(image, nameEn, nameKa, capitalEn, capitalKa, population);
+  
+   
+    setNameEn("");
+    setNameKa("");
+    setCapitalEn("");
+    setCapitalKa("");
+    setPopulation("");
+    setValidationError("");
+    setImage(null);
+    setIsSubmitting(false); 
   };
   
-    addCountryCard(newCard); 
-    onCardCreate(e, image, nameEn, nameKa, capitalEn, capitalKa, population);
-
-    setNameEn(""); 
-    setNameKa(""); 
-    setCapitalKa("");
-    setCapitalEn("");
-    setPopulation("");
-    setValidationError(""); 
-  };
-
   const handleAddImage = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const validImage = ['image/jpeg', 'image/png'];
       if (!validImage.includes(file.type)) {
         alert('გთხოვთ ატვირთოთ სურათი (jpg ან png).');
-        return; 
+        return;
       }
 
       const reader = new FileReader();
@@ -69,7 +65,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
           setImage(reader.result as string);
         }
       };
-      reader.readAsDataURL(file); 
+      reader.readAsDataURL(file);
     }
   };
 
@@ -84,7 +80,6 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
         </button>
       </div>
 
-      {/* ინგლისური ინფუთები */}
       {activeTab === 'en' && (
         <>
           <div className="form-group">
@@ -112,7 +107,6 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
         </>
       )}
 
-      {/* ქართულის ინფუთები */}
       {activeTab === 'ka' && (
         <>
           <div className="form-group">
@@ -162,9 +156,9 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
         />
       </div>
 
-      {validationError && <p className="error">{validationError}</p>} 
+      {validationError && <p className="error">{validationError}</p>}
 
-      <button type="submit">create card</button>
+      <button type="submit" disabled={isSubmitting}>create card</button>
     </form>
   );
 }

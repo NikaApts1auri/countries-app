@@ -1,4 +1,4 @@
-interface ICountryCard {
+export interface ICountryCard {
   nameEn: string; 
   nameKa: string; 
   capitalEn: string; 

@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy, useReducer, FormEvent } from "react";
+import React, { useState, Suspense, lazy, useReducer } from "react";
 import { cardsReducer } from "@/Components/reducer/reducer";
 import CardCreateForm from "@/Components/card/cardCreate/card-create";
 import { AboutCard } from "@/Components/cardPage/AboutCard";
@@ -16,17 +16,16 @@ interface Country {
     population: string;
     vote: string;
     isDeleted?: boolean;
-    image?: string | null; 
+    image?: string | null;
 }
 
 const Home: React.FC = () => {
-    const [searchTerm, setSearchTerm] = useState<string>(""); 
+    const [searchTerm, setSearchTerm] = useState<string>("");
     const [sortedAsc, setSortedAsc] = useState<boolean>(true);
-    const [state, dispatch] = useReducer(cardsReducer, AboutCard as Country[]); 
-    const [image, setImage] = useState<string | null>(null);
+    const [state, dispatch] = useReducer(cardsReducer, AboutCard as Country[]);
     const [lang, setLang] = useState<string>("en");
 
-    const filteredCountries = state.filter((country: Country) => 
+    const filteredCountries = state.filter((country: Country) =>
         country.nameEn.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -34,7 +33,7 @@ const Home: React.FC = () => {
         if (a.isDeleted === b.isDeleted) {
             return sortedAsc ? a.nameEn.localeCompare(b.nameEn) : b.nameEn.localeCompare(a.nameEn);
         }
-        return a.isDeleted ? 1 : -1; 
+        return a.isDeleted ? 1 : -1;
     });
 
     const handleVoteCard = (id: string) => {
@@ -53,11 +52,21 @@ const Home: React.FC = () => {
         setSortedAsc(!sortedAsc);
     };
 
-    const handleCreateCard = (e: FormEvent<HTMLFormElement>, image: string | null, nameEn: string, nameKa: string, capitalEn: string, capitalKa: string, population: string) => {
-        e.preventDefault();
+    const handleCreateCard = (image: string | null, nameEn: string, nameKa: string, capitalEn: string, capitalKa: string, population: string) => {
+      
+        const existingCard = state.find((card: { nameEn: string; capitalEn: string; nameKa: string; capitalKa: string; }) => 
+          (card.nameEn === nameEn && card.capitalEn === capitalEn) || 
+          (card.nameKa === nameKa && card.capitalKa === capitalKa)
+        );
+      
+        if (existingCard) {
+          alert('ქარდი უკვე არსებობს!');
+          return;
+        }
+      
         const cardObj: Country = { nameEn, nameKa, capitalEn, capitalKa, population, vote: "0", image, id: Date.now().toString() };
         dispatch({ type: "ADD_CARD", payload: cardObj });
-    };
+      };
 
     return (
         <div style={{ display: "flex" }}>
@@ -72,7 +81,7 @@ const Home: React.FC = () => {
                 />
             </Suspense>
 
-            <CardCreateForm onCardCreate={handleCreateCard} setImage={setImage} />
+            <CardCreateForm onCardCreate={handleCreateCard} />
 
             <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
                 {sortedCountries.length > 0 ? (
@@ -82,15 +91,15 @@ const Home: React.FC = () => {
                                 nameEn={country.nameEn}
                                 nameKa={country.nameKa}
                                 capitalEn={country.capitalEn}
-                                capitalKa={country.capitalKa} 
+                                capitalKa={country.capitalKa}
                                 population={country.population}
                                 voteCount={country.vote}
                                 id={country.id}
                                 onVote={handleVoteCard}
                                 onDelete={handleCardDelete}
                                 onUndo={handleUndoDelete}
-                                isDeleted={country.isDeleted || false} 
-                                image={country.image} 
+                                isDeleted={country.isDeleted || false}
+                                image={country.image}
                                 lang={lang}
                             />
                         </Suspense>
