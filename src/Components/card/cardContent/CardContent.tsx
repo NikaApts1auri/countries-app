@@ -1,16 +1,19 @@
 import React from 'react';
 import './CardContent.css';
 
-
 interface CardContentProps {
-  name: string;
+  nameEn: string;   
+  nameKa: string;   
   capital: string;
   population: string;
   voteCount: string; 
   onVote: () => void; 
+  lang: string;  
 }
 
-const CardContent: React.FC<CardContentProps> = ({ name, capital, population, voteCount, onVote }) => {
+const CardContent: React.FC<CardContentProps> = ({ nameEn, nameKa, capital, population, voteCount, onVote, lang }) => {
+  const name = lang === 'ka' ? nameKa : nameEn; 
+
   return (
     <div className="card-content">
       <h2 className="country-name">{name}</h2>

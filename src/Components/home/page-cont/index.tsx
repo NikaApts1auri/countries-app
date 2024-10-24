@@ -7,14 +7,26 @@ import { AboutCard } from "@/Components/cardPage/AboutCard";
 const LazyCountryCard = lazy(() => import("@/Components/card/Card"));
 const LazyHero = lazy(() => import("@/Components/hero/Hero"));
 
+interface Country {
+    id: string;
+    nameEn: string;
+    nameKa: string;
+    capitalEn: string;
+    capitalKa: string;
+    population: string;
+    vote: string;
+    isDeleted?: boolean;
+    image?: string | null; 
+}
+
 const Home: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>(""); 
     const [sortedAsc, setSortedAsc] = useState<boolean>(true);
-    const [state, dispatch] = useReducer(cardsReducer, AboutCard);
+    const [state, dispatch] = useReducer(cardsReducer, AboutCard as Country[]); 
     const [image, setImage] = useState<string | null>(null);
     const [lang, setLang] = useState<string>("en");
 
-    const filteredCountries = state.filter((country: { nameEn: string; }) => 
+    const filteredCountries = state.filter((country: Country) => 
         country.nameEn.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
@@ -43,8 +55,8 @@ const Home: React.FC = () => {
 
     const handleCreateCard = (e: FormEvent<HTMLFormElement>, image: string | null, nameEn: string, nameKa: string, capitalEn: string, capitalKa: string, population: string) => {
         e.preventDefault();
-        const cardObj = { nameEn, nameKa, capitalEn, capitalKa, population, vote: "0", image };
-        dispatch({ type: "ADD_CARD", payload: { ...cardObj, id: Date.now().toString() } });
+        const cardObj: Country = { nameEn, nameKa, capitalEn, capitalKa, population, vote: "0", image, id: Date.now().toString() };
+        dispatch({ type: "ADD_CARD", payload: cardObj });
     };
 
     return (
