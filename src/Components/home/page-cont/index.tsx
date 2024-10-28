@@ -24,7 +24,7 @@ const Home: React.FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [sortedAsc, setSortedAsc] = useState<boolean>(true);
     const [state, dispatch] = useReducer(cardsReducer, AboutCard as Country[]);
-    const {lang}=useParams<{lang:string}>()
+    const { lang } = useParams<{ lang: string }>()
     const filteredCountries = state.filter((country: Country) =>
         country.nameEn.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -53,20 +53,20 @@ const Home: React.FC = () => {
     };
 
     const handleCreateCard = (image: string | null, nameEn: string, nameKa: string, capitalEn: string, capitalKa: string, population: string) => {
-      
-        const existingCard = state.find((card: { nameEn: string; capitalEn: string; nameKa: string; capitalKa: string; }) => 
-          (card.nameEn === nameEn && card.capitalEn === capitalEn) || 
-          (card.nameKa === nameKa && card.capitalKa === capitalKa)
+
+        const existingCard = state.find((card: { nameEn: string; capitalEn: string; nameKa: string; capitalKa: string; }) =>
+            (card.nameEn === nameEn && card.capitalEn === capitalEn) ||
+            (card.nameKa === nameKa && card.capitalKa === capitalKa)
         );
-      
+
         if (existingCard) {
-          alert('ქარდი უკვე არსებობს!');
-          return;
+            alert('ქარდი უკვე არსებობს!');
+            return;
         }
-      
+
         const cardObj: Country = { nameEn, nameKa, capitalEn, capitalKa, population, vote: "0", image, id: Date.now().toString() };
         dispatch({ type: "ADD_CARD", payload: cardObj });
-      };
+    };
 
     return (
         <div style={{ display: "flex" }}>
@@ -77,9 +77,10 @@ const Home: React.FC = () => {
                     handleSort={handleSort}
                     filteredCountries={sortedCountries}
                     lang={lang}
-                
+
                 />
             </Suspense>
+
 
             <CardCreateForm onCardCreate={handleCreateCard} />
 
