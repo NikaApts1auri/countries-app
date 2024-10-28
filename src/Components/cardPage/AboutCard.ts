@@ -22,7 +22,7 @@ export const AboutCard: ICountryCard[] = [
     info: undefined,
     vote: 0,
     isDeleted: false,
-    image: null
+    image: null,
   },
   {
     nameEn: "Germany",
@@ -34,7 +34,7 @@ export const AboutCard: ICountryCard[] = [
     info: undefined,
     vote: 0,
     isDeleted: false,
-    image: null
+    image: null,
   },
   {
     nameEn: "France",
@@ -46,6 +46,6 @@ export const AboutCard: ICountryCard[] = [
     info: undefined,
     vote: 0,
     isDeleted: false,
-    image: null
+    image: null,
   },
 ];

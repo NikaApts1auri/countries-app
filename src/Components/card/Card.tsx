@@ -55,12 +55,13 @@ const CountryCard: React.FC<CountryCardProps> = ({
         onVote={onVote}
         lang={lang}
         id={id}
+        isDeleted={isDeleted} 
       />
       <CardFooter
         onDelete={() => onDelete(id)}
         onUndo={() => onUndo(id)}
         isDeleted={isDeleted}
-        id={""}
+        id={id}
       />
     </div>
   );

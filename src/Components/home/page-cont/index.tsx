@@ -2,7 +2,7 @@ import React, { useState, Suspense, lazy, useReducer } from "react";
 import { cardsReducer } from "@/Components/reducer/reducer";
 import CardCreateForm from "@/Components/card/cardCreate/card-create";
 import { useParams } from "react-router-dom";
-import { ICountryCard} from "@/Components/cardPage/AboutCard";
+import { ICountryCard } from "@/Components/cardPage/AboutCard";
 
 // Lazy-loaded components
 const LazyCountryCard = lazy(() => import("@/Components/card/Card"));
@@ -11,14 +11,15 @@ const LazyHero = lazy(() => import("@/Components/hero/Hero"));
 const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [sortedAsc, setSortedAsc] = useState<boolean>(true);
-  
-  const { lang = "en" } = useParams<{ lang: "en" | "ka" }>();
-  
-  const [state, dispatch] = useReducer(cardsReducer, [] as ICountryCard[]); 
 
-  const filteredCountries = state.filter((country) => 
-    country.nameEn.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    country.nameKa.toLowerCase().includes(searchTerm.toLowerCase())
+  const { lang = "en" } = useParams<{ lang: "en" | "ka" }>();
+
+  const [state, dispatch] = useReducer(cardsReducer, [] as ICountryCard[]);
+
+  const filteredCountries = state.filter(
+    (country) =>
+      country.nameEn.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      country.nameKa.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   if (filteredCountries.length === 0) {
@@ -71,7 +72,7 @@ const Home: React.FC = () => {
       return;
     }
 
-    const cardObj: ICountryCard = { 
+    const cardObj: ICountryCard = {
       id: Date.now().toString(),
       nameEn,
       nameKa,
@@ -89,10 +90,13 @@ const Home: React.FC = () => {
     <div style={{ display: "flex" }}>
       <Suspense fallback={<div>Loading...</div>}>
         <LazyHero
-                  searchTerm={searchTerm}
-                  setSearchTerm={setSearchTerm}
-                  handleSort={handleSort}
-                  lang={lang} filteredCountries={[]} image={null}        />
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+          handleSort={handleSort}
+          lang={lang}
+          filteredCountries={[]}
+          image={null}
+        />
       </Suspense>
 
       <CardCreateForm onCardCreate={handleCreateCard} />
@@ -109,13 +113,13 @@ const Home: React.FC = () => {
                 population={country.population}
                 voteCount={country.vote.toString()}
                 id={country.id}
-                onVote={handleVoteCard}  
+                onVote={handleVoteCard}
                 onDelete={handleCardDelete}
                 onUndo={handleUndoDelete}
                 isDeleted={country.isDeleted || false}
                 image={country.image}
                 lang={lang}
-                capital={country.capitalEn} 
+                capital={country.capitalEn}
                 vote={country.vote}
               />
             </Suspense>
