@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 interface CardContentProps {
   name: string;
   capital: string;
   population: string;
   voteCount: string;
-  onVote: () => void; 
+  onVote: () => void;
 }
 
 const CardContent: React.FC<CardContentProps> = ({
@@ -21,7 +21,7 @@ const CardContent: React.FC<CardContentProps> = ({
       <p>Capital: {capital}</p>
       <p>Population: {population}</p>
       <p>Votes: {voteCount}</p>
-      <button onClick={onVote}>Vote</button> 
+      <button onClick={onVote}>Vote</button>
     </div>
   );
 };

@@ -1,5 +1,5 @@
 header {
-  background-color: #1E3A8A;
+  background-color: #1e3a8a;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -23,19 +23,18 @@ nav ul li {
 }
 
 nav ul li a {
-  color: #E5E7EB;
+  color: #e5e7eb;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #60A5FA;
+  color: #60a5fa;
 }
 
-
 h1 {
-  color: #F43F5E;
+  color: #f43f5e;
   font-size: 2rem;
   font-weight: bold;
 }

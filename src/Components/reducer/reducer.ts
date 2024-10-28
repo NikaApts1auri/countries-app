@@ -1,65 +1,48 @@
-interface Card {
-    name: string;
-    image: string;
-    id: string;
-    nameEn: string; 
-    nameKa: string; 
-    capitalEn: string; 
-    capitalKa: string; 
-    population: string;
-    vote: number; 
-    isDeleted?: boolean;
+import { ICountryCard } from "@/Components/cardPage/AboutCard";
+
+type AddCardPayload = Omit<ICountryCard, 'id' | 'vote' | 'isDeleted'>
+interface DeleteCardPayload { id: string; }
+interface UndoDeletePayload { id: string; }
+interface VoteCardPayload { id: string; }
+
+interface CardAction {
+  type: "ADD_CARD" | "DELETE_CARD" | "UNDO_DELETE" | "VOTE_CARD";
+  payload?: AddCardPayload | DeleteCardPayload | UndoDeletePayload | VoteCardPayload;
 }
-  
-type CardAction =
-    | { type: "ADD_CARD"; payload: Omit<Card, "id" | "vote" | "isDeleted"> }
-    | { type: "DELETE_CARD"; payload: { id: string } }
-    | { type: "UNDO_DELETE"; payload: { id: string } }
-    | { type: "VOTE_CARD"; id: string }
-    | { type: "SORT_CARDS"; sortedAsc: boolean };
-  
-export const cardsReducer = (state: Card[], action: CardAction): Card[] => {
-    switch (action.type) {
-        case "ADD_CARD":
-            return [
-                ...state,
-                {
-                    ...action.payload,
-                    id: Date.now().toString(),
-                    vote: 0, // Initialize vote as number
-                    isDeleted: false,
-                },
-            ];
 
-        case "DELETE_CARD":
-            return state.map((card) =>
-                card.id === action.payload.id ? { ...card, isDeleted: true } : card
-            );
+const cardsReducer = (state: ICountryCard[], action: CardAction): ICountryCard[] => {
+  switch (action.type) {
+    case "ADD_CARD":
+      return [
+        ...state,
+        {
+          ...action.payload,
+          id: Date.now().toString(),
+          vote: 0,
+          isDeleted: false,
+        } as ICountryCard,
+      ];
 
-        case "UNDO_DELETE":
-            return state.map((card) =>
-                card.id === action.payload.id ? { ...card, isDeleted: false } : card
-            );
+    case "DELETE_CARD":
+      return state.map((card) =>
+        card.id === (action.payload as DeleteCardPayload).id ? { ...card, isDeleted: true } : card,
+      );
 
-        case "VOTE_CARD":
-            return state.map((card) =>
-                card.id === action.id
-                    ? { ...card, vote: card.vote + 1 } 
-                    : card
-            );
+    case "UNDO_DELETE":
+      return state.map((card) =>
+        card.id === (action.payload as UndoDeletePayload).id ? { ...card, isDeleted: false } : card,
+      );
 
-        case "SORT_CARDS":
-            return [...state].sort((a, b) => {
-                if (action.sortedAsc) {
-                    return a.name.localeCompare(b.name);
-                } else {
-                    return b.name.localeCompare(a.name);
-                }
-            });
+    case "VOTE_CARD":
+      return state.map((card) =>
+        card.id === (action.payload as VoteCardPayload).id ? { ...card, vote: card.vote + 1 } : card,
+      );
 
-
-
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
+
+
+
+export { cardsReducer };

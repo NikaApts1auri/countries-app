@@ -1,5 +1,5 @@
-import React from 'react';
-import './CardContent.css';
+import React from "react";
+import "./CardContent.css";
 
 interface CardContentProps {
   nameEn: string;
@@ -8,8 +8,9 @@ interface CardContentProps {
   capitalKa: string;
   population: string;
   voteCount: string;
-  onVote: () => void;
-  lang: 'en' | 'ka';
+  onVote: (id: string) => void;
+  lang: "en" | "ka";
+  id: string;
 }
 
 const CardContent: React.FC<CardContentProps> = ({
@@ -20,10 +21,19 @@ const CardContent: React.FC<CardContentProps> = ({
   population,
   voteCount,
   onVote,
-  lang
+  lang,
+  id,
 }) => {
-  const displayName = lang === 'ka' ? nameKa : nameEn;
-  const displayCapital = lang === 'ka' ? capitalKa : capitalEn;
+  const displayName = lang === "ka" ? nameKa : nameEn;
+  const displayCapital = lang === "ka" ? capitalKa : capitalEn;
+
+  const handleVoteClick = (
+    event: React.MouseEvent<HTMLImageElement>,
+    id: string,
+  ) => {
+    event.stopPropagation();
+    onVote(id);
+  };
 
   return (
     <div className="card-content">
@@ -36,7 +46,7 @@ const CardContent: React.FC<CardContentProps> = ({
           src="./likeIcon.webp"
           alt="Like Icon"
           className="like-icon"
-          onClick={onVote}
+          onClick={(e) => handleVoteClick(e, id)}
         />
       </nav>
     </div>

@@ -1,12 +1,11 @@
-import Contact from "../contact"
-
+import Contact from "../contact";
 
 const ContactView = () => {
   return (
     <>
-      <Contact/>
+      <Contact />
     </>
-  )
-}
+  );
+};
 
-export default ContactView
+export default ContactView;

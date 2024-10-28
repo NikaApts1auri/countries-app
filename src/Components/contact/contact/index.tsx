@@ -1,13 +1,13 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import "./contact.css"; 
+import "./contact.css";
 
 interface IFormType {
   first_name: string;
   last_name: string;
   email: string;
-  message: string; 
+  message: string;
 }
 
 const schema = yup
@@ -18,7 +18,7 @@ const schema = yup
       .string()
       .email("Email is not valid")
       .required("Email is a required field"),
-    message: yup.string().required("Message is required"), 
+    message: yup.string().required("Message is required"),
   })
   .required();
 
@@ -42,7 +42,6 @@ const Contact = () => {
       <div className="form-container">
         <h2 className="form-title">Contact Us</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-
           <div className="form-group">
             <label className="label" htmlFor="first_name">
               First Name
@@ -51,7 +50,7 @@ const Contact = () => {
               className={`input ${errors.first_name ? "input-error" : ""}`}
               type="text"
               placeholder="Enter your first name"
-              {...register("first_name")} 
+              {...register("first_name")}
               id="first_name"
             />
             {errors.first_name && (
@@ -100,13 +99,13 @@ const Contact = () => {
             </label>
             <textarea
               id="textarea"
-              className={`textarea ${errors.message ? "input-error" : ""}`} 
+              className={`textarea ${errors.message ? "input-error" : ""}`}
               rows={4}
               placeholder="Write your message here..."
-              {...register("message")} 
+              {...register("message")}
             />
             {errors.message && (
-              <p className="error-message">{errors.message.message}</p> 
+              <p className="error-message">{errors.message.message}</p>
             )}
           </div>
 

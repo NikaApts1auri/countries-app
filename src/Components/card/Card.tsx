@@ -1,9 +1,9 @@
-import React from 'react';
-import CardContent from './cardContent/CardContent';
-import CardFooter from './cardFooter/CardFooter';
-import CardHeader from './cardHeader/CardHeader';
-import { useNavigate } from 'react-router-dom';
-import { ICountryCard } from '../cardPage/AboutCard';
+import React from "react";
+import CardContent from "./cardContent/CardContent";
+import CardFooter from "./cardFooter/CardFooter";
+import CardHeader from "./cardHeader/CardHeader";
+import { useNavigate } from "react-router-dom";
+import { ICountryCard } from "../cardPage/AboutCard";
 
 interface CountryCardProps extends ICountryCard {
   voteCount: string;
@@ -12,7 +12,8 @@ interface CountryCardProps extends ICountryCard {
   onUndo: (id: string) => void;
   isDeleted: boolean;
   image: string | null;
-  lang: 'en' | 'ka';
+  lang: "en" | "ka";
+  capital: string;
 }
 
 const CountryCard: React.FC<CountryCardProps> = ({
@@ -28,7 +29,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
   onUndo,
   isDeleted,
   image,
-  lang
+  lang,
 }) => {
   const navigate = useNavigate();
 
@@ -38,18 +39,11 @@ const CountryCard: React.FC<CountryCardProps> = ({
     }
   };
 
-  const handleVoteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    if (!isDeleted) {
-      onVote(id);
-    }
-  };
-
-  const displayName = lang === 'ka' ? nameKa : nameEn;
-  const displayCapital = lang === 'ka' ? capitalKa : capitalEn;
-
   return (
-    <div onClick={handleCardClick} className={`country-card ${isDeleted ? 'deleted' : ''}`}>
+    <div
+      onClick={handleCardClick}
+      className={`country-card ${isDeleted ? "deleted" : ""}`}
+    >
       <CardHeader image={image} />
       <CardContent
         nameEn={nameEn}
@@ -58,13 +52,16 @@ const CountryCard: React.FC<CountryCardProps> = ({
         capitalKa={capitalKa}
         population={population}
         voteCount={voteCount}
-        onVote={handleVoteClick}
+        onVote={onVote}
         lang={lang}
+        id={id}
       />
       <CardFooter
         onDelete={() => onDelete(id)}
         onUndo={() => onUndo(id)}
-        isDeleted={isDeleted} id={''} />
+        isDeleted={isDeleted}
+        id={""}
+      />
     </div>
   );
 };

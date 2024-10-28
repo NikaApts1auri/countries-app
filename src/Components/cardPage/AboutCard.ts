@@ -1,11 +1,13 @@
 export interface ICountryCard {
+  isDeleted: boolean;
+  image: string | null;
   nameEn: string;
   nameKa: string;
   capitalEn: string;
   capitalKa: string;
   population: string;
   id: string;
-  vote: string;
+  vote: number;
   info?: string;
 }
 
@@ -18,7 +20,9 @@ export const AboutCard: ICountryCard[] = [
     population: "3.7 million",
     id: "1",
     info: undefined,
-    vote: "0"
+    vote: 0,
+    isDeleted: false,
+    image: null
   },
   {
     nameEn: "Germany",
@@ -28,7 +32,9 @@ export const AboutCard: ICountryCard[] = [
     population: "83 million",
     id: "2",
     info: undefined,
-    vote: "0"
+    vote: 0,
+    isDeleted: false,
+    image: null
   },
   {
     nameEn: "France",
@@ -38,10 +44,8 @@ export const AboutCard: ICountryCard[] = [
     population: "67 million",
     id: "3",
     info: undefined,
-    vote: "0"
+    vote: 0,
+    isDeleted: false,
+    image: null
   },
 ];
-
-export const addCountryCard = (countryCard: ICountryCard) => {
-  AboutCard.push(countryCard);
-};

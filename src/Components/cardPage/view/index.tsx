@@ -1,10 +1,9 @@
-
-import CardPage from '../cardPage'
+import CardPage from "../cardPage";
 
 export default function CardPageView() {
   return (
     <>
-    <CardPage/>  
+      <CardPage />
     </>
-  )
+  );
 }

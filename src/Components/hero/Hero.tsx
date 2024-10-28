@@ -11,23 +11,33 @@ interface ICountryCard {
 interface HeroProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
-  handleSort: () => void; 
+  handleSort: () => void;
   filteredCountries: ICountryCard[];
-  image: string | null; 
+  image: string | null;
+  lang: "en" | "ka";
 }
 
-const Hero: React.FC<HeroProps> = ({ searchTerm, setSearchTerm, handleSort, filteredCountries, image }) => {
+const Hero: React.FC<HeroProps> = ({
+  searchTerm,
+  setSearchTerm,
+  handleSort,
+  filteredCountries,
+  image,
+}) => {
   return (
     <main>
       <section className="hero-section">
         <div className="hero-content">
           <h1>Discover the World's Countries</h1>
           <p>
-            The Discover the World app provides a simple and effective way to explore information about countries worldwide...
+            The Discover the World app provides a simple and effective way to
+            explore information about countries worldwide...
           </p>
-          <a href="#explore" className="explore-btn">Explore Now</a>
+          <a href="#explore" className="explore-btn">
+            Explore Now
+          </a>
         </div>
-        <CardHeader image={image} /> 
+        <CardHeader image={image} />
       </section>
 
       <section className="card-section">

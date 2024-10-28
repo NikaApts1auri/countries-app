@@ -1,9 +1,16 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from "react";
 
-import './card-create.css';
+import "./card-create.css";
 
 type CardCreateFormProps = {
-  onCardCreate: (image: string | null, nameEn: string, nameKa: string, capitalEn: string, capitalKa: string, population: string) => void;
+  onCardCreate: (
+    image: string | null,
+    nameEn: string,
+    nameKa: string,
+    capitalEn: string,
+    capitalKa: string,
+    population: string,
+  ) => void;
 };
 
 export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
@@ -14,32 +21,31 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
   const [population, setPopulation] = useState("");
   const [validationError, setValidationError] = useState("");
   const [image, setImage] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'en' | 'ka'>('en');
+  const [activeTab, setActiveTab] = useState<"en" | "ka">("en");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-    if (isSubmitting) return; 
-    setIsSubmitting(true); 
-  
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
 
     if (!nameEn || !capitalEn || !nameKa || !capitalKa) {
-      setValidationError("ინგლისურ და ქართულ ენაზე სახელები და დედაქალაქები აუცილებელია.");
+      setValidationError(
+        "ინგლისურ და ქართულ ენაზე სახელები და დედაქალაქები აუცილებელია.",
+      );
       setIsSubmitting(false);
       return;
     }
-  
+
     if (!population || isNaN(Number(population)) || Number(population) < 0) {
       setValidationError("მოსახლეობა დადებითი უნდა იყოს.");
       setIsSubmitting(false);
       return;
     }
-  
-    
+
     onCardCreate(image, nameEn, nameKa, capitalEn, capitalKa, population);
-  
-   
+
     setNameEn("");
     setNameKa("");
     setCapitalEn("");
@@ -47,15 +53,15 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
     setPopulation("");
     setValidationError("");
     setImage(null);
-    setIsSubmitting(false); 
+    setIsSubmitting(false);
   };
-  
+
   const handleAddImage = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      const validImage = ['image/jpeg', 'image/png'];
+      const validImage = ["image/jpeg", "image/png"];
       if (!validImage.includes(file.type)) {
-        alert('გთხოვთ ატვირთოთ სურათი (jpg ან png).');
+        alert("გთხოვთ ატვირთოთ სურათი (jpg ან png).");
         return;
       }
 
@@ -72,15 +78,23 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
   return (
     <form className="form-container" onSubmit={handleSubmit} noValidate>
       <div className="tab-buttons">
-        <button type="button" onClick={() => setActiveTab('en')} className={activeTab === 'en' ? 'active' : ''}>
+        <button
+          type="button"
+          onClick={() => setActiveTab("en")}
+          className={activeTab === "en" ? "active" : ""}
+        >
           ინგლისური
         </button>
-        <button type="button" onClick={() => setActiveTab('ka')} className={activeTab === 'ka' ? 'active' : ''}>
+        <button
+          type="button"
+          onClick={() => setActiveTab("ka")}
+          className={activeTab === "ka" ? "active" : ""}
+        >
           ქართული
         </button>
       </div>
 
-      {activeTab === 'en' && (
+      {activeTab === "en" && (
         <>
           <div className="form-group">
             <label htmlFor="nameEn">name</label>
@@ -107,7 +121,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
         </>
       )}
 
-      {activeTab === 'ka' && (
+      {activeTab === "ka" && (
         <>
           <div className="form-group">
             <label htmlFor="nameKa">სახელი (ქართული)</label>
@@ -158,7 +172,9 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
 
       {validationError && <p className="error">{validationError}</p>}
 
-      <button type="submit" disabled={isSubmitting}>create card</button>
+      <button type="submit" disabled={isSubmitting}>
+        create card
+      </button>
     </form>
   );
 }

@@ -1,18 +1,20 @@
 .card-content {
-  background-color: #ffffff; 
-  border: 1px solid #e0e0e0; 
-  border-radius: 8px; 
-  padding: 20px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-  transition: transform 0.2s, box-shadow 0.2s; 
-  max-width: 300px; 
-  margin: 10px; 
-  text-align: left; 
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  max-width: 300px;
+  margin: 10px;
+  text-align: left;
 }
 
 .card-content:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .country-name {
@@ -21,34 +23,35 @@
   color: #333;
 }
 
-.country-capital, .country-population {
-  margin: 5px 0; 
-  font-size: 1rem; 
+.country-capital,
+.country-population {
+  margin: 5px 0;
+  font-size: 1rem;
   color: #666;
 }
 
 .vote-container {
   display: flex;
   align-items: center;
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 
 .vote-count {
-  font-weight: bold; 
-  font-size: 1.2rem; 
+  font-weight: bold;
+  font-size: 1.2rem;
   margin-right: 10px;
-  color: #007BFF;
+  color: #007bff;
 }
 
 .like-icon {
-  width: 30px; 
+  width: 30px;
   height: 30px;
-  cursor: pointer; 
+  cursor: pointer;
   transition: transform 0.2s;
 }
 
 .like-icon:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 .country-card.deleted {
   background-color: #f8d7da; /* Light red */
