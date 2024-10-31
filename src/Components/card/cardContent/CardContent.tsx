@@ -11,7 +11,7 @@ interface CardContentProps {
   onVote: (id: string) => void;
   lang: "en" | "ka";
   id: string;
-  isDeleted: boolean; 
+  isDeleted: boolean;
 }
 
 const CardContent: React.FC<CardContentProps> = ({
@@ -24,7 +24,7 @@ const CardContent: React.FC<CardContentProps> = ({
   onVote,
   lang,
   id,
-  isDeleted, 
+  isDeleted,
 }) => {
   const displayName = lang === "ka" ? nameKa : nameEn;
   const displayCapital = lang === "ka" ? capitalKa : capitalEn;
@@ -34,7 +34,7 @@ const CardContent: React.FC<CardContentProps> = ({
     id: string,
   ) => {
     event.stopPropagation();
-    if (!isDeleted) { 
+    if (!isDeleted) {
       onVote(id);
     } else {
       alert("ქარდი წაშლილია, ხმა ვერ მიცემთ!");
@@ -53,7 +53,10 @@ const CardContent: React.FC<CardContentProps> = ({
           alt="Like Icon"
           className="like-icon"
           onClick={(e) => handleVoteClick(e, id)}
-          style={{ cursor: isDeleted ? "not-allowed" : "pointer", opacity: isDeleted ? 0.5 : 1 }} // ეფექტის დამატება
+          style={{
+            cursor: isDeleted ? "not-allowed" : "pointer",
+            opacity: isDeleted ? 0.5 : 1,
+          }} // ეფექტის დამატება
         />
       </nav>
     </div>

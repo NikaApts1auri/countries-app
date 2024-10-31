@@ -1,7 +1,6 @@
 import "#/hero/hero.css";
 import CardHeader from "../card/cardHeader/CardHeader";
 
-
 interface ICountryCard {
   id: string;
   name: string;
@@ -41,10 +40,6 @@ const Hero: React.FC<HeroProps> = ({
         <CardHeader image={image} />
       </section>
 
-
-   
-
-
       <section className="card-section">
         <div className="search-card">
           <input
@@ -66,8 +61,6 @@ const Hero: React.FC<HeroProps> = ({
           ))}
         </div>
       </section>
-
-
     </main>
   );
 };

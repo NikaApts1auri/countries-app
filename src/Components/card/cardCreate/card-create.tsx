@@ -77,100 +77,108 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
   };
 
   return (
-    <><OtpInputs /><form className="form-container" onSubmit={handleSubmit} noValidate>
-      <div className="tab-buttons">
-        <button
-          type="button"
-          onClick={() => setActiveTab("en")}
-          className={activeTab === "en" ? "active" : ""}
-        >
-          ინგლისური
+    <>
+      <OtpInputs />
+      <form className="form-container" onSubmit={handleSubmit} noValidate>
+        <div className="tab-buttons">
+          <button
+            type="button"
+            onClick={() => setActiveTab("en")}
+            className={activeTab === "en" ? "active" : ""}
+          >
+            ინგლისური
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("ka")}
+            className={activeTab === "ka" ? "active" : ""}
+          >
+            ქართული
+          </button>
+        </div>
+
+        {activeTab === "en" && (
+          <>
+            <div className="form-group">
+              <label htmlFor="nameEn">name</label>
+              <input
+                type="text"
+                value={nameEn}
+                onChange={(e) => setNameEn(e.target.value)}
+                id="nameEn"
+                name="nameEn"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="capitalEn">capital</label>
+              <input
+                type="text"
+                value={capitalEn}
+                onChange={(e) => setCapitalEn(e.target.value)}
+                id="capitalEn"
+                name="capitalEn"
+                required
+              />
+            </div>
+          </>
+        )}
+
+        {activeTab === "ka" && (
+          <>
+            <div className="form-group">
+              <label htmlFor="nameKa">სახელი (ქართული)</label>
+              <input
+                type="text"
+                value={nameKa}
+                onChange={(e) => setNameKa(e.target.value)}
+                id="nameKa"
+                name="nameKa"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="capitalKa">დედაქალაქი (ქართული)</label>
+              <input
+                type="text"
+                value={capitalKa}
+                onChange={(e) => setCapitalKa(e.target.value)}
+                id="capitalKa"
+                name="capitalKa"
+                required
+              />
+            </div>
+          </>
+        )}
+
+        <div className="form-group">
+          <label htmlFor="population">population</label>
+          <input
+            type="text"
+            value={population}
+            onChange={(e) => setPopulation(e.target.value)}
+            id="population"
+            name="population"
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="upload">upload</label>
+          <input
+            type="file"
+            onChange={handleAddImage}
+            id="image"
+            name="image"
+            required
+          />
+        </div>
+
+        {validationError && <p className="error">{validationError}</p>}
+
+        <button type="submit" disabled={isSubmitting}>
+          create card
         </button>
-        <button
-          type="button"
-          onClick={() => setActiveTab("ka")}
-          className={activeTab === "ka" ? "active" : ""}
-        >
-          ქართული
-        </button>
-      </div>
-
-      {activeTab === "en" && (
-        <>
-          <div className="form-group">
-            <label htmlFor="nameEn">name</label>
-            <input
-              type="text"
-              value={nameEn}
-              onChange={(e) => setNameEn(e.target.value)}
-              id="nameEn"
-              name="nameEn"
-              required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="capitalEn">capital</label>
-            <input
-              type="text"
-              value={capitalEn}
-              onChange={(e) => setCapitalEn(e.target.value)}
-              id="capitalEn"
-              name="capitalEn"
-              required />
-          </div>
-        </>
-      )}
-
-      {activeTab === "ka" && (
-        <>
-          <div className="form-group">
-            <label htmlFor="nameKa">სახელი (ქართული)</label>
-            <input
-              type="text"
-              value={nameKa}
-              onChange={(e) => setNameKa(e.target.value)}
-              id="nameKa"
-              name="nameKa"
-              required />
-          </div>
-          <div className="form-group">
-            <label htmlFor="capitalKa">დედაქალაქი (ქართული)</label>
-            <input
-              type="text"
-              value={capitalKa}
-              onChange={(e) => setCapitalKa(e.target.value)}
-              id="capitalKa"
-              name="capitalKa"
-              required />
-          </div>
-        </>
-      )}
-
-      <div className="form-group">
-        <label htmlFor="population">population</label>
-        <input
-          type="text"
-          value={population}
-          onChange={(e) => setPopulation(e.target.value)}
-          id="population"
-          name="population"
-          required />
-      </div>
-      <div className="form-group">
-        <label htmlFor="upload">upload</label>
-        <input
-          type="file"
-          onChange={handleAddImage}
-          id="image"
-          name="image"
-          required />
-      </div>
-
-      {validationError && <p className="error">{validationError}</p>}
-
-      <button type="submit" disabled={isSubmitting}>
-        create card
-      </button>
-    </form></>
-
+      </form>
+    </>
   );
 }
