@@ -11,7 +11,7 @@ interface CardContentProps {
   onVote: (id: string) => void;
   lang: "en" | "ka";
   id: string;
-  isDeleted: boolean; // ახალი პროპსი
+  isDeleted: boolean; 
 }
 
 const CardContent: React.FC<CardContentProps> = ({
@@ -36,7 +36,6 @@ const CardContent: React.FC<CardContentProps> = ({
     event.stopPropagation();
     if (!isDeleted) { 
       onVote(id);
-      console.log(isDeleted)
     } else {
       alert("ქარდი წაშლილია, ხმა ვერ მიცემთ!");
     }

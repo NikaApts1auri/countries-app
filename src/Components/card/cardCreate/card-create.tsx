@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import "./card-create.css";
+import OtpInputs from "@/Components/OTP/otp";
 
 type CardCreateFormProps = {
   onCardCreate: (
@@ -76,7 +77,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
   };
 
   return (
-    <form className="form-container" onSubmit={handleSubmit} noValidate>
+    <><OtpInputs /><form className="form-container" onSubmit={handleSubmit} noValidate>
       <div className="tab-buttons">
         <button
           type="button"
@@ -104,8 +105,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
               onChange={(e) => setNameEn(e.target.value)}
               id="nameEn"
               name="nameEn"
-              required
-            />
+              required />
           </div>
           <div className="form-group">
             <label htmlFor="capitalEn">capital</label>
@@ -115,8 +115,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
               onChange={(e) => setCapitalEn(e.target.value)}
               id="capitalEn"
               name="capitalEn"
-              required
-            />
+              required />
           </div>
         </>
       )}
@@ -131,8 +130,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
               onChange={(e) => setNameKa(e.target.value)}
               id="nameKa"
               name="nameKa"
-              required
-            />
+              required />
           </div>
           <div className="form-group">
             <label htmlFor="capitalKa">დედაქალაქი (ქართული)</label>
@@ -142,8 +140,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
               onChange={(e) => setCapitalKa(e.target.value)}
               id="capitalKa"
               name="capitalKa"
-              required
-            />
+              required />
           </div>
         </>
       )}
@@ -156,8 +153,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
           onChange={(e) => setPopulation(e.target.value)}
           id="population"
           name="population"
-          required
-        />
+          required />
       </div>
       <div className="form-group">
         <label htmlFor="upload">upload</label>
@@ -166,8 +162,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
           onChange={handleAddImage}
           id="image"
           name="image"
-          required
-        />
+          required />
       </div>
 
       {validationError && <p className="error">{validationError}</p>}
@@ -175,6 +170,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
       <button type="submit" disabled={isSubmitting}>
         create card
       </button>
-    </form>
+    </form></>
+
   );
 }
