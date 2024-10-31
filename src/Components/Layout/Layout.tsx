@@ -12,7 +12,7 @@ interface LayoutProps {
   countries: ICountryCard[];
   searchTerm: string;
   setSearchTerm: (term: string) => void;
-  setLanguage: (lang: string | undefined) => void;
+  setLanguage: (lang: string) => void;
 }
 
 export default function Layout({
@@ -21,7 +21,7 @@ export default function Layout({
   setSearchTerm,
   setLanguage,
 }: LayoutProps) {
-  const handleLanguageChange = (lang: string | undefined) => {
+  const handleLanguageChange = (lang: string) => {
     setLanguage(lang);
   };
 

@@ -1,8 +1,39 @@
-.inputDivs {
-  display: flex;
-  gap: 10px;
+.otp-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .inputDivs {
+    display: flex;
+    gap: 10px;
+    margin-top:30px;
+
+  }
+
+  .inputDivs input[type="number"]::-webkit-inner-spin-button,
+.inputDivs input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; 
+    margin: 0;
 }
-input {
-  width: 40px;
-  height: 30px;
-}
+
+  input {
+    margin-top: 10px;
+    width: 40px;
+    height: 40px; 
+    font-size: 20px; 
+    text-align: center; 
+    border: 2px solid #ccc; 
+    border-radius: 5px; 
+    outline: none;
+    transition: border-color 0.3s; 
+  }
+  
+  input:focus {
+    border-color: #007bff;
+  }
+  
+
+
+  

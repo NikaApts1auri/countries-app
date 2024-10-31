@@ -17,16 +17,34 @@ interface ICountryCard {
 }
 
 const countries: ICountryCard[] = [
-  { name: "Georgia", capital: "Tbilisi", population: "3.7 million", id: "1", vote: "0" },
-  { name: "Germany", capital: "Berlin", population: "83 million", id: "2", vote: "0" },
-  { name: "France", capital: "Paris", population: "67 million", id: "3", vote: "0" },
+  {
+    name: "Georgia",
+    capital: "Tbilisi",
+    population: "3.7 million",
+    id: "1",
+    vote: "0",
+  },
+  {
+    name: "Germany",
+    capital: "Berlin",
+    population: "83 million",
+    id: "2",
+    vote: "0",
+  },
+  {
+    name: "France",
+    capital: "Paris",
+    population: "67 million",
+    id: "3",
+    vote: "0",
+  },
 ];
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [language, setLanguage] = useState<string>("en");
 
-  console.log(language)
+  console.log(language);
   return (
     <BrowserRouter>
       <Routes>

@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { texts } from "../text/text";
 
 interface IHeaderProps {
-  setLanguage: (lang: string | undefined) => void;
+  setLanguage: (lang: string) => void;
   title: string;
 }
 
@@ -13,7 +13,9 @@ const Header: React.FC<IHeaderProps> = ({ setLanguage }) => {
   const { lang } = useParams<{ lang: string }>();
 
   useEffect(() => {
-    setLanguage(lang);
+    if (lang) {
+      setLanguage(lang);
+    }
   }, [lang, setLanguage]);
 
   const handleChangeLanguage = (newLang: string) => {
