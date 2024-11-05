@@ -35,6 +35,24 @@
       "vote": 0,
       "isDeleted": false,
       "image": null
+    },
+    {
+      "id": "8bd9",
+      "image": null,
+      "nameEn": "ას",
+      "nameKa": "ას",
+      "capitalEn": "ას",
+      "capitalKa": "ას",
+      "population": "23"
+    },
+    {
+      "id": "cf27",
+      "image": null,
+      "nameEn": "asd",
+      "nameKa": "asd",
+      "capitalEn": "ნიკაა",
+      "capitalKa": "ნიკაა",
+      "population": "12"
     }
   ]
 }

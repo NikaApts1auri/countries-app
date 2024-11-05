@@ -32,7 +32,9 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
     setIsSubmitting(true);
 
     if (!nameEn || !capitalEn || !nameKa || !capitalKa) {
-      setValidationError("ინგლისურ და ქართულ ენაზე სახელები და დედაქალაქები აუცილებელია.");
+      setValidationError(
+        "ინგლისურ და ქართულ ენაზე სახელები და დედაქალაქები აუცილებელია.",
+      );
       setIsSubmitting(false);
       return;
     }
@@ -44,7 +46,6 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
     }
 
     try {
-
       const newCountry = {
         image,
         nameEn,
@@ -55,10 +56,9 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
       };
 
       // Send a POST request to add the new country
-      await axios.post('http://localhost:3000/countries', newCountry);
+      await axios.post("http://localhost:3000/countries", newCountry);
       // Update with your actual endpoint
 
-    
       onCardCreate(image, nameEn, nameKa, capitalEn, capitalKa, population);
 
       // Reset the form

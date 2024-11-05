@@ -2,17 +2,28 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
+interface CardInfo {
+  nameEn: string;
+  nameKa: string;
+  capitalEn: string;
+  capitalKa: string;
+  population: string;
+  info?: string;
+}
+
 export default function CardPage() {
   const { id, lang } = useParams<{ id: string; lang: string }>();
-  const [cardInfo, setCardInfo] = useState<any>(null);
+  const [cardInfo, setCardInfo] = useState<CardInfo | null>(null); // უფრო კონკრეტული ტიპი
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log("Requested id:", id);  // დაამატე ეს კონსოლში
-  
+    console.log("Requested id:", id); 
     const fetchCardInfo = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/countries/${id}`);
+        const response = await axios.get<CardInfo>(
+          `http://localhost:3000/countries/${id}`,
+        );
         setCardInfo(response.data);
         setLoading(false);
       } catch (error) {
@@ -20,10 +31,9 @@ export default function CardPage() {
         setLoading(false);
       }
     };
-  
+
     fetchCardInfo();
   }, [id]);
-  
 
   if (loading) {
     return <div>მონაცემების მიღება...</div>;
@@ -53,4 +63,3 @@ export default function CardPage() {
     </div>
   );
 }
-

@@ -19,18 +19,19 @@ const Home: React.FC = () => {
 
   // Fetch countries data from database.json
   useEffect(() => {
-    axios.get("/database.json")
+    axios
+      .get("/database.json")
       .then((response) => {
-        console.log(response.data);  // იხილეთ რედაქტირებული მონაცემები
+        console.log(response.data); 
         dispatch({ type: "SET_COUNTRIES", payload: response.data });
       })
       .catch((error) => {
         console.error("Error fetching countries:", error);
       });
   }, []);
-  
+
   const filteredCountries = state.filter((country) => {
-    console.log("Filtered country:", country);  // დარწმუნდით, რომ თითოეული ქარდი იხილება
+    console.log("Filtered country:", country); 
     if (!country.nameEn || !country.nameKa) {
       return false;
     }
@@ -39,9 +40,6 @@ const Home: React.FC = () => {
       country.nameKa.toLowerCase().includes(searchTerm.toLowerCase())
     );
   });
-  
-  
-  
 
   const sortedCountries = [...filteredCountries].sort((a, b) => {
     if (a.isDeleted === b.isDeleted) {
@@ -49,10 +47,8 @@ const Home: React.FC = () => {
         ? a.nameEn.localeCompare(b.nameEn)
         : b.nameEn.localeCompare(a.nameEn);
     }
-    return a.isDeleted ? 1 : -1;  // აქ ხდება სორტირება მხოლოდ არ წაშლილი ელემენტების მიხედვით
+    return a.isDeleted ? 1 : -1;
   });
-  
-  
 
   const handleVoteCard = (id: string) => {
     dispatch({ type: "VOTE_CARD", payload: { id } });
@@ -61,14 +57,12 @@ const Home: React.FC = () => {
   const handleCardDelete = async (id: string) => {
     try {
       await axios.delete(`http://localhost:3000/countries/${id}`);
-      
+
       dispatch({ type: "DELETE_CARD", payload: { id } });
     } catch (error) {
       console.error("Error deleting the card:", error);
     }
   };
-  
-  
 
   const handleUndoDelete = (id: string) => {
     dispatch({ type: "UNDO_DELETE", payload: { id } });
@@ -89,7 +83,7 @@ const Home: React.FC = () => {
     const existingCard = state.find(
       (card) =>
         (card.nameEn === nameEn && card.capitalEn === capitalEn) ||
-        (card.nameKa === nameKa && card.capitalKa === capitalKa)
+        (card.nameKa === nameKa && card.capitalKa === capitalKa),
     );
 
     if (existingCard) {
@@ -137,7 +131,6 @@ const Home: React.FC = () => {
                 capitalKa={country.capitalKa}
                 population={country.population}
                 voteCount={(country.vote ?? 0).toString()}
-
                 id={country.id}
                 onVote={handleVoteCard}
                 onDelete={handleCardDelete}
