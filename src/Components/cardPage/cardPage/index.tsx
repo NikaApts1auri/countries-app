@@ -2,7 +2,6 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-
 interface CardInfo {
   nameEn: string;
   nameKa: string;
@@ -18,7 +17,7 @@ export default function CardPage() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    console.log("Requested id:", id); 
+    console.log("Requested id:", id);
     const fetchCardInfo = async () => {
       try {
         const response = await axios.get<CardInfo>(

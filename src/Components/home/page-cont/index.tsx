@@ -22,7 +22,7 @@ const Home: React.FC = () => {
     axios
       .get("/database.json")
       .then((response) => {
-        console.log(response.data); 
+        console.log(response.data);
         dispatch({ type: "SET_COUNTRIES", payload: response.data });
       })
       .catch((error) => {
@@ -31,7 +31,7 @@ const Home: React.FC = () => {
   }, []);
 
   const filteredCountries = state.filter((country) => {
-    console.log("Filtered country:", country); 
+    console.log("Filtered country:", country);
     if (!country.nameEn || !country.nameKa) {
       return false;
     }
