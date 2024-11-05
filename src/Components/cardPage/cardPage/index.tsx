@@ -1,12 +1,36 @@
 import { useParams } from "react-router-dom";
-import { AboutCard } from "../AboutCard";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function CardPage() {
   const { id, lang } = useParams<{ id: string; lang: string }>();
-  const cardInfo = AboutCard.find((card) => card.id === id);
+  const [cardInfo, setCardInfo] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    console.log("Requested id:", id);  // დაამატე ეს კონსოლში
+  
+    const fetchCardInfo = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/countries/${id}`);
+        setCardInfo(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching card info:", error);
+        setLoading(false);
+      }
+    };
+  
+    fetchCardInfo();
+  }, [id]);
+  
+
+  if (loading) {
+    return <div>მონაცემების მიღება...</div>;
+  }
 
   if (!cardInfo) {
-    return <div>Card not found</div>;
+    return <div>ქარდი ვერ მოიძებნა</div>;
   }
 
   const name = lang === "ka" ? cardInfo.nameKa : cardInfo.nameEn;
@@ -29,3 +53,4 @@ export default function CardPage() {
     </div>
   );
 }
+

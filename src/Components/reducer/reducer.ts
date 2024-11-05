@@ -11,13 +11,13 @@ interface VoteCardPayload {
   id: string;
 }
 
+interface SetCountriesPayload {
+  countries: ICountryCard[];
+}
+
 interface CardAction {
-  type: "ADD_CARD" | "DELETE_CARD" | "UNDO_DELETE" | "VOTE_CARD";
-  payload?:
-    | AddCardPayload
-    | DeleteCardPayload
-    | UndoDeletePayload
-    | VoteCardPayload;
+  type: "ADD_CARD" | "DELETE_CARD" | "UNDO_DELETE" | "VOTE_CARD" | "SET_COUNTRIES";
+  payload?: AddCardPayload | DeleteCardPayload | UndoDeletePayload | VoteCardPayload | SetCountriesPayload;
 }
 
 const cardsReducer = (
@@ -37,11 +37,7 @@ const cardsReducer = (
       ];
 
     case "DELETE_CARD":
-      return state.map((card) =>
-        card.id === (action.payload as DeleteCardPayload).id
-          ? { ...card, isDeleted: true }
-          : card,
-      );
+      return state.filter((card) => card.id !== (action.payload as DeleteCardPayload).id); // პირდაპირ ხსნის წაშლილ ქარდებს
 
     case "UNDO_DELETE":
       return state.map((card) =>
@@ -56,6 +52,9 @@ const cardsReducer = (
           ? { ...card, vote: card.vote + 1 }
           : card,
       );
+
+    case "SET_COUNTRIES":
+      return (action.payload as SetCountriesPayload).countries;
 
     default:
       return state;

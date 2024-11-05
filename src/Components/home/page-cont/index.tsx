@@ -1,4 +1,5 @@
-import React, { useState, Suspense, lazy, useReducer } from "react";
+import React, { useState, Suspense, lazy, useReducer, useEffect } from "react";
+import axios from "axios";
 import { cardsReducer } from "@/Components/reducer/reducer";
 import CardCreateForm from "@/Components/card/cardCreate/card-create";
 import { useParams } from "react-router-dom";
@@ -16,17 +17,31 @@ const Home: React.FC = () => {
 
   const [state, dispatch] = useReducer(cardsReducer, [] as ICountryCard[]);
 
-  const filteredCountries = state.filter(
-    (country) =>
+  // Fetch countries data from database.json
+  useEffect(() => {
+    axios.get("/database.json")
+      .then((response) => {
+        console.log(response.data);  // იხილეთ რედაქტირებული მონაცემები
+        dispatch({ type: "SET_COUNTRIES", payload: response.data });
+      })
+      .catch((error) => {
+        console.error("Error fetching countries:", error);
+      });
+  }, []);
+  
+  const filteredCountries = state.filter((country) => {
+    console.log("Filtered country:", country);  // დარწმუნდით, რომ თითოეული ქარდი იხილება
+    if (!country.nameEn || !country.nameKa) {
+      return false;
+    }
+    return (
       country.nameEn.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      country.nameKa.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
-
-  if (filteredCountries.length === 0) {
-    console.log("No countries match the search term.");
-    console.log("Current state:", state);
-    console.log("Search term:", searchTerm);
-  }
+      country.nameKa.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+  
+  
+  
 
   const sortedCountries = [...filteredCountries].sort((a, b) => {
     if (a.isDeleted === b.isDeleted) {
@@ -34,16 +49,26 @@ const Home: React.FC = () => {
         ? a.nameEn.localeCompare(b.nameEn)
         : b.nameEn.localeCompare(a.nameEn);
     }
-    return a.isDeleted ? 1 : -1;
+    return a.isDeleted ? 1 : -1;  // აქ ხდება სორტირება მხოლოდ არ წაშლილი ელემენტების მიხედვით
   });
+  
+  
 
   const handleVoteCard = (id: string) => {
     dispatch({ type: "VOTE_CARD", payload: { id } });
   };
 
-  const handleCardDelete = (id: string) => {
-    dispatch({ type: "DELETE_CARD", payload: { id } });
+  const handleCardDelete = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:3000/countries/${id}`);
+      
+      dispatch({ type: "DELETE_CARD", payload: { id } });
+    } catch (error) {
+      console.error("Error deleting the card:", error);
+    }
   };
+  
+  
 
   const handleUndoDelete = (id: string) => {
     dispatch({ type: "UNDO_DELETE", payload: { id } });
@@ -64,7 +89,7 @@ const Home: React.FC = () => {
     const existingCard = state.find(
       (card) =>
         (card.nameEn === nameEn && card.capitalEn === capitalEn) ||
-        (card.nameKa === nameKa && card.capitalKa === capitalKa),
+        (card.nameKa === nameKa && card.capitalKa === capitalKa)
     );
 
     if (existingCard) {
@@ -111,7 +136,8 @@ const Home: React.FC = () => {
                 capitalEn={country.capitalEn}
                 capitalKa={country.capitalKa}
                 population={country.population}
-                voteCount={country.vote.toString()}
+                voteCount={(country.vote ?? 0).toString()}
+
                 id={country.id}
                 onVote={handleVoteCard}
                 onDelete={handleCardDelete}

@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-
+import axios from "axios";
 import "./card-create.css";
 import OtpInputs from "@/Components/OTP/otp";
 
@@ -25,16 +25,14 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
   const [activeTab, setActiveTab] = useState<"en" | "ka">("en");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (isSubmitting) return;
     setIsSubmitting(true);
 
     if (!nameEn || !capitalEn || !nameKa || !capitalKa) {
-      setValidationError(
-        "ინგლისურ და ქართულ ენაზე სახელები და დედაქალაქები აუცილებელია.",
-      );
+      setValidationError("ინგლისურ და ქართულ ენაზე სახელები და დედაქალაქები აუცილებელია.");
       setIsSubmitting(false);
       return;
     }
@@ -45,16 +43,38 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
       return;
     }
 
-    onCardCreate(image, nameEn, nameKa, capitalEn, capitalKa, population);
+    try {
 
-    setNameEn("");
-    setNameKa("");
-    setCapitalEn("");
-    setCapitalKa("");
-    setPopulation("");
-    setValidationError("");
-    setImage(null);
-    setIsSubmitting(false);
+      const newCountry = {
+        image,
+        nameEn,
+        nameKa,
+        capitalEn,
+        capitalKa,
+        population,
+      };
+
+      // Send a POST request to add the new country
+      await axios.post('http://localhost:3000/countries', newCountry);
+      // Update with your actual endpoint
+
+    
+      onCardCreate(image, nameEn, nameKa, capitalEn, capitalKa, population);
+
+      // Reset the form
+      setNameEn("");
+      setNameKa("");
+      setCapitalEn("");
+      setCapitalKa("");
+      setPopulation("");
+      setValidationError("");
+      setImage(null);
+    } catch (error) {
+      console.error("Error creating country:", error);
+      setValidationError("ქვეყნის შექმნა ვერ მოხერხდა.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleAddImage = (event: ChangeEvent<HTMLInputElement>) => {
