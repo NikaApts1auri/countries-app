@@ -98,7 +98,7 @@ const Home: React.FC = () => {
     }
 
     const cardObj: ICountryCard = {
-      id: Date.now(), // id is now a number
+      id: Date.now().toString(), // id is now a number
       nameEn,
       nameKa,
       capitalEn,
@@ -137,7 +137,7 @@ const Home: React.FC = () => {
                 capitalKa={country.capitalKa}
                 population={country.population}
                 voteCount={(country.vote ?? 0).toString()}
-                id={country.id} 
+                id={country.id}
                 onVote={handleVoteCard}
                 onDelete={handleCardDelete}
                 isDeleted={country.isDeleted || false}
