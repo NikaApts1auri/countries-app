@@ -3,13 +3,18 @@ import CardContent from "./cardContent/CardContent";
 import CardFooter from "./cardFooter/CardFooter";
 import CardHeader from "./cardHeader/CardHeader";
 import { useNavigate } from "react-router-dom";
-import { ICountryCard } from "../cardPage/AboutCard";
 
-interface CountryCardProps extends ICountryCard {
+interface CountryCardProps {
+  id: number; // Make sure the ID type is a number
+  nameEn: string;
+  nameKa: string;
+  capitalEn: string;
+  capitalKa: string;
+  population: string;
   voteCount: string;
-  onVote: (id: string) => void;
-  onDelete: (id: string) => void;
-  onUndo: (id: string) => void;
+  onVote: (id: number) => void;
+  onDelete: (id: number) => void;
+  onUndo?: (id: number) => void;
   isDeleted: boolean;
   image: string | null;
   lang: "en" | "ka";
@@ -17,16 +22,15 @@ interface CountryCardProps extends ICountryCard {
 }
 
 const CountryCard: React.FC<CountryCardProps> = ({
+  id,
   nameEn,
   nameKa,
   capitalEn,
   capitalKa,
   population,
-  id,
   voteCount,
   onVote,
   onDelete,
-  onUndo,
   isDeleted,
   image,
   lang,
@@ -38,6 +42,10 @@ const CountryCard: React.FC<CountryCardProps> = ({
       navigate(`cards/CardPage/${id}`);
     }
   };
+
+  function onUndo(arg0: number): void {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <div
@@ -57,11 +65,12 @@ const CountryCard: React.FC<CountryCardProps> = ({
         id={id}
         isDeleted={isDeleted}
       />
+
       <CardFooter
-        onDelete={() => onDelete(id)}
-        onUndo={() => onUndo(id)}
+        onDelete={() => onDelete(+id)}
+        onUndo={() => onUndo(+id)}
         isDeleted={isDeleted}
-        id={id}
+        id={id.toString()}
       />
     </div>
   );

@@ -2,27 +2,30 @@
   "name": "countries-app",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-      "seed-db": "node seed-db.js",
+    "seed-db": "node seed-db.js",
     "prettier": "prettier --check .",
+    "server": "json-server --watch database.json --port 3000",
     "format": "prettier --write .",
     "ts-check": "tsc --noEmit",
     "lint": "eslint .",
     "preview": "vite preview",
+    "type": "module",
     "prepare": "husky"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
     "axios": "^1.7.7",
+    "cors": "^2.8.5",
     "json-server": "^1.0.0-beta.3",
     "prettier": "^3.3.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.53.0",
     "react-router-dom": "^6.26.2",
+    "uuid": "^11.0.2",
     "yup": "^1.4.0"
   },
   "devDependencies": {

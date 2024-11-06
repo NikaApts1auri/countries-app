@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-import "./CardContent.css";
 
 interface CardContentProps {
   nameEn: string;
@@ -9,9 +8,9 @@ interface CardContentProps {
   capitalKa: string;
   population: string;
   voteCount: string;
-  onVote: (id: string) => void;
+  onVote: (id: number) => void;
   lang: "en" | "ka";
-  id: string;
+  id: number;
   isDeleted: boolean;
 }
 
@@ -29,15 +28,18 @@ const CardContent: React.FC<CardContentProps> = ({
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedName, setEditedName] = useState(nameEn);
+  const [editedNameKa, setEditedNameKa] = useState(nameKa);
   const [editedCapital, setEditedCapital] = useState(capitalEn);
+  const [editedCapitalKa, setEditedCapitalKa] = useState(capitalKa);
   const [editedPopulation, setEditedPopulation] = useState(population);
+  const [isLoading, setIsLoading] = useState(false);
 
   const displayName = lang === "ka" ? nameKa : nameEn;
   const displayCapital = lang === "ka" ? capitalKa : capitalEn;
 
   const handleVoteClick = (
     event: React.MouseEvent<HTMLImageElement>,
-    id: string,
+    id: number,
   ) => {
     event.stopPropagation();
     if (!isDeleted) {
@@ -53,23 +55,38 @@ const CardContent: React.FC<CardContentProps> = ({
   };
 
   const handleSave = async () => {
+    setIsLoading(true);
     try {
-      await axios.patch(`http://localhost:3000/countries/${id}`, {
-        nameEn: editedName,
-        nameKa: editedName,
-        capitalEn: editedCapital,
-        capitalKa: editedCapital,
-        population: editedPopulation,
-      });
-      setIsEditing(false);
+      const response = await axios.patch(
+        `http://localhost:3000/countries/${id}`,
+        {
+          nameEn: editedName,
+          nameKa: editedNameKa,
+          capitalEn: editedCapital,
+          capitalKa: editedCapitalKa,
+          population: editedPopulation,
+        },
+      );
+      if (response.status === 200) {
+        setIsEditing(false);
+      }
     } catch (error) {
-      console.error("Error updating card:", error);
+      if (axios.isAxiosError(error)) {
+        console.error(
+          "Error updating card:",
+          error.response?.data || error.message,
+        );
+      } else {
+        console.error("Unexpected error:", error);
+      }
       alert("შეცდომა ქარდის განახლებისას");
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation(); // Stop propagation to prevent routing
+    e.stopPropagation();
   };
 
   return (
@@ -80,18 +97,40 @@ const CardContent: React.FC<CardContentProps> = ({
             type="text"
             value={editedName}
             onChange={(e) => setEditedName(e.target.value)}
+            disabled={isDeleted}
+            required
+          />
+          <input
+            type="text"
+            value={editedNameKa}
+            onChange={(e) => setEditedNameKa(e.target.value)}
+            disabled={isDeleted}
+            required
           />
           <input
             type="text"
             value={editedCapital}
             onChange={(e) => setEditedCapital(e.target.value)}
+            disabled={isDeleted}
+            required
           />
           <input
             type="text"
+            value={editedCapitalKa}
+            onChange={(e) => setEditedCapitalKa(e.target.value)}
+            disabled={isDeleted}
+            required
+          />
+          <input
+            type="number" // Change to number
             value={editedPopulation}
             onChange={(e) => setEditedPopulation(e.target.value)}
+            disabled={isDeleted}
+            required
           />
-          <button onClick={handleSave}>შენახვა</button>
+          <button onClick={handleSave} disabled={isLoading}>
+            {isLoading ? "Saving..." : "შენახვა"}
+          </button>
           <button onClick={() => setIsEditing(false)}>გაუქმება</button>
         </div>
       ) : (
@@ -107,11 +146,13 @@ const CardContent: React.FC<CardContentProps> = ({
               className="like-icon"
               onClick={(e) => handleVoteClick(e, id)}
               style={{
+                width: "30px",
+                height: "30px",
                 cursor: isDeleted ? "not-allowed" : "pointer",
                 opacity: isDeleted ? 0.5 : 1,
               }}
             />
-            <button onClick={handleEditClick} disabled={isDeleted}>
+            <button onClick={handleEditClick} disabled={isDeleted || isLoading}>
               Edit
             </button>
           </nav>

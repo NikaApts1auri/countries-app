@@ -50,22 +50,28 @@ const Home: React.FC = () => {
     return a.isDeleted ? 1 : -1;
   });
 
-  const handleVoteCard = (id: string) => {
+  const handleVoteCard = (id: number) => {
     dispatch({ type: "VOTE_CARD", payload: { id } });
   };
 
-  const handleCardDelete = async (id: string) => {
-    try {
-      await axios.delete(`http://localhost:3000/countries/${id}`);
+  const handleCardDelete = async (id: string | number) => {
+    // Ensure ID is a valid number (either from a string or number type)
+    const cardID = typeof id === "string" ? Number(id) : id;
 
-      dispatch({ type: "DELETE_CARD", payload: { id } });
-    } catch (error) {
-      console.error("Error deleting the card:", error);
+    if (isNaN(cardID)) {
+      console.error("Invalid ID:", id); // თუ ID არ შეიძლება რიცხვად გადაკეთდეს
+      return;
     }
-  };
 
-  const handleUndoDelete = (id: string) => {
-    dispatch({ type: "UNDO_DELETE", payload: { id } });
+    console.log("Deleting card with ID:", cardID);
+
+    try {
+      await axios.delete(`http://localhost:3000/countries/${id.toString()}`);
+
+      dispatch({ type: "DELETE_CARD", payload: { id: cardID } });
+    } catch (error) {
+      console.error("Error deleting card:", error);
+    }
   };
 
   const handleSort = () => {
@@ -92,7 +98,7 @@ const Home: React.FC = () => {
     }
 
     const cardObj: ICountryCard = {
-      id: Date.now().toString(),
+      id: Date.now(), // id is now a number
       nameEn,
       nameKa,
       capitalEn,
@@ -131,15 +137,13 @@ const Home: React.FC = () => {
                 capitalKa={country.capitalKa}
                 population={country.population}
                 voteCount={(country.vote ?? 0).toString()}
-                id={country.id}
+                id={country.id} 
                 onVote={handleVoteCard}
                 onDelete={handleCardDelete}
-                onUndo={handleUndoDelete}
                 isDeleted={country.isDeleted || false}
                 image={country.image}
                 lang={lang}
                 capital={country.capitalEn}
-                vote={country.vote}
               />
             </Suspense>
           ))

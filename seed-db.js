@@ -1,36 +1,49 @@
-import axios from 'axios';
-import fs from 'fs/promises';
+import axios from "axios";
+import fs from "fs/promises";
 
-// მონაცემების წამოღება
-axios.get('https://restcountries.com/v3.1/all')
-  .then(response => {
+async function updateDatabase() {
+  try {
+    // API-დან მონაცემების წამოღება
+    const response = await axios.get("https://restcountries.com/v3.1/all");
     const countries = response.data;
+    console.log("Fetched countries:", countries);
 
-    // გადამუშავება
-    const processedCountries = countries.map(country => ({
-      name: country.name.common,
-      capital: country.capital ? country.capital[0] : 'N/A',
-      population: country.population,
-    }));
+    // მონაცემების გადამუშავება და id-ის მინიჭება
+    const processedCountries = countries.map((country, index) => {
+      console.log("Processing country:", country);
+      return {
+        id: index + 1, // მინიჭდება რიგითობა
+        name: country.name.common,
+        capital: country.capital ? country.capital[0] : "N/A",
+        population: country.population,
+      };
+    });
+
+    console.log("Processed countries with IDs:", processedCountries);
+
+    // database.json ფაილის წაკითხვა
+    const data = await fs.readFile("database.json", "utf8");
+    const db = JSON.parse(data);
+
+    // თუ db.countries უკვე შეიცავს მონაცემებს, ახალ მონაცემებს ვამატებთ და ID-ს ვანიჭებთ
+    const updatedCountries = db.countries
+      ? db.countries.concat(
+          processedCountries.map((country, index) => ({
+            ...country,
+            id: db.countries.length + index + 1, // ვანგარიშებთ ახალ ID-ს
+          })),
+        )
+      : processedCountries;
 
     // ჩაწერა database.json ფაილში
-    fs.readFile('database.json', 'utf8')
-      .then(data => {
-        const db = JSON.parse(data);
-        db.countries = processedCountries;
+    db.countries = updatedCountries;
+    console.log("Database after update:", db);
+    await fs.writeFile("database.json", JSON.stringify(db, null, 2));
+    console.log("Database has been updated with new country data and IDs.");
+  } catch (error) {
+    console.error("Error updating database:", error);
+  }
+}
 
-        fs.writeFile('database.json', JSON.stringify(db, null, 2))
-          .then(() => {
-            console.log('Database has been updated with country data.');
-          })
-          .catch(err => {
-            console.error('Error writing to database.json:', err);
-          });
-      })
-      .catch(err => {
-        console.error('Error reading database.json:', err);
-      });
-  })
-  .catch(error => {
-    console.error('Error fetching country data:', error);
-  });
+// ფუნქციის გაშვება
+updateDatabase();

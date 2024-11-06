@@ -15,11 +15,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "#/*": ["./src/Components/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "seed-db.js"]
 }

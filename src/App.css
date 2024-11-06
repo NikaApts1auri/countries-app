@@ -38,3 +38,7 @@ html {
   animation: spin 1s linear infinite;
   margin-bottom: 20px;
 }
+.country-image {
+  width: 300px;
+  height: 250px;
+}
