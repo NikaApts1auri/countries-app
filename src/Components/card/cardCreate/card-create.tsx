@@ -47,7 +47,6 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
 
     try {
       const newCountry = {
-        id: Date.now().toString(),
         image,
         nameEn,
         nameKa,

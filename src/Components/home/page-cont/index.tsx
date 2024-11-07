@@ -19,6 +19,17 @@ const Home: React.FC = () => {
 
   // Fetch countries data from database.json
   useEffect(() => {
+    // getCountries()
+    //   .then((data) => {
+    //     console.log("Countries data:", data);
+    //     dispatch({ type: "SET_COUNTRIES", payload: data });
+    //   })
+    //   .catch((error) => {
+    //     console.error(
+    //       "Error fetching countries:",
+    //       error.response ? error.response.data : error.message
+    //     );
+    //   });
     axios
       .get("/database.json")
       .then((response) => {
@@ -137,7 +148,7 @@ const Home: React.FC = () => {
                 capitalKa={country.capitalKa}
                 population={country.population}
                 voteCount={(country.vote ?? 0).toString()}
-                id={country.id}
+                id={country.id} 
                 onVote={handleVoteCard}
                 onDelete={handleCardDelete}
                 isDeleted={country.isDeleted || false}
