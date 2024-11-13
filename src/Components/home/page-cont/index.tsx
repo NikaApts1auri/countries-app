@@ -1,10 +1,10 @@
-import React, { useState, Suspense, lazy, useReducer, useEffect } from "react";
-import axios from "axios";
+import React, { useState, Suspense, lazy, useReducer } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+import { useQuery, useMutation, useQueryClient } from "react-query";
+import { getCountries, postCountries, deleteCountry, patchCountry } from "@/api/countries";
 import { cardsReducer } from "@/Components/reducer/reducer";
 import CardCreateForm from "@/Components/card/cardCreate/card-create";
-import { useParams, useSearchParams } from "react-router-dom";
-import { ICountryCard } from "@/Components/cardPage/AboutCard";
-import { getCountries } from "@/api/countries";
+import { ICountry } from "@/api/countries/api";
 
 // Lazy-loaded components
 const LazyCountryCard = lazy(() => import("@/Components/card/Card"));
@@ -12,93 +12,75 @@ const LazyHero = lazy(() => import("@/Components/hero/Hero"));
 
 const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
-
   const { lang = "en" } = useParams<{ lang: "en" | "ka" }>();
-
-  const [state, dispatch] = useReducer(cardsReducer, [] as ICountryCard[]);
-
-
+  const [state, dispatch] = useReducer(cardsReducer, []);
   const [searchParams, setSearchParams] = useSearchParams();
   const sortOrderParam = searchParams.get("sortOrder");
-
   const sortedAsc = sortOrderParam !== "false";
 
-  
-  useEffect(() => {
-    const sortQuery = sortedAsc ? "_sort=like" : "_sort=-like";
-    getCountries(sortQuery)
-      .then((data) => {
-        console.log("Countries data:", data);
-        dispatch({ type: "SET_COUNTRIES", payload: data });
-      })
-      .catch((error) => {
-        console.error(
-          "Error fetching countries:",
-          error.response ? error.response.data : error.message
-        );
-      });
-  }, [sortedAsc]);
+  const queryClient = useQueryClient();
 
-  const filteredCountries = state ? state.filter((country: { nameEn: string; nameKa: string }) => {
-    if (!country.nameEn || !country.nameKa) {
-      return false;
+  // Fetch countries with useQuery
+  const { data, error, isLoading } = useQuery(
+    ["countries", sortedAsc],
+    () => getCountries(sortedAsc ? "_sort=like" : "_sort=-like"),
+    {
+      onSuccess: (data) => dispatch({ type: "SET_COUNTRIES", payload: data }),
     }
-    return (
-      country.nameEn.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      country.nameKa.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }) : [];
+  );
 
-
-  const sortedCountries = [...filteredCountries].sort((a, b) => {
-    if (a.isDeleted === b.isDeleted) {
-      return sortedAsc
-        ? a.nameEn.localeCompare(b.nameEn)
-        : b.nameEn.localeCompare(a.nameEn);
+  // Create country with useMutation
+  const createCountryMutation = useMutation(postCountries, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("countries");
+    },
+    onError: (error) => {
+      console.error("Error creating country:", error);
     }
-    return a.isDeleted ? 1 : -1;
   });
 
-
-  const handleVoteCard = (id: number) => {
-    dispatch({ type: "VOTE_CARD", payload: { id } });
-  };
-
-
-  const handleCardDelete = async (id: string | number) => {
-    const cardID = typeof id === "string" ? Number(id) : id;
-
-    if (isNaN(cardID)) {
-      console.error("Invalid ID:", id);
-      return;
+  // Delete country with useMutation
+  const deleteCountryMutation = useMutation(deleteCountry, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("countries");
+    
+    },
+    onError: (error) => {
+      console.error("Error deleting country:", error);
     }
+  });
 
-    console.log("Deleting card with ID:", cardID);
-
-    try {
-      await axios.delete(`http://localhost:3000/countries/${id.toString()}`);
-      dispatch({ type: "DELETE_CARD", payload: { id: cardID } });
-    } catch (error) {
-      console.error("Error deleting card:", error);
+  // Patch country with useMutation
+  const patchCountryMutation = useMutation(
+    ({ id, updatedData }: { id: string | number; updatedData: ICountry }) =>
+      patchCountry(id, updatedData),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("countries");
+      },
+      onError: (error) => {
+        console.error("Error updating country:", error);
+      }
     }
-  };
+  );
 
-  
-  const handleSort = () => {
-    const newSortOrder = !sortedAsc;
-    setSearchParams({ sortOrder: newSortOrder.toString() }); // Save the sort order to the URL
-  };
-
-  const handleCreateCard = async (image: string | null, nameEn: string, nameKa: string, capitalEn: string, capitalKa: string, population: string) => {
-    const existingCard = state.find(
+  const handleCreateCard = async (
+    image: string | null,
+    nameEn: string,
+    nameKa: string,
+    capitalEn: string,
+    capitalKa: string,
+    population: string
+  ) => {
+    const existingCard = Array.isArray(state) && state.find(
       (card) => card.nameEn === nameEn && card.capitalEn === capitalEn
     );
- 
+
     if (existingCard) {
       alert("ქარდი უკვე არსებობს!");
       return;
     }
- 
+
     const cardObj = {
       id: Date.now().toString(),
       nameEn,
@@ -110,15 +92,16 @@ const Home: React.FC = () => {
       image,
       isDeleted: false,
     };
- 
-    try {
-      await axios.post("http://localhost:3000/countries", cardObj);
-      dispatch({ type: "ADD_CARD", payload: cardObj });
-    } catch (error) {
-      console.error("Error adding card:", error);
-    }
- };
- 
+
+    createCountryMutation.mutate(cardObj);
+  };
+
+  const handleCardDelete = (id: string | number) => {
+    deleteCountryMutation.mutate(id);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading countries</div>;
 
   return (
     <div style={{ display: "flex" }}>
@@ -126,18 +109,18 @@ const Home: React.FC = () => {
         <LazyHero
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
-          handleSort={handleSort}
+          handleSort={() => setSearchParams({ sortOrder: (!sortedAsc).toString() })}
           lang={lang}
           filteredCountries={[]}
           image={null}
         />
       </Suspense>
 
-      <CardCreateForm onCardCreate={handleCreateCard} />
+      <CardCreateForm onCardCreate={handleCreateCard} refetch={() => {}} />
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
-        {sortedCountries.length > 0 ? (
-          sortedCountries.map((country) => (
+        {data?.length > 0 ? (
+          data?.map((country: { id: React.Key | null | undefined; nameEn: string; nameKa: string; capitalEn: string; capitalKa: string; population: string; vote: number; isDeleted: boolean; image: string | null; }) => (
             <Suspense key={country.id} fallback={<div>Loading...</div>}>
               <LazyCountryCard
                 nameEn={country.nameEn}
@@ -147,8 +130,8 @@ const Home: React.FC = () => {
                 population={country.population}
                 voteCount={(country.vote ?? 0).toString()}
                 id={country.id}
-                onVote={handleVoteCard}
-                onDelete={handleCardDelete}
+                onVote={() => patchCountryMutation.mutate({ id: country.id, updatedData: { vote: country.vote + 1 } })}
+                onDelete={() => handleCardDelete(country.id)}
                 isDeleted={country.isDeleted || false}
                 image={country.image}
                 lang={lang}

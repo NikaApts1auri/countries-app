@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMutation } from "react-query";
 import axios from "axios";
 
 interface CardContentProps {
@@ -32,14 +33,30 @@ const CardContent: React.FC<CardContentProps> = ({
   const [editedCapital, setEditedCapital] = useState(capitalEn);
   const [editedCapitalKa, setEditedCapitalKa] = useState(capitalKa);
   const [editedPopulation, setEditedPopulation] = useState(population);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
 
   const displayName = lang === "ka" ? nameKa : nameEn;
   const displayCapital = lang === "ka" ? capitalKa : capitalEn;
 
+  // Mutation for updating the country details
+  const updateCountryMutation = useMutation(
+    ({ id, updatedData }: { id: number; updatedData: unknown }) => 
+      axios.patch(`http://localhost:3000/countries/${id}`, updatedData),
+    {
+      onSuccess: () => {
+        alert("Country updated successfully!");
+        setIsEditing(false); // Close edit mode after success
+      },
+      onError: (error) => {
+        console.error("Error updating country:", error);
+        alert("Error updating country.");
+      }
+    }
+  );
+
   const handleVoteClick = (
     event: React.MouseEvent<HTMLImageElement>,
-    id: number,
+    id: number
   ) => {
     event.stopPropagation();
     if (!isDeleted) {
@@ -55,34 +72,14 @@ const CardContent: React.FC<CardContentProps> = ({
   };
 
   const handleSave = async () => {
-    setIsLoading(true);
-    try {
-      const response = await axios.patch(
-        `http://localhost:3000/countries/${id}`,
-        {
-          nameEn: editedName,
-          nameKa: editedNameKa,
-          capitalEn: editedCapital,
-          capitalKa: editedCapitalKa,
-          population: editedPopulation,
-        },
-      );
-      if (response.status === 200) {
-        setIsEditing(false);
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.error(
-          "Error updating card:",
-          error.response?.data || error.message,
-        );
-      } else {
-        console.error("Unexpected error:", error);
-      }
-      alert("შეცდომა ქარდის განახლებისას");
-    } finally {
-      setIsLoading(false);
-    }
+    const updatedData = {
+      nameEn: editedName,
+      nameKa: editedNameKa,
+      capitalEn: editedCapital,
+      capitalKa: editedCapitalKa,
+      population: editedPopulation,
+    };
+    updateCountryMutation.mutate({ id, updatedData });
   };
 
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -122,7 +119,7 @@ const CardContent: React.FC<CardContentProps> = ({
             required
           />
           <input
-            type="number" // Change to number
+            type="number"
             value={editedPopulation}
             onChange={(e) => setEditedPopulation(e.target.value)}
             disabled={isDeleted}

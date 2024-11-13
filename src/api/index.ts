@@ -1,9 +1,8 @@
-import axios,{CreateAxiosDefaults} from "axios";
+import axios, { CreateAxiosDefaults } from "axios";
 
-
-
-const axiosConfig:CreateAxiosDefaults={
-    baseURL: import.meta.env.VITE_BASE_URL
+// აქ 3000 პორტი განვსაზღვროთ
+const axiosConfig: CreateAxiosDefaults = {
+  baseURL: "http://localhost:3000", // შეიცვალეთ აქ 3000 პორტზე
 };
- 
- export const httpClient=axios.create(axiosConfig)
+
+export const httpClient = axios.create(axiosConfig);

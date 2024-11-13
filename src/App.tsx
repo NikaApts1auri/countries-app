@@ -2,6 +2,7 @@ import { useState, lazy, Suspense } from "react";
 import Layout from "#/Layout/Layout";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import LoadingFallback from "./Components/LoadingFallBack";
+import { QueryClient, QueryClientProvider } from "react-query"; // Import necessary React Query components
 
 const CardPageView = lazy(() => import("./Components/cardPage/view"));
 const LazyHomeView = lazy(() => import("./Components/home/view"));
@@ -40,61 +41,65 @@ const countries: ICountryCard[] = [
   },
 ];
 
+// Initialize the QueryClient
+const queryClient = new QueryClient();
+
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [language, setLanguage] = useState<string>("en");
+  const [, setLanguage] = useState<string>("en");
 
-  console.log(language);
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/:lang"
-          element={
-            <Layout
-              countries={countries}
-              searchTerm={searchTerm}
-              setSearchTerm={setSearchTerm}
-              setLanguage={setLanguage}
+    <QueryClientProvider client={queryClient}> 
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/:lang"
+            element={
+              <Layout
+                countries={countries}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                setLanguage={setLanguage}
+              />
+            }
+          >
+            <Route
+              index
+              element={
+                <Suspense fallback={<LoadingFallback />}>
+                  <LazyHomeView />
+                </Suspense>
+              }
             />
-          }
-        >
-          <Route
-            index
-            element={
-              <Suspense fallback={<LoadingFallback />}>
-                <LazyHomeView />
-              </Suspense>
-            }
-          />
-          <Route
-            path="about"
-            element={
-              <Suspense fallback={<LoadingFallback />}>
-                <LazyAboutView />
-              </Suspense>
-            }
-          />
-          <Route
-            path="contact"
-            element={
-              <Suspense fallback={<LoadingFallback />}>
-                <LazyContactView />
-              </Suspense>
-            }
-          />
-          <Route
-            path="cards/CardPage/:id"
-            element={
-              <Suspense fallback={<LoadingFallback />}>
-                <CardPageView />
-              </Suspense>
-            }
-          />
-        </Route>
-        <Route path="/" element={<Navigate to="/en" />} />
-      </Routes>
-    </BrowserRouter>
+            <Route
+              path="about"
+              element={
+                <Suspense fallback={<LoadingFallback />}>
+                  <LazyAboutView />
+                </Suspense>
+              }
+            />
+            <Route
+              path="contact"
+              element={
+                <Suspense fallback={<LoadingFallback />}>
+                  <LazyContactView />
+                </Suspense>
+              }
+            />
+            <Route
+              path="cards/CardPage/:id"
+              element={
+                <Suspense fallback={<LoadingFallback />}>
+                  <CardPageView />
+                </Suspense>
+              }
+            />
+          </Route>
+          <Route path="/" element={<Navigate to="/en" />} />
+        </Routes>
+      </BrowserRouter>
+    </QueryClientProvider>
   );
 }
 

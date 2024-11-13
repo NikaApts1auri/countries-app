@@ -1,7 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 import "./card-create.css";
 import OtpInputs from "@/Components/OTP/otp";
+import { postCountries } from "@/api/countries";
+import { ICountry } from "@/api/countries/api";
 
 type CardCreateFormProps = {
   onCardCreate: (
@@ -10,11 +12,12 @@ type CardCreateFormProps = {
     nameKa: string,
     capitalEn: string,
     capitalKa: string,
-    population: string,
+    population: string
   ) => void;
+  refetch: () => void; 
 };
 
-export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
+export default function CardCreateForm({ refetch }: CardCreateFormProps) {
   const [nameEn, setNameEn] = useState("");
   const [nameKa, setNameKa] = useState("");
   const [capitalEn, setCapitalEn] = useState("");
@@ -24,12 +27,24 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
   const [image, setImage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"en" | "ka">("en");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const mutation = useMutation({
+    mutationFn: async (newCountry: ICountry) => {
+      return postCountries(newCountry);
+    },
+    onSuccess: () => {
+      refetch();
+      setIsSubmitting(false);
+      setValidationError(""); 
+    },
+  });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+  
     if (isSubmitting) return;
     setIsSubmitting(true);
+  
 
     if (!nameEn || !capitalEn || !nameKa || !capitalKa) {
       setValidationError(
@@ -38,51 +53,46 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
       setIsSubmitting(false);
       return;
     }
-
+  
     if (!population || isNaN(Number(population)) || Number(population) < 0) {
       setValidationError("მოსახლეობა დადებითი უნდა იყოს.");
       setIsSubmitting(false);
       return;
     }
-
-    try {
-      const newCountry = {
-        image,
-        nameEn,
-        nameKa,
-        capitalEn,
-        capitalKa,
-        population,
-      };
-
-      // Send a POST request to add the new country
-      await axios.post("http://localhost:3000/countries", newCountry);
-      // Update with your actual endpoint
-
-      onCardCreate(image, nameEn, nameKa, capitalEn, capitalKa, population);
-
-      // Reset the form
-      setNameEn("");
-      setNameKa("");
-      setCapitalEn("");
-      setCapitalKa("");
-      setPopulation("");
-      setValidationError("");
-      setImage(null);
-    } catch (error) {
-      console.error("Error creating country:", error);
-      setValidationError("ქვეყნის შექმნა ვერ მოხერხდა.");
-    } finally {
-      setIsSubmitting(false);
-    }
+  
+   
+    const newCountry: ICountry = {
+      image,
+      nameEn,
+      nameKa,
+      capitalEn,
+      capitalKa,
+      population,
+      id: Date.now().toString(),  
+      vote: 0,
+      isDeleted: false
+    };
+  
+    mutation.mutate(newCountry); 
+  
+ 
+    setNameEn("");
+    setNameKa("");
+    setCapitalEn("");
+    setCapitalKa("");
+    setPopulation("");
+    setValidationError("");
+    setImage(null);
   };
+  
+  
 
   const handleAddImage = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
       const validImage = ["image/jpeg", "image/png"];
       if (!validImage.includes(file.type)) {
-        alert("გთხოვთ ატვირთოთ სურათი (jpg ან png).");
+        setValidationError("გთხოვთ ატვირთოთ სურათი (jpg ან png).");
         return;
       }
 
@@ -195,7 +205,7 @@ export default function CardCreateForm({ onCardCreate }: CardCreateFormProps) {
 
         {validationError && <p className="error">{validationError}</p>}
 
-        <button type="submit" disabled={isSubmitting}>
+        <button type="submit" disabled={isSubmitting || mutation.isLoading}>
           create card
         </button>
       </form>

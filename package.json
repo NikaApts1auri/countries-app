@@ -28,7 +28,7 @@
     "react-hook-form": "^7.53.0",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.26.2",
-    "uuid": "^11.0.2",
+    "uuid": "^11.0.3",
     "yup": "^1.4.0"
   },
   "devDependencies": {

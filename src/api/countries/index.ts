@@ -9,8 +9,13 @@ export const getCountries = async (): Promise<IGetCountriesResponse> => {
 
 
 export const postCountries = async (countryData: ICountry): Promise<IPostPatchDeleteResponse> => {
-  const res = await httpClient.post("/countries", countryData);
-  return res.data;
+  try {
+    const res = await httpClient.post("/countries", countryData);
+    return res.data;
+  } catch (error) {
+    // Handle error (optional)
+    throw new Error("Failed to create country: " + error.message);
+  }
 };
 
 
