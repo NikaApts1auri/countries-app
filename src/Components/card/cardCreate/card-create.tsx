@@ -12,9 +12,9 @@ type CardCreateFormProps = {
     nameKa: string,
     capitalEn: string,
     capitalKa: string,
-    population: string
+    population: string,
   ) => void;
-  refetch: () => void; 
+  refetch: () => void;
 };
 
 export default function CardCreateForm({ refetch }: CardCreateFormProps) {
@@ -27,7 +27,7 @@ export default function CardCreateForm({ refetch }: CardCreateFormProps) {
   const [image, setImage] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"en" | "ka">("en");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const mutation = useMutation({
     mutationFn: async (newCountry: ICountry) => {
       return postCountries(newCountry);
@@ -35,16 +35,15 @@ export default function CardCreateForm({ refetch }: CardCreateFormProps) {
     onSuccess: () => {
       refetch();
       setIsSubmitting(false);
-      setValidationError(""); 
+      setValidationError("");
     },
   });
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     if (isSubmitting) return;
     setIsSubmitting(true);
-  
 
     if (!nameEn || !capitalEn || !nameKa || !capitalKa) {
       setValidationError(
@@ -53,14 +52,13 @@ export default function CardCreateForm({ refetch }: CardCreateFormProps) {
       setIsSubmitting(false);
       return;
     }
-  
+
     if (!population || isNaN(Number(population)) || Number(population) < 0) {
       setValidationError("მოსახლეობა დადებითი უნდა იყოს.");
       setIsSubmitting(false);
       return;
     }
-  
-   
+
     const newCountry: ICountry = {
       image,
       nameEn,
@@ -68,14 +66,13 @@ export default function CardCreateForm({ refetch }: CardCreateFormProps) {
       capitalEn,
       capitalKa,
       population,
-      id: Date.now().toString(),  
+      id: Date.now().toString(),
       vote: 0,
-      isDeleted: false
+      isDeleted: false,
     };
-  
-    mutation.mutate(newCountry); 
-  
- 
+
+    mutation.mutate(newCountry);
+
     setNameEn("");
     setNameKa("");
     setCapitalEn("");
@@ -84,8 +81,6 @@ export default function CardCreateForm({ refetch }: CardCreateFormProps) {
     setValidationError("");
     setImage(null);
   };
-  
-  
 
   const handleAddImage = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];

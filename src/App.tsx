@@ -49,7 +49,7 @@ function App() {
   const [, setLanguage] = useState<string>("en");
 
   return (
-    <QueryClientProvider client={queryClient}> 
+    <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
           <Route

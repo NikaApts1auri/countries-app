@@ -13,7 +13,9 @@ export interface ICountry {
 
 // GET
 export interface IGetCountriesResponse {
-  filter(arg0: (country: { nameEn: string; nameKa: string; }) => boolean): unknown;
+  filter(
+    arg0: (country: { nameEn: string; nameKa: string }) => boolean,
+  ): unknown;
   countries: ICountry[];
 }
 

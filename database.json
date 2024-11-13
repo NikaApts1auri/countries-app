@@ -1,42 +1,46 @@
 {
   "countries": [
     {
-      "name": "South Georgia",
-      "capital": "King Edward Point",
-      "population": 30,
-      "region": "Antarctic",
-      "id": "f468",
-      "vote": 17,
-      "capitalEn": "asd"
-    },
-    {
-      "name": "Grenada",
-      "capital": "St. George's",
-      "population": 112519,
-      "region": "Americas",
-      "id": "045d"
-    },
-    {
       "name": "Switzerland",
       "capital": "Bern",
-      "population": 8654622,
+      "population": "",
       "region": "Europe",
       "id": "1036",
-      "vote": 5
+      "vote": 10,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Sierra Leone",
       "capital": "Freetown",
-      "population": 7976985,
+      "population": "",
       "region": "Africa",
-      "id": "7c3a"
+      "id": "7c3a",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Hungary",
       "capital": "Budapest",
-      "population": 9749763,
+      "population": "",
       "region": "Europe",
-      "id": "d483"
+      "id": "d483",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Taiwan",
@@ -55,9 +59,16 @@
     {
       "name": "Barbados",
       "capital": "Bridgetown",
-      "population": 287371,
+      "population": "",
       "region": "Americas",
-      "id": "a916"
+      "id": "a916",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Pitcairn Islands",
@@ -69,23 +80,44 @@
     {
       "name": "Ivory Coast",
       "capital": "Yamoussoukro",
-      "population": 26378275,
+      "population": "",
       "region": "Africa",
-      "id": "f4ae"
+      "id": "f4ae",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Tunisia",
       "capital": "Tunis",
-      "population": 11818618,
+      "population": "",
       "region": "Africa",
-      "id": "ec3c"
+      "id": "ec3c",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Italy",
       "capital": "Rome",
-      "population": 59554023,
+      "population": "",
       "region": "Europe",
-      "id": "ccee"
+      "id": "ccee",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Benin",
@@ -132,9 +164,16 @@
     {
       "name": "Uganda",
       "capital": "Kampala",
-      "population": 45741000,
+      "population": "",
       "region": "Africa",
-      "id": "5715"
+      "id": "5715",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Andorra",
@@ -146,51 +185,100 @@
     {
       "name": "Burundi",
       "capital": "Gitega",
-      "population": 11890781,
+      "population": "",
       "region": "Africa",
-      "id": "00ce"
+      "id": "00ce",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "South Africa",
       "capital": "Pretoria",
-      "population": 59308690,
+      "population": "",
       "region": "Africa",
-      "id": "a244"
+      "id": "a244",
+      "vote": null,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "France",
       "capital": "Paris",
-      "population": 67391582,
+      "population": "",
       "region": "Europe",
-      "id": "6e9a"
+      "id": "6e9a",
+      "vote": 9,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Libya",
       "capital": "Tripoli",
-      "population": 6871287,
+      "population": "",
       "region": "Africa",
-      "id": "a259"
+      "id": "a259",
+      "vote": null,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Mexico",
       "capital": "Mexico City",
-      "population": 128932753,
+      "population": "",
       "region": "Americas",
-      "id": "69c7"
+      "id": "69c7",
+      "vote": null,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Gabon",
       "capital": "Libreville",
-      "population": 2225728,
+      "population": "",
       "region": "Africa",
-      "id": "dd99"
+      "id": "dd99",
+      "vote": null,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Northern Mariana Islands",
       "capital": "Saipan",
-      "population": 57557,
+      "population": "",
       "region": "Oceania",
-      "id": "c885"
+      "id": "c885",
+      "vote": null,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "North Macedonia",
@@ -244,9 +332,16 @@
     {
       "name": "Faroe Islands",
       "capital": "Tórshavn",
-      "population": 48865,
+      "population": "",
       "region": "Europe",
-      "id": "6316"
+      "id": "6316",
+      "vote": null,
+      "nameEn": "",
+      "nameKa": "",
+      "capitalEn": "",
+      "capitalKa": "",
+      "image": null,
+      "isDeleted": false
     },
     {
       "name": "Uzbekistan",
@@ -450,13 +545,6 @@
       "population": 4047200,
       "region": "Europe",
       "id": "d261"
-    },
-    {
-      "name": "Morocco",
-      "capital": "Rabat",
-      "population": 36910558,
-      "region": "Africa",
-      "id": "e9e9"
     },
     {
       "name": "Algeria",

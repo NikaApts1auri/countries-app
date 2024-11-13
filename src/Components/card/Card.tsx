@@ -5,7 +5,7 @@ import CardHeader from "./cardHeader/CardHeader";
 import { useNavigate } from "react-router-dom";
 
 interface CountryCardProps {
-  id: number; // Make sure the ID type is a number
+  id: number;
   nameEn: string;
   nameKa: string;
   capitalEn: string;

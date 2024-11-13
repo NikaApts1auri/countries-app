@@ -2,8 +2,10 @@ import { httpClient } from "..";
 import { ICountry, IGetCountriesResponse, IPostPatchDeleteResponse } from "./api";
 
 
-export const getCountries = async (): Promise<IGetCountriesResponse> => {
-  const res = await httpClient.get("/countries");
+export const getCountries = async (sortQuery?: string): Promise<IGetCountriesResponse> => {
+ 
+  const url = sortQuery ? `/countries?${sortQuery}` : "/countries";  
+  const res = await httpClient.get(url); 
   return res.data;
 };
 
@@ -13,7 +15,7 @@ export const postCountries = async (countryData: ICountry): Promise<IPostPatchDe
     const res = await httpClient.post("/countries", countryData);
     return res.data;
   } catch (error) {
-    // Handle error (optional)
+
     throw new Error("Failed to create country: " + error.message);
   }
 };

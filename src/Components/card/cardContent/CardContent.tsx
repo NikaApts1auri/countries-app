@@ -40,7 +40,7 @@ const CardContent: React.FC<CardContentProps> = ({
 
   // Mutation for updating the country details
   const updateCountryMutation = useMutation(
-    ({ id, updatedData }: { id: number; updatedData: unknown }) => 
+    ({ id, updatedData }: { id: number; updatedData: unknown }) =>
       axios.patch(`http://localhost:3000/countries/${id}`, updatedData),
     {
       onSuccess: () => {
@@ -50,13 +50,13 @@ const CardContent: React.FC<CardContentProps> = ({
       onError: (error) => {
         console.error("Error updating country:", error);
         alert("Error updating country.");
-      }
-    }
+      },
+    },
   );
 
   const handleVoteClick = (
     event: React.MouseEvent<HTMLImageElement>,
-    id: number
+    id: number,
   ) => {
     event.stopPropagation();
     if (!isDeleted) {
