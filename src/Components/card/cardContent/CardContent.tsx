@@ -36,12 +36,12 @@ const CardContent: React.FC<CardContentProps> = ({
         console.error("Error updating country:", error);
         alert("Error updating country.");
       },
-    }
+    },
   );
 
   const handleVoteClick = (
     event: React.MouseEvent<HTMLImageElement>,
-    id: number
+    id: number,
   ) => {
     event.stopPropagation();
     if (!isDeleted) {

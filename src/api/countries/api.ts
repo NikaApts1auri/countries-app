@@ -15,6 +15,7 @@ export interface ICountry {
 
 // GET
 export interface IGetCountriesResponse {
+  concat(arg0: unknown): any;
   length: number;
   id: Key | null | undefined;
   nameEn: string;
@@ -26,7 +27,9 @@ export interface IGetCountriesResponse {
   image: string | null;
   isDeleted: boolean;
   filter(
-    arg0: (country: { nameEn: string; nameKa: string }) => boolean,
+    arg0: (country: {
+      vote: number; nameEn: string; nameKa: string 
+}) => boolean,
   ): unknown;
   countries: ICountry[];
 }

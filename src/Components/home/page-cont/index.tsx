@@ -32,7 +32,6 @@ const Home: React.FC = () => {
   const sortOrderParam = searchParams.get("sortOrder") || "desc";
   const sortedAsc = sortOrderParam === "asc";
 
-  
   const queryClient = useQueryClient();
 
   const {
@@ -46,18 +45,19 @@ const Home: React.FC = () => {
     ["countries", sortOrderParam],
     ({ pageParam = 1 }) =>
       getCountries(
-        `_page=${pageParam}&_limit=500&_sort=vote&_order=${sortedAsc ? "asc" : "desc"}`
-      ),
+        `_page=${pageParam}&_per_page=10&_sort=vote&_order=${sortedAsc ? "asc" : "desc"}`
+      ).then(response => response.data),
     {
       getNextPageParam: (lastPage, allPages) => {
-        return lastPage.length === 20 ? allPages.length + 1 : undefined;
+        return lastPage.length === 10 ? allPages.length + 1 : undefined;
       },
       refetchOnWindowFocus: false,
       refetchInterval: false,
-      
     }
   );
   
+  
+
   const createCountryMutation = useMutation(postCountries, {
     onSuccess: () => {
       queryClient.invalidateQueries("countries");
@@ -156,11 +156,12 @@ const Home: React.FC = () => {
   };
 
   // Sorting by vote
-  const sortedCountries = data?.pages.flat().sort((a, b) => {
-    const voteA = a.vote || 0;
-    const voteB = b.vote || 0;
-    return sortedAsc ? voteA - voteB : voteB - voteA;
-  }) || [];
+  const sortedCountries =
+    data?.pages.flat().sort((a, b) => {
+      const voteA = a.vote || 0;
+      const voteB = b.vote || 0;
+      return sortedAsc ? voteA - voteB : voteB - voteA;
+    }) || [];
 
   return (
     <div style={{ display: "flex" }}>
