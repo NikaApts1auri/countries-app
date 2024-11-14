@@ -1,19 +1,6 @@
+import axios from "axios";
 import { useState } from "react";
 import { useMutation } from "react-query";
-import axios from "axios";
-
-interface CardContentProps {
-  nameEn: string;
-  nameKa: string;
-  capitalEn: string;
-  capitalKa: string;
-  population: string;
-  voteCount: string;
-  onVote: (id: number) => void;
-  lang: "en" | "ka";
-  id: number;
-  isDeleted: boolean;
-}
 
 const CardContent: React.FC<CardContentProps> = ({
   nameEn,
@@ -33,13 +20,11 @@ const CardContent: React.FC<CardContentProps> = ({
   const [editedCapital, setEditedCapital] = useState(capitalEn);
   const [editedCapitalKa, setEditedCapitalKa] = useState(capitalKa);
   const [editedPopulation, setEditedPopulation] = useState(population);
-  const [isLoading] = useState(false);
 
-  const displayName = lang === "ka" ? nameKa : nameEn;
-  const displayCapital = lang === "ka" ? capitalKa : capitalEn;
+  const displayName = lang === "ka" ? nameKa || "" : nameEn || "";
+  const displayCapital = lang === "ka" ? capitalKa || "" : capitalEn || "";
 
-  // Mutation for updating the country details
-  const updateCountryMutation = useMutation(
+  const { mutate, isLoading } = useMutation(
     ({ id, updatedData }: { id: number; updatedData: unknown }) =>
       axios.patch(`http://localhost:3000/countries/${id}`, updatedData),
     {
@@ -51,12 +36,12 @@ const CardContent: React.FC<CardContentProps> = ({
         console.error("Error updating country:", error);
         alert("Error updating country.");
       },
-    },
+    }
   );
 
   const handleVoteClick = (
     event: React.MouseEvent<HTMLImageElement>,
-    id: number,
+    id: number
   ) => {
     event.stopPropagation();
     if (!isDeleted) {
@@ -79,7 +64,7 @@ const CardContent: React.FC<CardContentProps> = ({
       capitalKa: editedCapitalKa,
       population: editedPopulation,
     };
-    updateCountryMutation.mutate({ id, updatedData });
+    mutate({ id, updatedData });
   };
 
   const handleCardClick = (e: React.MouseEvent<HTMLDivElement>) => {

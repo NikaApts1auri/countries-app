@@ -1,18 +1,15 @@
 {
   "countries": [
     {
-      "id": "252",
-      "name": "South Georgia",
-      "capital": "King Edward Point",
-      "population": 30,
-      "vote": 40
-    },
-    {
       "id": "253",
       "name": "Grenada",
       "capital": "St. George's",
       "population": 112519,
-      "vote": 40
+      "vote": 49,
+      "nameEn": "nika",
+      "nameKa": "asd",
+      "capitalEn": "asdasd",
+      "capitalKa": "asd"
     },
     {
       "id": "254",
@@ -50,20 +47,6 @@
       "vote": 24
     },
     {
-      "id": "259",
-      "name": "Barbados",
-      "capital": "Bridgetown",
-      "population": 287371,
-      "vote": 9
-    },
-    {
-      "id": "260",
-      "name": "Pitcairn Islands",
-      "capital": "Adamstown",
-      "population": 56,
-      "vote": 9
-    },
-    {
       "id": "261",
       "name": "Ivory Coast",
       "capital": "Yamoussoukro",
@@ -71,95 +54,88 @@
       "vote": 9
     },
     {
-      "id": "262",
-      "name": "Tunisia",
-      "capital": "Tunis",
-      "population": 11818618,
-      "vote": null
-    },
-    {
       "id": "263",
       "name": "Italy",
       "capital": "Rome",
       "population": 59554023,
-      "vote": null
+      "vote": 6
     },
     {
       "id": "264",
       "name": "Benin",
       "capital": "Porto-Novo",
       "population": 12123198,
-      "vote": null
+      "vote": 6
     },
     {
       "id": "265",
       "name": "Indonesia",
       "capital": "Jakarta",
       "population": 273523621,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "266",
       "name": "Cape Verde",
       "capital": "Praia",
       "population": 555988,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "267",
       "name": "Saint Kitts and Nevis",
       "capital": "Basseterre",
       "population": 53192,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "268",
       "name": "Laos",
       "capital": "Vientiane",
       "population": 7275556,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "269",
       "name": "Caribbean Netherlands",
       "capital": "Kralendijk",
       "population": 25987,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "272",
       "name": "Burundi",
       "capital": "Gitega",
       "population": 11890781,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "273",
       "name": "South Africa",
       "capital": "Pretoria",
       "population": 59308690,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "274",
       "name": "France",
       "capital": "Paris",
       "population": 67391582,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "275",
       "name": "Libya",
       "capital": "Tripoli",
       "population": 6871287,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "276",
       "name": "Mexico",
       "capital": "Mexico City",
       "population": 128932753,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "277",
@@ -243,7 +219,7 @@
       "name": "Egypt",
       "capital": "Cairo",
       "population": 102334403,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "289",
@@ -327,7 +303,7 @@
       "name": "Niger",
       "capital": "Niamey",
       "population": 24206636,
-      "vote": null
+      "vote": 1
     },
     {
       "id": "303",

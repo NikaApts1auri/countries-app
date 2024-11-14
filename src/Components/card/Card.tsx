@@ -23,7 +23,7 @@ interface CountryCardProps {
 
 const CountryCard: React.FC<CountryCardProps> = ({
   id,
-  nameEn,
+  nameEn,  
   nameKa,
   capitalEn,
   capitalKa,
@@ -46,6 +46,8 @@ const CountryCard: React.FC<CountryCardProps> = ({
   function onUndo(p0: number): void {
     throw new Error("Function not implemented.");
   }
+  console.log(nameEn, capitalEn); // გაეცემა "nameEn" და "capitalEn" ცვლადებს
+
 
   return (
     <div
