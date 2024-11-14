@@ -5,14 +5,14 @@
       "name": "South Georgia",
       "capital": "King Edward Point",
       "population": 30,
-      "vote": 38
+      "vote": 40
     },
     {
       "id": "253",
       "name": "Grenada",
       "capital": "St. George's",
       "population": 112519,
-      "vote": 37
+      "vote": 40
     },
     {
       "id": "254",
@@ -40,7 +40,7 @@
       "name": "Taiwan",
       "capital": "Taipei",
       "population": 23503349,
-      "vote": 3
+      "vote": 10
     },
     {
       "id": "258",
@@ -54,21 +54,21 @@
       "name": "Barbados",
       "capital": "Bridgetown",
       "population": 287371,
-      "vote": 2
+      "vote": 9
     },
     {
       "id": "260",
       "name": "Pitcairn Islands",
       "capital": "Adamstown",
       "population": 56,
-      "vote": null
+      "vote": 9
     },
     {
       "id": "261",
       "name": "Ivory Coast",
       "capital": "Yamoussoukro",
       "population": 26378275,
-      "vote": 2
+      "vote": 9
     },
     {
       "id": "262",

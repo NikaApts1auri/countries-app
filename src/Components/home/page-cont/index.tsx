@@ -29,7 +29,7 @@ const Home: React.FC = () => {
   const { lang = "en" } = useParams<{ lang: "en" | "ka" }>();
   const [state, dispatch] = useReducer(cardsReducer, []);
   const [searchParams, setSearchParams] = useSearchParams();
-  const sortOrderParam = searchParams.get("sortOrder") || "asc";
+  const sortOrderParam = searchParams.get("sortOrder") || "desc";
   const sortedAsc = sortOrderParam === "asc";
 
   const queryClient = useQueryClient();
@@ -64,28 +64,32 @@ const Home: React.FC = () => {
       console.error("Error creating country:", error);
     },
   });
-const deleteCountryMutation = useMutation(deleteCountry, {
-  onSuccess: () => {
-    // მონაცემების განახლება, რომ ჩანაწერი წაიშალოს
-    queryClient.invalidateQueries("countries");
-  },
-  onError: (error) => {
-    console.error("Error deleting country:", error);
-  },
-});
-
-const patchCountryMutation = useMutation(
-  ({ id, updatedData }: { id: string | number; updatedData: Partial<ICountry> }) =>
-    patchCountry(id, { vote: updatedData.vote }),
-  {
+  const deleteCountryMutation = useMutation(deleteCountry, {
     onSuccess: () => {
       queryClient.invalidateQueries("countries");
     },
     onError: (error) => {
-      console.error("Error updating country:", error);
+      console.error("Error deleting country:", error);
     },
-  }
-);
+  });
+
+  const patchCountryMutation = useMutation(
+    ({
+      id,
+      updatedData,
+    }: {
+      id: string | number;
+      updatedData: Partial<ICountry>;
+    }) => patchCountry(id, { vote: updatedData.vote }),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("countries");
+      },
+      onError: (error) => {
+        console.error("Error updating country:", error);
+      },
+    },
+  );
 
   const handleCreateCard = async (
     image: string | null,
@@ -149,6 +153,13 @@ const patchCountryMutation = useMutation(
     }
   };
 
+  // Sorting by vote
+  const sortedCountries = data?.pages.flat().sort((a, b) => {
+    const voteA = a.vote || 0;
+    const voteB = b.vote || 0;
+    return sortedAsc ? voteA - voteB : voteB - voteA;
+  });
+
   return (
     <div style={{ display: "flex" }}>
       <Suspense fallback={<div>Loading...</div>}>
@@ -183,7 +194,7 @@ const patchCountryMutation = useMutation(
         }}
       >
         {rowVirtualizer.virtualItems.map((virtualRow) => {
-          const country = data?.pages.flat()[virtualRow.index];
+          const country = sortedCountries?.[virtualRow.index];
           if (!country) return null;
 
           return (
@@ -210,12 +221,10 @@ const patchCountryMutation = useMutation(
                     patchCountryMutation.mutate({
                       id: country.id,
                       updatedData: {
-                        vote: (country.vote ?? 0) + 1, // მხოლოდ vote ველის განახლება
+                        vote: (country.vote ?? 0) + 1,
                       },
                     })
                   }
-                  
-                  
                   onDelete={() => handleCardDelete(country.id)}
                   isDeleted={country.isDeleted || false}
                   image={country.image}
