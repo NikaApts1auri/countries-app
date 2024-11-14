@@ -1,20 +1,32 @@
 import { httpClient } from "..";
-import {
-  ICountry,
-  IGetCountriesResponse,
-  IPostPatchDeleteResponse,
-} from "./api";
+import { ICountry, IPostPatchDeleteResponse } from "./api";
 
-export const getCountries = async (
-  sortQuery?: string,
-): Promise<IGetCountriesResponse> => {
-  const url = sortQuery ? `/countries?${sortQuery}` : "/countries";
-  const res = await httpClient.get(url);
-  return res.data;
+export const getCountries = async (pageParam: number, sortedAsc: boolean) => {
+  const url = `/countries?_page=${pageParam}&_per_page=10&_sort=vote&_order=${sortedAsc ? "asc" : "desc"}`;
+
+  const res = await httpClient.get<{
+    first: number;
+    prev: number;
+    next: number;
+    last: number;
+    pages: number;
+    items: number;
+    data: {
+      id: string;
+      name: string;
+      capital: string;
+      population: number;
+      vote: number;
+    }[];
+  }>(url);
+  return {
+    rows: res.data.data,
+    nextPage: res.data.next,
+  };
 };
 
 export const postCountries = async (
-  countryData: ICountry,
+  countryData: ICountry
 ): Promise<IPostPatchDeleteResponse> => {
   try {
     const res = await httpClient.post("/countries", countryData);
@@ -25,7 +37,7 @@ export const postCountries = async (
 };
 
 export const deleteCountry = async (
-  id: string | number,
+  id: string | number
 ): Promise<IPostPatchDeleteResponse> => {
   const res = await httpClient.delete(`/countries/${id}`);
   return res.data;
@@ -33,7 +45,7 @@ export const deleteCountry = async (
 
 export const patchCountry = async (
   id: string | number,
-  updatedData: ICountry,
+  updatedData: ICountry
 ): Promise<IPostPatchDeleteResponse> => {
   const res = await httpClient.patch(`/countries/${id}`, updatedData);
   return res.data;

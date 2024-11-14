@@ -15,7 +15,10 @@ export interface ICountry {
 
 // GET
 export interface IGetCountriesResponse {
-  concat(arg0: unknown): any;
+  nextPage: unknown;
+  rows: unknown;
+  data: unknown;
+  concat(arg0: unknown): unknown;
   length: number;
   id: Key | null | undefined;
   nameEn: string;

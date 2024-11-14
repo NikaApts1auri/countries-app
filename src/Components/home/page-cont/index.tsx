@@ -27,7 +27,7 @@ const LazyHero = lazy(() => import("@/Components/hero/Hero"));
 const Home: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { lang = "en" } = useParams<{ lang: "en" | "ka" }>();
-  const [state, dispatch] = useReducer(cardsReducer, []);
+  const [state] = useReducer(cardsReducer, []);
   const [searchParams, setSearchParams] = useSearchParams();
   const sortOrderParam = searchParams.get("sortOrder") || "desc";
   const sortedAsc = sortOrderParam === "asc";
@@ -43,20 +43,15 @@ const Home: React.FC = () => {
     isFetchingNextPage,
   } = useInfiniteQuery(
     ["countries", sortOrderParam],
-    ({ pageParam = 1 }) =>
-      getCountries(
-        `_page=${pageParam}&_per_page=10&_sort=vote&_order=${sortedAsc ? "asc" : "desc"}`
-      ).then(response => response.data),
+    ({ pageParam = 1 }) => getCountries(pageParam, sortedAsc),
     {
-      getNextPageParam: (lastPage, allPages) => {
-        return lastPage.length === 10 ? allPages.length + 1 : undefined;
+      getNextPageParam: (lastPage) => {
+        return lastPage.nextPage;
       },
       refetchOnWindowFocus: false,
       refetchInterval: false,
     }
   );
-  
-  
 
   const createCountryMutation = useMutation(postCountries, {
     onSuccess: () => {
@@ -90,7 +85,7 @@ const Home: React.FC = () => {
       onError: (error) => {
         console.error("Error updating country:", error);
       },
-    },
+    }
   );
 
   const handleCreateCard = async (
@@ -99,12 +94,12 @@ const Home: React.FC = () => {
     nameKa: string,
     capitalEn: string,
     capitalKa: string,
-    population: string,
+    population: string
   ) => {
     const existingCard =
       Array.isArray(state) &&
       state.find(
-        (card) => card.nameEn === nameEn && card.capitalEn === capitalEn,
+        (card) => card.nameEn === nameEn && card.capitalEn === capitalEn
       );
 
     if (existingCard) {
@@ -134,7 +129,7 @@ const Home: React.FC = () => {
   const parentRef = React.useRef<HTMLDivElement>(null);
 
   const rowVirtualizer = useVirtual({
-    size: data?.pages.reduce((acc, page) => acc + page.length, 0) || 0,
+    size: data?.pages.reduce((acc, page) => acc + page.rows.length, 0) || 0,
     parentRef,
     estimateSize: useCallback(() => 250, []),
     overscan: 10,
@@ -157,11 +152,13 @@ const Home: React.FC = () => {
 
   // Sorting by vote
   const sortedCountries =
-    data?.pages.flat().sort((a, b) => {
-      const voteA = a.vote || 0;
-      const voteB = b.vote || 0;
-      return sortedAsc ? voteA - voteB : voteB - voteA;
-    }) || [];
+    data?.pages
+      ?.flatMap((page) => page.rows)
+      .sort((a, b) => {
+        const voteA = a.vote || 0;
+        const voteB = b.vote || 0;
+        return sortedAsc ? voteA - voteB : voteB - voteA;
+      }) || [];
 
   return (
     <div style={{ display: "flex" }}>
@@ -183,9 +180,11 @@ const Home: React.FC = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "15px",
+          gap: "75px",
           overflowY: "auto",
           maxHeight: "600px",
+          width: "500px",
+          position: "relative",
         }}
         onScroll={(e) => {
           if (
@@ -205,10 +204,12 @@ const Home: React.FC = () => {
               key={country.id}
               ref={virtualRow.measureRef}
               style={{
-                ...virtualRow.style,
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "15px",
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: `${virtualRow.size}px`,
+                transform: `translateY(${virtualRow.start}px)`,
               }}
             >
               <Suspense fallback={<div>Loading...</div>}>
