@@ -45,7 +45,7 @@ const CardContent: React.FC<CardContentProps> = ({
     {
       onSuccess: () => {
         alert("Country updated successfully!");
-        setIsEditing(false); // Close edit mode after success
+        setIsEditing(false); 
       },
       onError: (error) => {
         console.error("Error updating country:", error);

@@ -1,4 +1,11 @@
-import React, { useState, Suspense, lazy, useReducer, useCallback, useEffect } from "react";
+import React, {
+  useState,
+  Suspense,
+  lazy,
+  useReducer,
+  useCallback,
+  useEffect,
+} from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useQueryClient, useInfiniteQuery, useMutation } from "react-query";
 import { useVirtual } from "react-virtual";
@@ -22,11 +29,10 @@ const Home: React.FC = () => {
   const { lang = "en" } = useParams<{ lang: "en" | "ka" }>();
   const [state, dispatch] = useReducer(cardsReducer, []);
   const [searchParams, setSearchParams] = useSearchParams();
-  const sortOrderParam = searchParams.get("sortOrder") || "asc"; 
-  const sortedAsc = sortOrderParam === "asc"; 
+  const sortOrderParam = searchParams.get("sortOrder") || "asc";
+  const sortedAsc = sortOrderParam === "asc";
 
   const queryClient = useQueryClient();
-
 
   const {
     data,
@@ -39,7 +45,7 @@ const Home: React.FC = () => {
     ["countries", sortOrderParam],
     ({ pageParam = 1 }) =>
       getCountries(
-        `_page=${pageParam}&_limit=10&_sort=vote&_order=${sortedAsc ? "asc" : "desc"}`
+        `_page=${pageParam}&_limit=10&_sort=vote&_order=${sortedAsc ? "asc" : "desc"}`,
       ),
     {
       getNextPageParam: (lastPage, allPages) => {
@@ -47,7 +53,7 @@ const Home: React.FC = () => {
       },
       refetchOnWindowFocus: false,
       refetchInterval: false,
-    }
+    },
   );
 
   const createCountryMutation = useMutation(postCountries, {
@@ -58,28 +64,28 @@ const Home: React.FC = () => {
       console.error("Error creating country:", error);
     },
   });
+const deleteCountryMutation = useMutation(deleteCountry, {
+  onSuccess: () => {
+    // მონაცემების განახლება, რომ ჩანაწერი წაიშალოს
+    queryClient.invalidateQueries("countries");
+  },
+  onError: (error) => {
+    console.error("Error deleting country:", error);
+  },
+});
 
-  const deleteCountryMutation = useMutation(deleteCountry, {
+const patchCountryMutation = useMutation(
+  ({ id, updatedData }: { id: string | number; updatedData: Partial<ICountry> }) =>
+    patchCountry(id, { vote: updatedData.vote }),
+  {
     onSuccess: () => {
       queryClient.invalidateQueries("countries");
     },
     onError: (error) => {
-      console.error("Error deleting country:", error);
+      console.error("Error updating country:", error);
     },
-  });
-
-  const patchCountryMutation = useMutation(
-    ({ id, updatedData }: { id: string | number; updatedData: ICountry }) =>
-      patchCountry(id, updatedData),
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("countries");
-      },
-      onError: (error) => {
-        console.error("Error updating country:", error);
-      },
-    }
-  );
+  }
+);
 
   const handleCreateCard = async (
     image: string | null,
@@ -87,12 +93,12 @@ const Home: React.FC = () => {
     nameKa: string,
     capitalEn: string,
     capitalKa: string,
-    population: string
+    population: string,
   ) => {
     const existingCard =
       Array.isArray(state) &&
       state.find(
-        (card) => card.nameEn === nameEn && card.capitalEn === capitalEn
+        (card) => card.nameEn === nameEn && card.capitalEn === capitalEn,
       );
 
     if (existingCard) {
@@ -119,7 +125,6 @@ const Home: React.FC = () => {
     deleteCountryMutation.mutate(id);
   };
 
- 
   const parentRef = React.useRef<HTMLDivElement>(null);
 
   const rowVirtualizer = useVirtual({
@@ -130,15 +135,13 @@ const Home: React.FC = () => {
   });
 
   useEffect(() => {
- 
     rowVirtualizer.scrollToIndex(0);
   }, [data]);
 
   const handleSort = () => {
-    const newSortOrder = sortedAsc ? "desc" : "asc"; 
-    setSearchParams({ sortOrder: newSortOrder });  
+    const newSortOrder = sortedAsc ? "desc" : "asc";
+    setSearchParams({ sortOrder: newSortOrder });
   };
-
 
   const loadMoreItems = () => {
     if (hasNextPage && !isFetchingNextPage) {
@@ -170,12 +173,12 @@ const Home: React.FC = () => {
           overflowY: "auto",
           maxHeight: "600px",
         }}
-        onScroll={e => {
+        onScroll={(e) => {
           if (
             e.currentTarget.scrollHeight - e.currentTarget.scrollTop ===
             e.currentTarget.clientHeight
           ) {
-            loadMoreItems(); 
+            loadMoreItems();
           }
         }}
       >
@@ -207,18 +210,12 @@ const Home: React.FC = () => {
                     patchCountryMutation.mutate({
                       id: country.id,
                       updatedData: {
-                        vote: country.vote + 1,
-                        id: country.id,
-                        nameEn: country.nameEn,
-                        nameKa: country.nameKa,
-                        capitalEn: country.capitalEn,
-                        capitalKa: country.capitalKa,
-                        population: country.population,
-                        image: country.image,
-                        isDeleted: country.isDeleted,
+                        vote: (country.vote ?? 0) + 1, // მხოლოდ vote ველის განახლება
                       },
                     })
                   }
+                  
+                  
                   onDelete={() => handleCardDelete(country.id)}
                   isDeleted={country.isDeleted || false}
                   image={country.image}

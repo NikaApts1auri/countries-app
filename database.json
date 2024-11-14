@@ -1,2864 +1,1177 @@
 {
   "countries": [
     {
-      "name": "Switzerland",
-      "capital": "Bern",
-      "population": "",
-      "region": "Europe",
-      "id": "1036",
-      "vote": 10,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Sierra Leone",
-      "capital": "Freetown",
-      "population": "",
-      "region": "Africa",
-      "id": "7c3a",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Hungary",
-      "capital": "Budapest",
-      "population": "",
-      "region": "Europe",
-      "id": "d483",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Taiwan",
-      "capital": "Taipei",
-      "population": 23503349,
-      "region": "Asia",
-      "id": "a807"
-    },
-    {
-      "name": "Wallis and Futuna",
-      "capital": "Mata-Utu",
-      "population": 11750,
-      "region": "Oceania",
-      "id": "4512"
-    },
-    {
-      "name": "Barbados",
-      "capital": "Bridgetown",
-      "population": "",
-      "region": "Americas",
-      "id": "a916",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Pitcairn Islands",
-      "capital": "Adamstown",
-      "population": 56,
-      "region": "Oceania",
-      "id": "e4b3"
-    },
-    {
-      "name": "Ivory Coast",
-      "capital": "Yamoussoukro",
-      "population": "",
-      "region": "Africa",
-      "id": "f4ae",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Tunisia",
-      "capital": "Tunis",
-      "population": "",
-      "region": "Africa",
-      "id": "ec3c",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Italy",
-      "capital": "Rome",
-      "population": "",
-      "region": "Europe",
-      "id": "ccee",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Benin",
-      "capital": "Porto-Novo",
-      "population": 12123198,
-      "region": "Africa",
-      "id": "6631"
-    },
-    {
-      "name": "Indonesia",
-      "capital": "Jakarta",
-      "population": 273523621,
-      "region": "Asia",
-      "id": "be9c"
-    },
-    {
-      "name": "Cape Verde",
-      "capital": "Praia",
-      "population": 555988,
-      "region": "Africa",
-      "id": "17a0"
-    },
-    {
-      "name": "Saint Kitts and Nevis",
-      "capital": "Basseterre",
-      "population": 53192,
-      "region": "Americas",
-      "id": "463f"
-    },
-    {
-      "name": "Laos",
-      "capital": "Vientiane",
-      "population": 7275556,
-      "region": "Asia",
-      "id": "5457"
-    },
-    {
-      "name": "Caribbean Netherlands",
-      "capital": "Kralendijk",
-      "population": 25987,
-      "region": "Americas",
-      "id": "b2ac"
-    },
-    {
-      "name": "Uganda",
-      "capital": "Kampala",
-      "population": "",
-      "region": "Africa",
-      "id": "5715",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Andorra",
-      "capital": "Andorra la Vella",
-      "population": 77265,
-      "region": "Europe",
-      "id": "64ec"
-    },
-    {
-      "name": "Burundi",
-      "capital": "Gitega",
-      "population": "",
-      "region": "Africa",
-      "id": "00ce",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "South Africa",
-      "capital": "Pretoria",
-      "population": "",
-      "region": "Africa",
-      "id": "a244",
-      "vote": null,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "France",
-      "capital": "Paris",
-      "population": "",
-      "region": "Europe",
-      "id": "6e9a",
-      "vote": 9,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Libya",
-      "capital": "Tripoli",
-      "population": "",
-      "region": "Africa",
-      "id": "a259",
-      "vote": null,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Mexico",
-      "capital": "Mexico City",
-      "population": "",
-      "region": "Americas",
-      "id": "69c7",
-      "vote": null,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Gabon",
-      "capital": "Libreville",
-      "population": "",
-      "region": "Africa",
-      "id": "dd99",
-      "vote": null,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Northern Mariana Islands",
-      "capital": "Saipan",
-      "population": "",
-      "region": "Oceania",
-      "id": "c885",
-      "vote": null,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "North Macedonia",
-      "capital": "Skopje",
-      "population": 2077132,
-      "region": "Europe",
-      "id": "e45c"
-    },
-    {
-      "name": "China",
-      "capital": "Beijing",
-      "population": 1402112000,
-      "region": "Asia",
-      "id": "11bb"
-    },
-    {
-      "name": "Yemen",
-      "capital": "Sana'a",
-      "population": 29825968,
-      "region": "Asia",
-      "id": "d2b8"
-    },
-    {
-      "name": "Saint Barthélemy",
-      "capital": "Gustavia",
-      "population": 4255,
-      "region": "Americas",
-      "id": "d846"
-    },
-    {
-      "name": "Guernsey",
-      "capital": "St. Peter Port",
-      "population": 62999,
-      "region": "Europe",
-      "id": "4643"
-    },
-    {
-      "name": "Solomon Islands",
-      "capital": "Honiara",
-      "population": 686878,
-      "region": "Oceania",
-      "id": "ee4d"
-    },
-    {
-      "name": "Svalbard and Jan Mayen",
-      "capital": "Longyearbyen",
-      "population": 2562,
-      "region": "Europe",
-      "id": "393c"
-    },
-    {
-      "name": "Faroe Islands",
-      "capital": "Tórshavn",
-      "population": "",
-      "region": "Europe",
-      "id": "6316",
-      "vote": null,
-      "nameEn": "",
-      "nameKa": "",
-      "capitalEn": "",
-      "capitalKa": "",
-      "image": null,
-      "isDeleted": false
-    },
-    {
-      "name": "Uzbekistan",
-      "capital": "Tashkent",
-      "population": 34232050,
-      "region": "Asia",
-      "id": "51fe"
-    },
-    {
-      "name": "Egypt",
-      "capital": "Cairo",
-      "population": 102334403,
-      "region": "Africa",
-      "id": "2d51"
-    },
-    {
-      "name": "Senegal",
-      "capital": "Dakar",
-      "population": 16743930,
-      "region": "Africa",
-      "id": "293f"
-    },
-    {
-      "name": "Sri Lanka",
-      "capital": "Sri Jayawardenepura Kotte",
-      "population": 21919000,
-      "region": "Asia",
-      "id": "a3cf"
-    },
-    {
-      "name": "Palestine",
-      "capital": "Ramallah",
-      "population": 4803269,
-      "region": "Asia",
-      "id": "904d"
-    },
-    {
-      "name": "Bangladesh",
-      "capital": "Dhaka",
-      "population": 164689383,
-      "region": "Asia",
-      "id": "b319"
-    },
-    {
-      "name": "Peru",
-      "capital": "Lima",
-      "population": 32971846,
-      "region": "Americas",
-      "id": "b342"
-    },
-    {
-      "name": "Singapore",
-      "capital": "Singapore",
-      "population": 5685807,
-      "region": "Asia",
-      "id": "94d0"
-    },
-    {
-      "name": "Turkey",
-      "capital": "Ankara",
-      "population": 84339067,
-      "region": "Asia",
-      "id": "203e"
-    },
-    {
-      "name": "Afghanistan",
-      "capital": "Kabul",
-      "population": 40218234,
-      "region": "Asia",
-      "id": "7a5a"
-    },
-    {
-      "name": "Aruba",
-      "capital": "Oranjestad",
-      "population": 106766,
-      "region": "Americas",
-      "id": "774a"
-    },
-    {
-      "name": "Cook Islands",
-      "capital": "Avarua",
-      "population": 18100,
-      "region": "Oceania",
-      "id": "7d98"
-    },
-    {
-      "name": "United Kingdom",
-      "capital": "London",
-      "population": 67215293,
-      "region": "Europe",
-      "id": "2c8d"
-    },
-    {
-      "name": "Zambia",
-      "capital": "Lusaka",
-      "population": 18383956,
-      "region": "Africa",
-      "id": "a84b"
-    },
-    {
-      "name": "Finland",
-      "capital": "Helsinki",
-      "population": 5530719,
-      "region": "Europe",
-      "id": "ee92"
-    },
-    {
-      "name": "Niger",
-      "capital": "Niamey",
-      "population": 24206636,
-      "region": "Africa",
-      "id": "2251"
-    },
-    {
-      "name": "Christmas Island",
-      "capital": "Flying Fish Cove",
-      "population": 2072,
-      "region": "Oceania",
-      "id": "17e0"
-    },
-    {
-      "name": "Tokelau",
-      "capital": "Fakaofo",
-      "population": 1411,
-      "region": "Oceania",
-      "id": "306e"
-    },
-    {
-      "name": "Guinea-Bissau",
-      "capital": "Bissau",
-      "population": 1967998,
-      "region": "Africa",
-      "id": "6a91"
-    },
-    {
-      "name": "Azerbaijan",
-      "capital": "Baku",
-      "population": 10110116,
-      "region": "Asia",
-      "id": "2206"
-    },
-    {
-      "name": "Réunion",
-      "capital": "Saint-Denis",
-      "population": 840974,
-      "region": "Africa",
-      "id": "e221"
-    },
-    {
-      "name": "Djibouti",
-      "capital": "Djibouti",
-      "population": 988002,
-      "region": "Africa",
-      "id": "6f5b"
-    },
-    {
-      "name": "North Korea",
-      "capital": "Pyongyang",
-      "population": 25778815,
-      "region": "Asia",
-      "id": "8aed"
-    },
-    {
-      "name": "Mauritius",
-      "capital": "Port Louis",
-      "population": 1265740,
-      "region": "Africa",
-      "id": "6486"
-    },
-    {
-      "name": "Montserrat",
-      "capital": "Plymouth",
-      "population": 4922,
-      "region": "Americas",
-      "id": "dffc"
-    },
-    {
-      "name": "United States Virgin Islands",
-      "capital": "Charlotte Amalie",
-      "population": 106290,
-      "region": "Americas",
-      "id": "5cc5"
-    },
-    {
-      "name": "Colombia",
-      "capital": "Bogotá",
-      "population": 50882884,
-      "region": "Americas",
-      "id": "7a87"
-    },
-    {
-      "name": "Greece",
-      "capital": "Athens",
-      "population": 10715549,
-      "region": "Europe",
-      "id": "7c8f"
-    },
-    {
-      "name": "Croatia",
-      "capital": "Zagreb",
-      "population": 4047200,
-      "region": "Europe",
-      "id": "d261"
-    },
-    {
-      "name": "Algeria",
-      "capital": "Algiers",
-      "population": 44700000,
-      "region": "Africa",
-      "id": "8727"
-    },
-    {
-      "name": "Antarctica",
-      "capital": "N/A",
-      "population": 1000,
-      "region": "Antarctic",
-      "id": "8bf5"
-    },
-    {
-      "name": "Netherlands",
-      "capital": "Amsterdam",
-      "population": 16655799,
-      "region": "Europe",
-      "id": "1079"
-    },
-    {
-      "name": "Sudan",
-      "capital": "Khartoum",
-      "population": 43849269,
-      "region": "Africa",
-      "id": "9720"
-    },
-    {
-      "name": "Fiji",
-      "capital": "Suva",
-      "population": 896444,
-      "region": "Oceania",
-      "id": "5b2b"
-    },
-    {
-      "name": "Liechtenstein",
-      "capital": "Vaduz",
-      "population": 38137,
-      "region": "Europe",
-      "id": "c001"
-    },
-    {
-      "name": "Puerto Rico",
-      "capital": "San Juan",
-      "population": 3194034,
-      "region": "Americas",
-      "id": "4a1a"
-    },
-    {
-      "name": "Georgia",
-      "capital": "Tbilisi",
-      "population": 3714000,
-      "region": "Asia",
-      "id": "b0ae"
-    },
-    {
-      "name": "Pakistan",
-      "capital": "Islamabad",
-      "population": 220892331,
-      "region": "Asia",
-      "id": "52b0"
-    },
-    {
-      "name": "Monaco",
-      "capital": "Monaco",
-      "population": 39244,
-      "region": "Europe",
-      "id": "4a62"
-    },
-    {
-      "name": "Botswana",
-      "capital": "Gaborone",
-      "population": 2351625,
-      "region": "Africa",
-      "id": "1c5b"
-    },
-    {
-      "name": "Lebanon",
-      "capital": "Beirut",
-      "population": 6825442,
-      "region": "Asia",
-      "id": "b1f7"
-    },
-    {
-      "name": "Papua New Guinea",
-      "capital": "Port Moresby",
-      "population": 8947027,
-      "region": "Oceania",
-      "id": "e9d2"
-    },
-    {
-      "name": "Mayotte",
-      "capital": "Mamoudzou",
-      "population": 226915,
-      "region": "Africa",
-      "id": "a5a6"
-    },
-    {
-      "name": "Dominican Republic",
-      "capital": "Santo Domingo",
-      "population": 10847904,
-      "region": "Americas",
-      "id": "58d4"
-    },
-    {
-      "name": "Norfolk Island",
-      "capital": "Kingston",
-      "population": 2302,
-      "region": "Oceania",
-      "id": "51ab"
-    },
-    {
-      "name": "Bouvet Island",
-      "capital": "N/A",
-      "population": 0,
-      "region": "Antarctic",
-      "id": "08b6"
-    },
-    {
-      "name": "Qatar",
-      "capital": "Doha",
-      "population": 2881060,
-      "region": "Asia",
-      "id": "7039"
-    },
-    {
-      "name": "Madagascar",
-      "capital": "Antananarivo",
-      "population": 27691019,
-      "region": "Africa",
-      "id": "8139"
-    },
-    {
-      "name": "India",
-      "capital": "New Delhi",
-      "population": 1380004385,
-      "region": "Asia",
-      "id": "14bb"
-    },
-    {
-      "name": "Syria",
-      "capital": "Damascus",
-      "population": 17500657,
-      "region": "Asia",
-      "id": "9ea9"
-    },
-    {
-      "name": "Montenegro",
-      "capital": "Podgorica",
-      "population": 621718,
-      "region": "Europe",
-      "id": "b5ff"
-    },
-    {
-      "name": "Eswatini",
-      "capital": "Mbabane",
-      "population": 1160164,
-      "region": "Africa",
-      "id": "cac6"
-    },
-    {
-      "name": "Paraguay",
-      "capital": "Asunción",
-      "population": 7132530,
-      "region": "Americas",
-      "id": "183d"
-    },
-    {
-      "name": "El Salvador",
-      "capital": "San Salvador",
-      "population": 6486201,
-      "region": "Americas",
-      "id": "449d"
-    },
-    {
-      "name": "Ukraine",
-      "capital": "Kyiv",
-      "population": 44134693,
-      "region": "Europe",
-      "id": "599b"
-    },
-    {
-      "name": "Isle of Man",
-      "capital": "Douglas",
-      "population": 85032,
-      "region": "Europe",
-      "id": "a406"
-    },
-    {
-      "name": "Namibia",
-      "capital": "Windhoek",
-      "population": 2540916,
-      "region": "Africa",
-      "id": "498d"
-    },
-    {
-      "name": "United Arab Emirates",
-      "capital": "Abu Dhabi",
-      "population": 9890400,
-      "region": "Asia",
-      "id": "1c13"
-    },
-    {
-      "name": "Bulgaria",
-      "capital": "Sofia",
-      "population": 6927288,
-      "region": "Europe",
-      "id": "2109"
-    },
-    {
-      "name": "Greenland",
-      "capital": "Nuuk",
-      "population": 56367,
-      "region": "Americas",
-      "id": "4e06"
-    },
-    {
-      "name": "Germany",
-      "capital": "Berlin",
-      "population": 83240525,
-      "region": "Europe",
-      "id": "cc8d"
-    },
-    {
-      "name": "Cambodia",
-      "capital": "Phnom Penh",
-      "population": 16718971,
-      "region": "Asia",
-      "id": "0374"
-    },
-    {
-      "name": "Iraq",
-      "capital": "Baghdad",
-      "population": 40222503,
-      "region": "Asia",
-      "id": "ec54"
-    },
-    {
-      "name": "French Southern and Antarctic Lands",
-      "capital": "Port-aux-Français",
-      "population": 400,
-      "region": "Antarctic",
-      "id": "0b9a"
-    },
-    {
-      "name": "Sweden",
-      "capital": "Stockholm",
-      "population": 10353442,
-      "region": "Europe",
-      "id": "00ba"
-    },
-    {
-      "name": "Cuba",
-      "capital": "Havana",
-      "population": 11326616,
-      "region": "Americas",
-      "id": "1b92"
-    },
-    {
-      "name": "Kyrgyzstan",
-      "capital": "Bishkek",
-      "population": 6591600,
-      "region": "Asia",
-      "id": "053e"
-    },
-    {
-      "name": "Russia",
-      "capital": "Moscow",
-      "population": 144104080,
-      "region": "Europe",
-      "id": "f239"
-    },
-    {
-      "name": "Malaysia",
-      "capital": "Kuala Lumpur",
-      "population": 32365998,
-      "region": "Asia",
-      "id": "e2b8"
-    },
-    {
-      "name": "São Tomé and Príncipe",
-      "capital": "São Tomé",
-      "population": 219161,
-      "region": "Africa",
-      "id": "c1c1"
-    },
-    {
-      "name": "Cyprus",
-      "capital": "Nicosia",
-      "population": 1207361,
-      "region": "Europe",
-      "id": "9479"
-    },
-    {
-      "name": "Canada",
-      "capital": "Ottawa",
-      "population": 38005238,
-      "region": "Americas",
-      "id": "c177"
-    },
-    {
-      "name": "Malawi",
-      "capital": "Lilongwe",
-      "population": 19129955,
-      "region": "Africa",
-      "id": "6829"
-    },
-    {
-      "name": "Saudi Arabia",
-      "capital": "Riyadh",
-      "population": 34813867,
-      "region": "Asia",
-      "id": "6ba1"
-    },
-    {
-      "name": "Bosnia and Herzegovina",
-      "capital": "Sarajevo",
-      "population": 3280815,
-      "region": "Europe",
-      "id": "eec8"
-    },
-    {
-      "name": "Ethiopia",
-      "capital": "Addis Ababa",
-      "population": 114963583,
-      "region": "Africa",
-      "id": "210f"
-    },
-    {
-      "name": "Spain",
-      "capital": "Madrid",
-      "population": 47351567,
-      "region": "Europe",
-      "id": "7769"
-    },
-    {
-      "name": "Slovenia",
-      "capital": "Ljubljana",
-      "population": 2100126,
-      "region": "Europe",
-      "id": "b211"
-    },
-    {
-      "name": "Oman",
-      "capital": "Muscat",
-      "population": 5106622,
-      "region": "Asia",
-      "id": "54b0"
-    },
-    {
-      "name": "Saint Pierre and Miquelon",
-      "capital": "Saint-Pierre",
-      "population": 6069,
-      "region": "Americas",
-      "id": "b7fb"
-    },
-    {
-      "name": "Macau",
-      "capital": "N/A",
-      "population": 649342,
-      "region": "Asia",
-      "id": "5d54"
-    },
-    {
-      "name": "San Marino",
-      "capital": "City of San Marino",
-      "population": 33938,
-      "region": "Europe",
-      "id": "d7b8"
-    },
-    {
-      "name": "Lesotho",
-      "capital": "Maseru",
-      "population": 2142252,
-      "region": "Africa",
-      "id": "7c1f"
-    },
-    {
-      "name": "Marshall Islands",
-      "capital": "Majuro",
-      "population": 59194,
-      "region": "Oceania",
-      "id": "3616"
-    },
-    {
-      "name": "Sint Maarten",
-      "capital": "Philipsburg",
-      "population": 40812,
-      "region": "Americas",
-      "id": "c296"
-    },
-    {
-      "name": "Iceland",
-      "capital": "Reykjavik",
-      "population": 366425,
-      "region": "Europe",
-      "id": "79ad"
-    },
-    {
-      "name": "Luxembourg",
-      "capital": "Luxembourg",
-      "population": 632275,
-      "region": "Europe",
-      "id": "90b5"
-    },
-    {
-      "name": "Argentina",
-      "capital": "Buenos Aires",
-      "population": 45376763,
-      "region": "Americas",
-      "id": "9fa1"
-    },
-    {
-      "name": "Turks and Caicos Islands",
-      "capital": "Cockburn Town",
-      "population": 38718,
-      "region": "Americas",
-      "id": "1167"
-    },
-    {
-      "name": "Nauru",
-      "capital": "Yaren",
-      "population": 10834,
-      "region": "Oceania",
-      "id": "9e8d"
-    },
-    {
-      "name": "Cocos (Keeling) Islands",
-      "capital": "West Island",
-      "population": 544,
-      "region": "Oceania",
-      "id": "42ce"
-    },
-    {
-      "name": "Western Sahara",
-      "capital": "El Aaiún",
-      "population": 510713,
-      "region": "Africa",
-      "id": "ba31"
-    },
-    {
-      "name": "Dominica",
-      "capital": "Roseau",
-      "population": 71991,
-      "region": "Americas",
-      "id": "e62e"
-    },
-    {
-      "name": "Costa Rica",
-      "capital": "San José",
-      "population": 5094114,
-      "region": "Americas",
-      "id": "eeef"
-    },
-    {
-      "name": "Australia",
-      "capital": "Canberra",
-      "population": 25687041,
-      "region": "Oceania",
-      "id": "457b"
-    },
-    {
-      "name": "Thailand",
-      "capital": "Bangkok",
-      "population": 69799978,
-      "region": "Asia",
-      "id": "6932"
-    },
-    {
-      "name": "Haiti",
-      "capital": "Port-au-Prince",
-      "population": 11402533,
-      "region": "Americas",
-      "id": "aa28"
-    },
-    {
-      "name": "Tuvalu",
-      "capital": "Funafuti",
-      "population": 11792,
-      "region": "Oceania",
-      "id": "67aa"
-    },
-    {
-      "name": "Honduras",
-      "capital": "Tegucigalpa",
-      "population": 9904608,
-      "region": "Americas",
-      "id": "67d3"
-    },
-    {
-      "name": "Equatorial Guinea",
-      "capital": "Malabo",
-      "population": 1402985,
-      "region": "Africa",
-      "id": "c874"
-    },
-    {
-      "name": "Saint Lucia",
-      "capital": "Castries",
-      "population": 183629,
-      "region": "Americas",
-      "id": "de54"
-    },
-    {
-      "name": "French Polynesia",
-      "capital": "Papeetē",
-      "population": 280904,
-      "region": "Oceania",
-      "id": "3a1d"
-    },
-    {
-      "name": "Belarus",
-      "capital": "Minsk",
-      "population": 9398861,
-      "region": "Europe",
-      "id": "6582"
-    },
-    {
-      "name": "Latvia",
-      "capital": "Riga",
-      "population": 1901548,
-      "region": "Europe",
-      "id": "9f24"
-    },
-    {
-      "name": "Palau",
-      "capital": "Ngerulmud",
-      "population": 18092,
-      "region": "Oceania",
-      "id": "84c6"
-    },
-    {
-      "name": "Guadeloupe",
-      "capital": "Basse-Terre",
-      "population": 400132,
-      "region": "Americas",
-      "id": "747a"
-    },
-    {
-      "name": "Philippines",
-      "capital": "Manila",
-      "population": 109581085,
-      "region": "Asia",
-      "id": "da2c"
-    },
-    {
-      "name": "Gibraltar",
-      "capital": "Gibraltar",
-      "population": 33691,
-      "region": "Europe",
-      "id": "7af2"
-    },
-    {
-      "name": "Denmark",
-      "capital": "Copenhagen",
-      "population": 5831404,
-      "region": "Europe",
-      "id": "1a4e"
-    },
-    {
-      "name": "Cameroon",
-      "capital": "Yaoundé",
-      "population": 26545864,
-      "region": "Africa",
-      "id": "739d"
-    },
-    {
-      "name": "Guinea",
-      "capital": "Conakry",
-      "population": 13132792,
-      "region": "Africa",
-      "id": "73aa"
-    },
-    {
-      "name": "Bahrain",
-      "capital": "Manama",
-      "population": 1701583,
-      "region": "Asia",
-      "id": "3bfe"
-    },
-    {
-      "name": "Suriname",
-      "capital": "Paramaribo",
-      "population": 586634,
-      "region": "Americas",
-      "id": "6bfd"
-    },
-    {
-      "name": "DR Congo",
-      "capital": "Kinshasa",
-      "population": 108407721,
-      "region": "Africa",
-      "id": "419e"
-    },
-    {
-      "name": "Somalia",
-      "capital": "Mogadishu",
-      "population": 15893219,
-      "region": "Africa",
-      "id": "d09e"
-    },
-    {
-      "name": "Czechia",
-      "capital": "Prague",
-      "population": 10698896,
-      "region": "Europe",
-      "id": "d4ad"
-    },
-    {
-      "name": "New Caledonia",
-      "capital": "Nouméa",
-      "population": 271960,
-      "region": "Oceania",
-      "id": "af20"
-    },
-    {
-      "name": "Vanuatu",
-      "capital": "Port Vila",
-      "population": 307150,
-      "region": "Oceania",
-      "id": "d48b"
-    },
-    {
-      "name": "Saint Helena, Ascension and Tristan da Cunha",
-      "capital": "Jamestown",
-      "population": 53192,
-      "region": "Africa",
-      "id": "5f1b"
-    },
-    {
-      "name": "Togo",
-      "capital": "Lomé",
-      "population": 8278737,
-      "region": "Africa",
-      "id": "6e47"
-    },
-    {
-      "name": "British Virgin Islands",
-      "capital": "Road Town",
-      "population": 30237,
-      "region": "Americas",
-      "id": "fdff"
-    },
-    {
-      "name": "Kenya",
-      "capital": "Nairobi",
-      "population": 53771300,
-      "region": "Africa",
-      "id": "372c"
-    },
-    {
-      "name": "Niue",
-      "capital": "Alofi",
-      "population": 1470,
-      "region": "Oceania",
-      "id": "37ae"
-    },
-    {
-      "name": "Heard Island and McDonald Islands",
-      "capital": "N/A",
-      "population": 0,
-      "region": "Antarctic",
-      "id": "0112"
-    },
-    {
-      "name": "Rwanda",
-      "capital": "Kigali",
-      "population": 12952209,
-      "region": "Africa",
-      "id": "ab7b"
-    },
-    {
-      "name": "Estonia",
-      "capital": "Tallinn",
-      "population": 1331057,
-      "region": "Europe",
-      "id": "3ae9"
-    },
-    {
-      "name": "Romania",
-      "capital": "Bucharest",
-      "population": 19286123,
-      "region": "Europe",
-      "id": "5fa3"
-    },
-    {
-      "name": "Trinidad and Tobago",
-      "capital": "Port of Spain",
-      "population": 1399491,
-      "region": "Americas",
-      "id": "98ed"
-    },
-    {
-      "name": "Guyana",
-      "capital": "Georgetown",
-      "population": 786559,
-      "region": "Americas",
-      "id": "b8a7"
-    },
-    {
-      "name": "Timor-Leste",
-      "capital": "Dili",
-      "population": 1318442,
-      "region": "Asia",
-      "id": "b156"
-    },
-    {
-      "name": "Vietnam",
-      "capital": "Hanoi",
-      "population": 97338583,
-      "region": "Asia",
-      "id": "b617"
-    },
-    {
-      "name": "Uruguay",
-      "capital": "Montevideo",
-      "population": 3473727,
-      "region": "Americas",
-      "id": "3c41"
-    },
-    {
-      "name": "Vatican City",
-      "capital": "Vatican City",
-      "population": 451,
-      "region": "Europe",
-      "id": "5d3a"
-    },
-    {
-      "name": "Hong Kong",
-      "capital": "City of Victoria",
-      "population": 7500700,
-      "region": "Asia",
-      "id": "e469"
-    },
-    {
-      "name": "Austria",
-      "capital": "Vienna",
-      "population": 8917205,
-      "region": "Europe",
-      "id": "c232"
-    },
-    {
-      "name": "Antigua and Barbuda",
-      "capital": "Saint John's",
-      "population": 97928,
-      "region": "Americas",
-      "id": "b11a"
-    },
-    {
-      "name": "Turkmenistan",
-      "capital": "Ashgabat",
-      "population": 6031187,
-      "region": "Asia",
-      "id": "cba5"
-    },
-    {
-      "name": "Mozambique",
-      "capital": "Maputo",
-      "population": 31255435,
-      "region": "Africa",
-      "id": "0ced"
-    },
-    {
-      "name": "Panama",
-      "capital": "Panama City",
-      "population": 4314768,
-      "region": "Americas",
-      "id": "6e4a"
-    },
-    {
-      "name": "Micronesia",
-      "capital": "Palikir",
-      "population": 115021,
-      "region": "Oceania",
-      "id": "fc8d"
-    },
-    {
-      "name": "Ireland",
-      "capital": "Dublin",
-      "population": 4994724,
-      "region": "Europe",
-      "id": "1269"
-    },
-    {
-      "name": "Curaçao",
-      "capital": "Willemstad",
-      "population": 155014,
-      "region": "Americas",
-      "id": "7564"
-    },
-    {
-      "name": "French Guiana",
-      "capital": "Cayenne",
-      "population": 254541,
-      "region": "Americas",
-      "id": "5834"
-    },
-    {
-      "name": "Norway",
-      "capital": "Oslo",
-      "population": 5379475,
-      "region": "Europe",
-      "id": "d6d1"
-    },
-    {
-      "name": "Åland Islands",
-      "capital": "Mariehamn",
-      "population": 29458,
-      "region": "Europe",
-      "id": "ae86"
-    },
-    {
-      "name": "Central African Republic",
-      "capital": "Bangui",
-      "population": 4829764,
-      "region": "Africa",
-      "id": "a9ad"
-    },
-    {
-      "name": "Burkina Faso",
-      "capital": "Ouagadougou",
-      "population": 20903278,
-      "region": "Africa",
-      "id": "9846"
-    },
-    {
-      "name": "Eritrea",
-      "capital": "Asmara",
-      "population": 5352000,
-      "region": "Africa",
-      "id": "c38b"
-    },
-    {
-      "name": "Tanzania",
-      "capital": "Dodoma",
-      "population": 59734213,
-      "region": "Africa",
-      "id": "9ce8"
-    },
-    {
-      "name": "South Korea",
-      "capital": "Seoul",
-      "population": 51780579,
-      "region": "Asia",
-      "id": "d9be"
-    },
-    {
-      "name": "Jordan",
-      "capital": "Amman",
-      "population": 10203140,
-      "region": "Asia",
-      "id": "722a"
-    },
-    {
-      "name": "Mauritania",
-      "capital": "Nouakchott",
-      "population": 4649660,
-      "region": "Africa",
-      "id": "8565"
-    },
-    {
-      "name": "Lithuania",
-      "capital": "Vilnius",
-      "population": 2794700,
-      "region": "Europe",
-      "id": "4793"
-    },
-    {
-      "name": "United States Minor Outlying Islands",
-      "capital": "Washington DC",
-      "population": 300,
-      "region": "Americas",
-      "id": "38a3"
-    },
-    {
-      "name": "Slovakia",
-      "capital": "Bratislava",
-      "population": 5458827,
-      "region": "Europe",
-      "id": "31f4"
-    },
-    {
-      "name": "Angola",
-      "capital": "Luanda",
-      "population": 32866268,
-      "region": "Africa",
-      "id": "de35"
-    },
-    {
-      "name": "Kazakhstan",
-      "capital": "Nur-Sultan",
-      "population": 18754440,
-      "region": "Asia",
-      "id": "d42c"
-    },
-    {
-      "name": "Moldova",
-      "capital": "Chișinău",
-      "population": 2617820,
-      "region": "Europe",
-      "id": "85e5"
-    },
-    {
-      "name": "Mali",
-      "capital": "Bamako",
-      "population": 20250834,
-      "region": "Africa",
-      "id": "4c16"
-    },
-    {
-      "name": "Falkland Islands",
-      "capital": "Stanley",
-      "population": 2563,
-      "region": "Americas",
-      "id": "032a"
-    },
-    {
-      "name": "Armenia",
-      "capital": "Yerevan",
-      "population": 2963234,
-      "region": "Asia",
-      "id": "2c48"
-    },
-    {
-      "name": "Samoa",
-      "capital": "Apia",
-      "population": 198410,
-      "region": "Oceania",
-      "id": "f1a7"
-    },
-    {
-      "name": "Jersey",
-      "capital": "Saint Helier",
-      "population": 100800,
-      "region": "Europe",
-      "id": "899d"
-    },
-    {
-      "name": "Japan",
-      "capital": "Tokyo",
-      "population": 125836021,
-      "region": "Asia",
-      "id": "94d7"
-    },
-    {
-      "name": "Bolivia",
-      "capital": "Sucre",
-      "population": 11673029,
-      "region": "Americas",
-      "id": "c422"
-    },
-    {
-      "name": "Chile",
-      "capital": "Santiago",
-      "population": 19116209,
-      "region": "Americas",
-      "id": "78a7"
-    },
-    {
-      "name": "United States",
-      "capital": "Washington, D.C.",
-      "population": 329484123,
-      "region": "Americas",
-      "id": "8af1"
-    },
-    {
-      "name": "Saint Vincent and the Grenadines",
-      "capital": "Kingstown",
-      "population": 110947,
-      "region": "Americas",
-      "id": "0b78"
-    },
-    {
-      "name": "Bermuda",
-      "capital": "Hamilton",
-      "population": 63903,
-      "region": "Americas",
-      "id": "fe41"
-    },
-    {
-      "name": "Seychelles",
-      "capital": "Victoria",
-      "population": 98462,
-      "region": "Africa",
-      "id": "0776"
-    },
-    {
-      "name": "British Indian Ocean Territory",
-      "capital": "Diego Garcia",
-      "population": 3000,
-      "region": "Africa",
-      "id": "6d48"
-    },
-    {
-      "name": "Guatemala",
-      "capital": "Guatemala City",
-      "population": 16858333,
-      "region": "Americas",
-      "id": "59eb"
-    },
-    {
-      "name": "Ecuador",
-      "capital": "Quito",
-      "population": 17643060,
-      "region": "Americas",
-      "id": "3a06"
-    },
-    {
-      "name": "Martinique",
-      "capital": "Fort-de-France",
-      "population": 378243,
-      "region": "Americas",
-      "id": "002d"
-    },
-    {
-      "name": "Tajikistan",
-      "capital": "Dushanbe",
-      "population": 9537642,
-      "region": "Asia",
-      "id": "c74f"
-    },
-    {
-      "name": "Malta",
-      "capital": "Valletta",
-      "population": 525285,
-      "region": "Europe",
-      "id": "53ac"
-    },
-    {
-      "name": "Gambia",
-      "capital": "Banjul",
-      "population": 2416664,
-      "region": "Africa",
-      "id": "1af9"
-    },
-    {
-      "name": "Nigeria",
-      "capital": "Abuja",
-      "population": 206139587,
-      "region": "Africa",
-      "id": "8ca5"
-    },
-    {
-      "name": "Bahamas",
-      "capital": "Nassau",
-      "population": 393248,
-      "region": "Americas",
-      "id": "c52f"
-    },
-    {
-      "name": "Kosovo",
-      "capital": "Pristina",
-      "population": 1775378,
-      "region": "Europe",
-      "id": "af23"
-    },
-    {
-      "name": "Kuwait",
-      "capital": "Kuwait City",
-      "population": 4270563,
-      "region": "Asia",
-      "id": "3da9"
-    },
-    {
-      "name": "Maldives",
-      "capital": "Malé",
-      "population": 540542,
-      "region": "Asia",
-      "id": "a231"
-    },
-    {
-      "name": "South Sudan",
-      "capital": "Juba",
-      "population": 11193729,
-      "region": "Africa",
-      "id": "e525"
-    },
-    {
-      "name": "Iran",
-      "capital": "Tehran",
-      "population": 83992953,
-      "region": "Asia",
-      "id": "6dfb"
-    },
-    {
-      "name": "Albania",
-      "capital": "Tirana",
-      "population": 2837743,
-      "region": "Europe",
-      "id": "3b61"
-    },
-    {
-      "name": "Brazil",
-      "capital": "Brasília",
-      "population": 212559409,
-      "region": "Americas",
-      "id": "1ecd"
-    },
-    {
-      "name": "Serbia",
-      "capital": "Belgrade",
-      "population": 6908224,
-      "region": "Europe",
-      "id": "4a9e"
-    },
-    {
-      "name": "Belize",
-      "capital": "Belmopan",
-      "population": 397621,
-      "region": "Americas",
-      "id": "a68f"
-    },
-    {
-      "name": "Myanmar",
-      "capital": "Naypyidaw",
-      "population": 54409794,
-      "region": "Asia",
-      "id": "e514"
-    },
-    {
-      "name": "Bhutan",
-      "capital": "Thimphu",
-      "population": 771612,
-      "region": "Asia",
-      "id": "1c38"
-    },
-    {
-      "name": "Venezuela",
-      "capital": "Caracas",
-      "population": 28435943,
-      "region": "Americas",
-      "id": "7e3c"
-    },
-    {
-      "name": "Liberia",
-      "capital": "Monrovia",
-      "population": 5057677,
-      "region": "Africa",
-      "id": "ac93"
-    },
-    {
-      "name": "Jamaica",
-      "capital": "Kingston",
-      "population": 2961161,
-      "region": "Americas",
-      "id": "0594"
-    },
-    {
-      "name": "Poland",
-      "capital": "Warsaw",
-      "population": 37950802,
-      "region": "Europe",
-      "id": "1bfa"
-    },
-    {
-      "name": "Cayman Islands",
-      "capital": "George Town",
-      "population": 65720,
-      "region": "Americas",
-      "id": "4f89"
-    },
-    {
-      "name": "Brunei",
-      "capital": "Bandar Seri Begawan",
-      "population": 437483,
-      "region": "Asia",
-      "id": "f486"
-    },
-    {
-      "name": "Comoros",
-      "capital": "Moroni",
-      "population": 869595,
-      "region": "Africa",
-      "id": "b7b8"
-    },
-    {
-      "name": "Guam",
-      "capital": "Hagåtña",
-      "population": 168783,
-      "region": "Oceania",
-      "id": "804a"
-    },
-    {
-      "name": "Tonga",
-      "capital": "Nuku'alofa",
-      "population": 105697,
-      "region": "Oceania",
-      "id": "4389"
-    },
-    {
-      "name": "Kiribati",
-      "capital": "South Tarawa",
-      "population": 119446,
-      "region": "Oceania",
-      "id": "5846"
-    },
-    {
-      "name": "Ghana",
-      "capital": "Accra",
-      "population": 31072945,
-      "region": "Africa",
-      "id": "8f4d"
-    },
-    {
-      "name": "Chad",
-      "capital": "N'Djamena",
-      "population": 16425859,
-      "region": "Africa",
-      "id": "aed2"
-    },
-    {
-      "name": "Zimbabwe",
-      "capital": "Harare",
-      "population": 14862927,
-      "region": "Africa",
-      "id": "9148"
-    },
-    {
-      "name": "Saint Martin",
-      "capital": "Marigot",
-      "population": 38659,
-      "region": "Americas",
-      "id": "894b"
-    },
-    {
-      "name": "Mongolia",
-      "capital": "Ulan Bator",
-      "population": 3278292,
-      "region": "Asia",
-      "id": "6385"
-    },
-    {
-      "name": "Portugal",
-      "capital": "Lisbon",
-      "population": 10305564,
-      "region": "Europe",
-      "id": "2924"
-    },
-    {
-      "name": "American Samoa",
-      "capital": "Pago Pago",
-      "population": 55197,
-      "region": "Oceania",
-      "id": "27fb"
-    },
-    {
-      "name": "Republic of the Congo",
-      "capital": "Brazzaville",
-      "population": 5657000,
-      "region": "Africa",
-      "id": "acfd"
-    },
-    {
-      "name": "Belgium",
-      "capital": "Brussels",
-      "population": 11555997,
-      "region": "Europe",
-      "id": "cd94"
-    },
-    {
-      "name": "Israel",
-      "capital": "Jerusalem",
-      "population": 9216900,
-      "region": "Asia",
-      "id": "4380"
-    },
-    {
-      "name": "New Zealand",
-      "capital": "Wellington",
-      "population": 5084300,
-      "region": "Oceania",
-      "id": "2803"
-    },
-    {
-      "name": "Nicaragua",
-      "capital": "Managua",
-      "population": 6624554,
-      "region": "Americas",
-      "id": "b3db"
-    },
-    {
-      "name": "Anguilla",
-      "capital": "The Valley",
-      "population": 13452,
-      "region": "Americas",
-      "id": "29fd"
-    },
-    {
       "id": "252",
       "name": "South Georgia",
       "capital": "King Edward Point",
-      "population": 30
+      "population": 30,
+      "vote": 38
     },
     {
       "id": "253",
       "name": "Grenada",
       "capital": "St. George's",
-      "population": 112519
+      "population": 112519,
+      "vote": 37
     },
     {
       "id": "254",
       "name": "Switzerland",
       "capital": "Bern",
-      "population": 8654622
+      "population": 8654622,
+      "vote": 37
     },
     {
       "id": "255",
       "name": "Sierra Leone",
       "capital": "Freetown",
-      "population": 7976985
+      "population": 7976985,
+      "vote": 37
     },
     {
       "id": "256",
       "name": "Hungary",
       "capital": "Budapest",
-      "population": 9749763
+      "population": 9749763,
+      "vote": 12
     },
     {
       "id": "257",
       "name": "Taiwan",
       "capital": "Taipei",
-      "population": 23503349
+      "population": 23503349,
+      "vote": 3
     },
     {
       "id": "258",
       "name": "Wallis and Futuna",
       "capital": "Mata-Utu",
-      "population": 11750
+      "population": 11750,
+      "vote": 24
     },
     {
       "id": "259",
       "name": "Barbados",
       "capital": "Bridgetown",
-      "population": 287371
+      "population": 287371,
+      "vote": 2
     },
     {
       "id": "260",
       "name": "Pitcairn Islands",
       "capital": "Adamstown",
-      "population": 56
+      "population": 56,
+      "vote": null
     },
     {
       "id": "261",
       "name": "Ivory Coast",
       "capital": "Yamoussoukro",
-      "population": 26378275
+      "population": 26378275,
+      "vote": 2
     },
     {
       "id": "262",
       "name": "Tunisia",
       "capital": "Tunis",
-      "population": 11818618
+      "population": 11818618,
+      "vote": null
     },
     {
       "id": "263",
       "name": "Italy",
       "capital": "Rome",
-      "population": 59554023
+      "population": 59554023,
+      "vote": null
     },
     {
       "id": "264",
       "name": "Benin",
       "capital": "Porto-Novo",
-      "population": 12123198
+      "population": 12123198,
+      "vote": null
     },
     {
       "id": "265",
       "name": "Indonesia",
       "capital": "Jakarta",
-      "population": 273523621
+      "population": 273523621,
+      "vote": null
     },
     {
       "id": "266",
       "name": "Cape Verde",
       "capital": "Praia",
-      "population": 555988
+      "population": 555988,
+      "vote": null
     },
     {
       "id": "267",
       "name": "Saint Kitts and Nevis",
       "capital": "Basseterre",
-      "population": 53192
+      "population": 53192,
+      "vote": null
     },
     {
       "id": "268",
       "name": "Laos",
       "capital": "Vientiane",
-      "population": 7275556
+      "population": 7275556,
+      "vote": null
     },
     {
       "id": "269",
       "name": "Caribbean Netherlands",
       "capital": "Kralendijk",
-      "population": 25987
-    },
-    {
-      "id": "270",
-      "name": "Uganda",
-      "capital": "Kampala",
-      "population": 45741000
-    },
-    {
-      "id": "271",
-      "name": "Andorra",
-      "capital": "Andorra la Vella",
-      "population": 77265
+      "population": 25987,
+      "vote": null
     },
     {
       "id": "272",
       "name": "Burundi",
       "capital": "Gitega",
-      "population": 11890781
+      "population": 11890781,
+      "vote": null
     },
     {
       "id": "273",
       "name": "South Africa",
       "capital": "Pretoria",
-      "population": 59308690
+      "population": 59308690,
+      "vote": null
     },
     {
       "id": "274",
       "name": "France",
       "capital": "Paris",
-      "population": 67391582
+      "population": 67391582,
+      "vote": null
     },
     {
       "id": "275",
       "name": "Libya",
       "capital": "Tripoli",
-      "population": 6871287
+      "population": 6871287,
+      "vote": null
     },
     {
       "id": "276",
       "name": "Mexico",
       "capital": "Mexico City",
-      "population": 128932753
+      "population": 128932753,
+      "vote": null
     },
     {
       "id": "277",
       "name": "Gabon",
       "capital": "Libreville",
-      "population": 2225728
+      "population": 2225728,
+      "vote": null
     },
     {
       "id": "278",
       "name": "Northern Mariana Islands",
       "capital": "Saipan",
-      "population": 57557
+      "population": 57557,
+      "vote": null
     },
     {
       "id": "279",
       "name": "North Macedonia",
       "capital": "Skopje",
-      "population": 2077132
+      "population": 2077132,
+      "vote": null
     },
     {
       "id": "280",
       "name": "China",
       "capital": "Beijing",
-      "population": 1402112000
+      "population": 1402112000,
+      "vote": null
     },
     {
       "id": "281",
       "name": "Yemen",
       "capital": "Sana'a",
-      "population": 29825968
+      "population": 29825968,
+      "vote": null
     },
     {
       "id": "282",
       "name": "Saint Barthélemy",
       "capital": "Gustavia",
-      "population": 4255
+      "population": 4255,
+      "vote": null
     },
     {
       "id": "283",
       "name": "Guernsey",
       "capital": "St. Peter Port",
-      "population": 62999
+      "population": 62999,
+      "vote": null
     },
     {
       "id": "284",
       "name": "Solomon Islands",
       "capital": "Honiara",
-      "population": 686878
+      "population": 686878,
+      "vote": null
     },
     {
       "id": "285",
       "name": "Svalbard and Jan Mayen",
       "capital": "Longyearbyen",
-      "population": 2562
+      "population": 2562,
+      "vote": null
     },
     {
       "id": "286",
       "name": "Faroe Islands",
       "capital": "Tórshavn",
-      "population": 48865
+      "population": 48865,
+      "vote": null
     },
     {
       "id": "287",
       "name": "Uzbekistan",
       "capital": "Tashkent",
-      "population": 34232050
+      "population": 34232050,
+      "vote": null
     },
     {
       "id": "288",
       "name": "Egypt",
       "capital": "Cairo",
-      "population": 102334403
+      "population": 102334403,
+      "vote": null
     },
     {
       "id": "289",
       "name": "Senegal",
       "capital": "Dakar",
-      "population": 16743930
+      "population": 16743930,
+      "vote": null
     },
     {
       "id": "290",
       "name": "Sri Lanka",
       "capital": "Sri Jayawardenepura Kotte",
-      "population": 21919000
+      "population": 21919000,
+      "vote": null
     },
     {
       "id": "291",
       "name": "Palestine",
       "capital": "Ramallah",
-      "population": 4803269
+      "population": 4803269,
+      "vote": null
     },
     {
       "id": "292",
       "name": "Bangladesh",
       "capital": "Dhaka",
-      "population": 164689383
-    },
-    {
-      "id": "293",
-      "name": "Peru",
-      "capital": "Lima",
-      "population": 32971846
-    },
-    {
-      "id": "294",
-      "name": "Singapore",
-      "capital": "Singapore",
-      "population": 5685807
+      "population": 164689383,
+      "vote": null
     },
     {
       "id": "295",
       "name": "Turkey",
       "capital": "Ankara",
-      "population": 84339067
+      "population": 84339067,
+      "vote": null
     },
     {
       "id": "296",
       "name": "Afghanistan",
       "capital": "Kabul",
-      "population": 40218234
+      "population": 40218234,
+      "vote": null
     },
     {
       "id": "297",
       "name": "Aruba",
       "capital": "Oranjestad",
-      "population": 106766
+      "population": 106766,
+      "vote": null
     },
     {
       "id": "298",
       "name": "Cook Islands",
       "capital": "Avarua",
-      "population": 18100
+      "population": 18100,
+      "vote": null
     },
     {
       "id": "299",
       "name": "United Kingdom",
       "capital": "London",
-      "population": 67215293
+      "population": 67215293,
+      "vote": null
     },
     {
       "id": "300",
       "name": "Zambia",
       "capital": "Lusaka",
-      "population": 18383956
+      "population": 18383956,
+      "vote": null
     },
     {
       "id": "301",
       "name": "Finland",
       "capital": "Helsinki",
-      "population": 5530719
+      "population": 5530719,
+      "vote": null
     },
     {
       "id": "302",
       "name": "Niger",
       "capital": "Niamey",
-      "population": 24206636
+      "population": 24206636,
+      "vote": null
     },
     {
       "id": "303",
       "name": "Christmas Island",
       "capital": "Flying Fish Cove",
-      "population": 2072
+      "population": 2072,
+      "vote": null
     },
     {
       "id": "304",
       "name": "Tokelau",
       "capital": "Fakaofo",
-      "population": 1411
+      "population": 1411,
+      "vote": null
     },
     {
       "id": "305",
       "name": "Guinea-Bissau",
       "capital": "Bissau",
-      "population": 1967998
+      "population": 1967998,
+      "vote": null
     },
     {
       "id": "306",
       "name": "Azerbaijan",
       "capital": "Baku",
-      "population": 10110116
+      "population": 10110116,
+      "vote": null
     },
     {
       "id": "307",
       "name": "Réunion",
       "capital": "Saint-Denis",
-      "population": 840974
+      "population": 840974,
+      "vote": null
     },
     {
       "id": "308",
       "name": "Djibouti",
       "capital": "Djibouti",
-      "population": 988002
+      "population": 988002,
+      "vote": null
     },
     {
       "id": "309",
       "name": "North Korea",
       "capital": "Pyongyang",
-      "population": 25778815
+      "population": 25778815,
+      "vote": null
     },
     {
       "id": "310",
       "name": "Mauritius",
       "capital": "Port Louis",
-      "population": 1265740
+      "population": 1265740,
+      "vote": null
     },
     {
       "id": "311",
       "name": "Montserrat",
       "capital": "Plymouth",
-      "population": 4922
+      "population": 4922,
+      "vote": null
     },
     {
       "id": "312",
       "name": "United States Virgin Islands",
       "capital": "Charlotte Amalie",
-      "population": 106290
+      "population": 106290,
+      "vote": null
     },
     {
       "id": "313",
       "name": "Colombia",
       "capital": "Bogotá",
-      "population": 50882884
+      "population": 50882884,
+      "vote": null
     },
     {
       "id": "314",
       "name": "Greece",
       "capital": "Athens",
-      "population": 10715549
+      "population": 10715549,
+      "vote": null
     },
     {
       "id": "315",
       "name": "Croatia",
       "capital": "Zagreb",
-      "population": 4047200
+      "population": 4047200,
+      "vote": null
     },
     {
       "id": "316",
       "name": "Morocco",
       "capital": "Rabat",
-      "population": 36910558
+      "population": 36910558,
+      "vote": null
     },
     {
       "id": "317",
       "name": "Algeria",
       "capital": "Algiers",
-      "population": 44700000
+      "population": 44700000,
+      "vote": null
     },
     {
       "id": "318",
       "name": "Antarctica",
       "capital": "N/A",
-      "population": 1000
+      "population": 1000,
+      "vote": null
     },
     {
       "id": "319",
       "name": "Netherlands",
       "capital": "Amsterdam",
-      "population": 16655799
+      "population": 16655799,
+      "vote": null
     },
     {
       "id": "320",
       "name": "Sudan",
       "capital": "Khartoum",
-      "population": 43849269
+      "population": 43849269,
+      "vote": null
     },
     {
       "id": "321",
       "name": "Fiji",
       "capital": "Suva",
-      "population": 896444
+      "population": 896444,
+      "vote": null
     },
     {
       "id": "322",
       "name": "Liechtenstein",
       "capital": "Vaduz",
-      "population": 38137
+      "population": 38137,
+      "vote": null
     },
     {
       "id": "323",
       "name": "Nepal",
       "capital": "Kathmandu",
-      "population": 29136808
+      "population": 29136808,
+      "vote": null
     },
     {
       "id": "324",
       "name": "Puerto Rico",
       "capital": "San Juan",
-      "population": 3194034
+      "population": 3194034,
+      "vote": null
     },
     {
       "id": "325",
       "name": "Georgia",
       "capital": "Tbilisi",
-      "population": 3714000
+      "population": 3714000,
+      "vote": null
     },
     {
       "id": "326",
       "name": "Pakistan",
       "capital": "Islamabad",
-      "population": 220892331
+      "population": 220892331,
+      "vote": null
     },
     {
       "id": "327",
       "name": "Monaco",
       "capital": "Monaco",
-      "population": 39244
+      "population": 39244,
+      "vote": null
     },
     {
       "id": "328",
       "name": "Botswana",
       "capital": "Gaborone",
-      "population": 2351625
+      "population": 2351625,
+      "vote": null
     },
     {
       "id": "329",
       "name": "Lebanon",
       "capital": "Beirut",
-      "population": 6825442
+      "population": 6825442,
+      "vote": null
     },
     {
       "id": "330",
       "name": "Papua New Guinea",
       "capital": "Port Moresby",
-      "population": 8947027
+      "population": 8947027,
+      "vote": null
     },
     {
       "id": "331",
       "name": "Mayotte",
       "capital": "Mamoudzou",
-      "population": 226915
+      "population": 226915,
+      "vote": null
     },
     {
       "id": "332",
       "name": "Dominican Republic",
       "capital": "Santo Domingo",
-      "population": 10847904
+      "population": 10847904,
+      "vote": null
     },
     {
       "id": "333",
       "name": "Norfolk Island",
       "capital": "Kingston",
-      "population": 2302
+      "population": 2302,
+      "vote": null
     },
     {
       "id": "334",
       "name": "Bouvet Island",
       "capital": "N/A",
-      "population": 0
+      "population": 0,
+      "vote": null
     },
     {
       "id": "335",
       "name": "Qatar",
       "capital": "Doha",
-      "population": 2881060
+      "population": 2881060,
+      "vote": null
     },
     {
       "id": "336",
       "name": "Madagascar",
       "capital": "Antananarivo",
-      "population": 27691019
+      "population": 27691019,
+      "vote": null
     },
     {
       "id": "337",
       "name": "India",
       "capital": "New Delhi",
-      "population": 1380004385
+      "population": 1380004385,
+      "vote": null
     },
     {
       "id": "338",
       "name": "Syria",
       "capital": "Damascus",
-      "population": 17500657
+      "population": 17500657,
+      "vote": null
     },
     {
       "id": "339",
       "name": "Montenegro",
       "capital": "Podgorica",
-      "population": 621718
+      "population": 621718,
+      "vote": null
     },
     {
       "id": "340",
       "name": "Eswatini",
       "capital": "Mbabane",
-      "population": 1160164
+      "population": 1160164,
+      "vote": null
     },
     {
       "id": "341",
       "name": "Paraguay",
       "capital": "Asunción",
-      "population": 7132530
+      "population": 7132530,
+      "vote": null
     },
     {
       "id": "342",
       "name": "El Salvador",
       "capital": "San Salvador",
-      "population": 6486201
+      "population": 6486201,
+      "vote": null
     },
     {
       "id": "343",
       "name": "Ukraine",
       "capital": "Kyiv",
-      "population": 44134693
+      "population": 44134693,
+      "vote": null
     },
     {
       "id": "344",
       "name": "Isle of Man",
       "capital": "Douglas",
-      "population": 85032
+      "population": 85032,
+      "vote": null
     },
     {
       "id": "345",
       "name": "Namibia",
       "capital": "Windhoek",
-      "population": 2540916
+      "population": 2540916,
+      "vote": null
     },
     {
       "id": "346",
       "name": "United Arab Emirates",
       "capital": "Abu Dhabi",
-      "population": 9890400
+      "population": 9890400,
+      "vote": null
     },
     {
       "id": "347",
       "name": "Bulgaria",
       "capital": "Sofia",
-      "population": 6927288
+      "population": 6927288,
+      "vote": null
     },
     {
       "id": "348",
       "name": "Greenland",
       "capital": "Nuuk",
-      "population": 56367
+      "population": 56367,
+      "vote": null
     },
     {
       "id": "349",
       "name": "Germany",
       "capital": "Berlin",
-      "population": 83240525
+      "population": 83240525,
+      "vote": null
     },
     {
       "id": "350",
       "name": "Cambodia",
       "capital": "Phnom Penh",
-      "population": 16718971
+      "population": 16718971,
+      "vote": null
     },
     {
       "id": "351",
       "name": "Iraq",
       "capital": "Baghdad",
-      "population": 40222503
+      "population": 40222503,
+      "vote": null
     },
     {
       "id": "352",
       "name": "French Southern and Antarctic Lands",
       "capital": "Port-aux-Français",
-      "population": 400
+      "population": 400,
+      "vote": null
     },
     {
       "id": "353",
       "name": "Sweden",
       "capital": "Stockholm",
-      "population": 10353442
+      "population": 10353442,
+      "vote": null
     },
     {
       "id": "354",
       "name": "Cuba",
       "capital": "Havana",
-      "population": 11326616
+      "population": 11326616,
+      "vote": null
     },
     {
       "id": "355",
       "name": "Kyrgyzstan",
       "capital": "Bishkek",
-      "population": 6591600
+      "population": 6591600,
+      "vote": null
     },
     {
       "id": "356",
       "name": "Russia",
       "capital": "Moscow",
-      "population": 144104080
+      "population": 144104080,
+      "vote": null
     },
     {
       "id": "357",
       "name": "Malaysia",
       "capital": "Kuala Lumpur",
-      "population": 32365998
+      "population": 32365998,
+      "vote": null
     },
     {
       "id": "358",
       "name": "São Tomé and Príncipe",
       "capital": "São Tomé",
-      "population": 219161
+      "population": 219161,
+      "vote": null
     },
     {
       "id": "359",
       "name": "Cyprus",
       "capital": "Nicosia",
-      "population": 1207361
+      "population": 1207361,
+      "vote": null
     },
     {
       "id": "360",
       "name": "Canada",
       "capital": "Ottawa",
-      "population": 38005238
+      "population": 38005238,
+      "vote": null
     },
     {
       "id": "361",
       "name": "Malawi",
       "capital": "Lilongwe",
-      "population": 19129955
+      "population": 19129955,
+      "vote": null
     },
     {
       "id": "362",
       "name": "Saudi Arabia",
       "capital": "Riyadh",
-      "population": 34813867
+      "population": 34813867,
+      "vote": null
     },
     {
       "id": "363",
       "name": "Bosnia and Herzegovina",
       "capital": "Sarajevo",
-      "population": 3280815
+      "population": 3280815,
+      "vote": null
     },
     {
       "id": "364",
       "name": "Ethiopia",
       "capital": "Addis Ababa",
-      "population": 114963583
+      "population": 114963583,
+      "vote": null
     },
     {
       "id": "365",
       "name": "Spain",
       "capital": "Madrid",
-      "population": 47351567
+      "population": 47351567,
+      "vote": null
     },
     {
       "id": "366",
       "name": "Slovenia",
       "capital": "Ljubljana",
-      "population": 2100126
+      "population": 2100126,
+      "vote": null
     },
     {
       "id": "367",
       "name": "Oman",
       "capital": "Muscat",
-      "population": 5106622
+      "population": 5106622,
+      "vote": null
     },
     {
       "id": "368",
       "name": "Saint Pierre and Miquelon",
       "capital": "Saint-Pierre",
-      "population": 6069
+      "population": 6069,
+      "nameEn": "ნიკა",
+      "nameKa": "აპტსიაური",
+      "capitalEn": "საასდ",
+      "capitalKa": "ასდ",
+      "vote": null
     },
     {
       "id": "369",
       "name": "Macau",
       "capital": "N/A",
-      "population": 649342
+      "population": 649342,
+      "vote": null
     },
     {
       "id": "370",
       "name": "San Marino",
       "capital": "City of San Marino",
-      "population": 33938
+      "population": 33938,
+      "vote": null
     },
     {
       "id": "371",
       "name": "Lesotho",
       "capital": "Maseru",
-      "population": 2142252
+      "population": 2142252,
+      "vote": null
     },
     {
       "id": "372",
       "name": "Marshall Islands",
       "capital": "Majuro",
-      "population": 59194
+      "population": 59194,
+      "vote": null
     },
     {
       "id": "373",
       "name": "Sint Maarten",
       "capital": "Philipsburg",
-      "population": 40812
+      "population": 40812,
+      "vote": null
     },
     {
       "id": "374",
       "name": "Iceland",
       "capital": "Reykjavik",
-      "population": 366425
+      "population": 366425,
+      "vote": null
     },
     {
       "id": "375",
       "name": "Luxembourg",
       "capital": "Luxembourg",
-      "population": 632275
+      "population": 632275,
+      "vote": null
     },
     {
       "id": "376",
       "name": "Argentina",
       "capital": "Buenos Aires",
-      "population": 45376763
+      "population": 45376763,
+      "vote": null
     },
     {
       "id": "377",
       "name": "Turks and Caicos Islands",
       "capital": "Cockburn Town",
-      "population": 38718
+      "population": 38718,
+      "vote": null
     },
     {
       "id": "378",
       "name": "Nauru",
       "capital": "Yaren",
-      "population": 10834
+      "population": 10834,
+      "vote": null
     },
     {
       "id": "379",
       "name": "Cocos (Keeling) Islands",
       "capital": "West Island",
-      "population": 544
+      "population": 544,
+      "vote": null
     },
     {
       "id": "380",
       "name": "Western Sahara",
       "capital": "El Aaiún",
-      "population": 510713
+      "population": 510713,
+      "vote": null
     },
     {
       "id": "381",
       "name": "Dominica",
       "capital": "Roseau",
-      "population": 71991
+      "population": 71991,
+      "vote": null
     },
     {
       "id": "382",
       "name": "Costa Rica",
       "capital": "San José",
-      "population": 5094114
+      "population": 5094114,
+      "vote": null
     },
     {
       "id": "383",
       "name": "Australia",
       "capital": "Canberra",
-      "population": 25687041
+      "population": 25687041,
+      "vote": null
     },
     {
       "id": "384",
       "name": "Thailand",
       "capital": "Bangkok",
-      "population": 69799978
+      "population": 69799978,
+      "vote": null
     },
     {
       "id": "385",
       "name": "Haiti",
       "capital": "Port-au-Prince",
-      "population": 11402533
+      "population": 11402533,
+      "vote": null
     },
     {
       "id": "386",
       "name": "Tuvalu",
       "capital": "Funafuti",
-      "population": 11792
+      "population": 11792,
+      "vote": null
     },
     {
       "id": "387",
       "name": "Honduras",
       "capital": "Tegucigalpa",
-      "population": 9904608
+      "population": 9904608,
+      "vote": null
     },
     {
       "id": "388",
       "name": "Equatorial Guinea",
       "capital": "Malabo",
-      "population": 1402985
+      "population": 1402985,
+      "vote": null
     },
     {
       "id": "389",
       "name": "Saint Lucia",
       "capital": "Castries",
-      "population": 183629
+      "population": 183629,
+      "vote": null
     },
     {
       "id": "390",
       "name": "French Polynesia",
       "capital": "Papeetē",
-      "population": 280904
+      "population": 280904,
+      "vote": null
     },
     {
       "id": "391",
       "name": "Belarus",
       "capital": "Minsk",
-      "population": 9398861
+      "population": 9398861,
+      "vote": null
     },
     {
       "id": "392",
       "name": "Latvia",
       "capital": "Riga",
-      "population": 1901548
+      "population": 1901548,
+      "vote": null
     },
     {
       "id": "393",
       "name": "Palau",
       "capital": "Ngerulmud",
-      "population": 18092
+      "population": 18092,
+      "vote": null
     },
     {
       "id": "394",
       "name": "Guadeloupe",
       "capital": "Basse-Terre",
-      "population": 400132
+      "population": 400132,
+      "vote": null
     },
     {
       "id": "395",
       "name": "Philippines",
       "capital": "Manila",
-      "population": 109581085
+      "population": 109581085,
+      "vote": null
     },
     {
       "id": "396",
       "name": "Gibraltar",
       "capital": "Gibraltar",
-      "population": 33691
+      "population": 33691,
+      "vote": null
     },
     {
       "id": "397",
       "name": "Denmark",
       "capital": "Copenhagen",
-      "population": 5831404
+      "population": 5831404,
+      "vote": null
     },
     {
       "id": "398",
       "name": "Cameroon",
       "capital": "Yaoundé",
-      "population": 26545864
+      "population": 26545864,
+      "vote": null
     },
     {
       "id": "399",
       "name": "Guinea",
       "capital": "Conakry",
-      "population": 13132792
+      "population": 13132792,
+      "vote": null
     },
     {
       "id": "400",
       "name": "Bahrain",
       "capital": "Manama",
-      "population": 1701583
+      "population": 1701583,
+      "vote": null
     },
     {
       "id": "401",
       "name": "Suriname",
       "capital": "Paramaribo",
-      "population": 586634
+      "population": 586634,
+      "vote": null
     },
     {
       "id": "402",
       "name": "DR Congo",
       "capital": "Kinshasa",
-      "population": 108407721
+      "population": 108407721,
+      "vote": null
     },
     {
       "id": "403",
       "name": "Somalia",
       "capital": "Mogadishu",
-      "population": 15893219
+      "population": 15893219,
+      "vote": null
     },
     {
       "id": "404",
       "name": "Czechia",
       "capital": "Prague",
-      "population": 10698896
+      "population": 10698896,
+      "vote": null
     },
     {
       "id": "405",
       "name": "New Caledonia",
       "capital": "Nouméa",
-      "population": 271960
+      "population": 271960,
+      "vote": null
     },
     {
       "id": "406",
       "name": "Vanuatu",
       "capital": "Port Vila",
-      "population": 307150
+      "population": 307150,
+      "vote": null
     },
     {
       "id": "407",
       "name": "Saint Helena, Ascension and Tristan da Cunha",
       "capital": "Jamestown",
-      "population": 53192
+      "population": 53192,
+      "vote": null
     },
     {
       "id": "408",
       "name": "Togo",
       "capital": "Lomé",
-      "population": 8278737
+      "population": 8278737,
+      "vote": null
     },
     {
       "id": "409",
       "name": "British Virgin Islands",
       "capital": "Road Town",
-      "population": 30237
+      "population": 30237,
+      "vote": null
     },
     {
       "id": "410",
       "name": "Kenya",
       "capital": "Nairobi",
-      "population": 53771300
+      "population": 53771300,
+      "vote": null
     },
     {
       "id": "411",
       "name": "Niue",
       "capital": "Alofi",
-      "population": 1470
+      "population": 1470,
+      "vote": null
     },
     {
       "id": "412",
       "name": "Heard Island and McDonald Islands",
       "capital": "N/A",
-      "population": 0
+      "population": 0,
+      "vote": null
     },
     {
       "id": "413",
       "name": "Rwanda",
       "capital": "Kigali",
-      "population": 12952209
+      "population": 12952209,
+      "vote": null
     },
     {
       "id": "414",
       "name": "Estonia",
       "capital": "Tallinn",
-      "population": 1331057
+      "population": 1331057,
+      "vote": null
     },
     {
       "id": "415",
       "name": "Romania",
       "capital": "Bucharest",
-      "population": 19286123
+      "population": 19286123,
+      "vote": null
     },
     {
       "id": "416",
       "name": "Trinidad and Tobago",
       "capital": "Port of Spain",
-      "population": 1399491
+      "population": 1399491,
+      "vote": null
     },
     {
       "id": "417",
       "name": "Guyana",
       "capital": "Georgetown",
-      "population": 786559
+      "population": 786559,
+      "vote": null
     },
     {
       "id": "418",
       "name": "Timor-Leste",
       "capital": "Dili",
-      "population": 1318442
+      "population": 1318442,
+      "vote": null
     },
     {
       "id": "419",
       "name": "Vietnam",
       "capital": "Hanoi",
-      "population": 97338583
+      "population": 97338583,
+      "vote": null
     },
     {
       "id": "420",
       "name": "Uruguay",
       "capital": "Montevideo",
-      "population": 3473727
+      "population": 3473727,
+      "vote": null
     },
     {
       "id": "421",
       "name": "Vatican City",
       "capital": "Vatican City",
-      "population": 451
+      "population": 451,
+      "vote": null
     },
     {
       "id": "422",
       "name": "Hong Kong",
       "capital": "City of Victoria",
-      "population": 7500700
+      "population": 7500700,
+      "vote": null
     },
     {
       "id": "423",
@@ -2876,7 +1189,8 @@
       "id": "425",
       "name": "Turkmenistan",
       "capital": "Ashgabat",
-      "population": 6031187
+      "population": 6031187,
+      "vote": null
     },
     {
       "id": "426",

@@ -43,7 +43,7 @@ const CountryCard: React.FC<CountryCardProps> = ({
     }
   };
 
-  function onUndo(arg0: number): void {
+  function onUndo(p0: number): void {
     throw new Error("Function not implemented.");
   }
 
